@@ -11,29 +11,24 @@ export default function RulesScreen() {
   };
 
   return (
-    <div
-      className="relative w-full h-screen bg-cover bg-center"
-      style={{
-        backgroundImage: `url(${rulesBg})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-      }}
-    >
-      {/* Галочка — абсолютно позиционирована */}
+    <div className="relative w-full h-screen">
+      <img src={rulesBg} alt="rules" className="w-full h-full object-cover" />
+
+      {/* Галочка — теперь точно на месте */}
       <div
         onClick={() => setAgreed(!agreed)}
-        className="absolute cursor-pointer"
+        className="absolute"
         style={{
-          top: '780px',
-          left: '72px',
-          width: '20px',
-          height: '20px',
-          backgroundColor: agreed ? '#FFD700' : 'transparent',
+          top: '87.7%',
+          left: '11.7%',
+          width: '24px',
+          height: '24px',
           border: '2px solid #FFD700',
+          backgroundColor: agreed ? '#FFD700' : 'transparent',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          transition: 'all 0.2s ease-in-out',
+          cursor: 'pointer',
         }}
       >
         {agreed && (
@@ -55,13 +50,13 @@ export default function RulesScreen() {
       <button
         onClick={handleContinue}
         disabled={!agreed}
-        className="absolute text-lg font-bold px-10 py-2 rounded transition-all"
+        className="absolute text-lg font-bold rounded transition-all px-8 py-2"
         style={{
-          top: '835px',
-          left: '66px',
+          top: '93.2%',
+          left: '11%',
           backgroundColor: agreed ? '#FFCC33' : '#3c2c13',
           color: agreed ? '#000' : '#888',
-          opacity: agreed ? 1 : 0.6,
+          opacity: agreed ? 1 : 0.5,
           cursor: agreed ? 'pointer' : 'not-allowed',
         }}
       >
