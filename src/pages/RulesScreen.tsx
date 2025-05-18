@@ -1,11 +1,11 @@
 import React, { useState, useRef, useEffect, CSSProperties } from 'react';
 import { useNavigate } from 'react-router-dom';
-import rulesImg from '../assets/images/rules.jpg'; // не забудь положить сюда картинку 768×1024
+import rulesImg from '../assets/images/rules.jpg'; // 768×1024
 
 export default function RulesScreen() {
   const [agreed, setAgreed] = useState(false);
-  const imgRef = useRef<HTMLImageElement>(null);
   const [imgSize, setImgSize] = useState({ width: 0, height: 0 });
+  const imgRef = useRef<HTMLImageElement | null>(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -20,7 +20,6 @@ export default function RulesScreen() {
     return () => window.removeEventListener('resize', updateSize);
   }, []);
 
-  // координаты по картинке 768x1024
   const scale = (x: number, y: number, w: number, h: number): CSSProperties => ({
     position: 'absolute',
     left: (x / 768) * imgSize.width,
@@ -30,21 +29,22 @@ export default function RulesScreen() {
   });
 
   return (
-    <div className="w-full flex justify-center">
-      <div className="relative w-full max-w-md">
+    <div className="w-full">
+      <div className="relative mx-auto" style={{ maxWidth: '768px' }}>
+        {/* Картинка задаёт точную высоту блока */}
         <img
           ref={imgRef}
           src={rulesImg}
           alt="Правила"
-          className="w-full h-auto block"
-          style={{ aspectRatio: '768 / 1024' }}
+          className="block w-full h-auto"
+          style={{ display: 'block' }}
         />
 
-        {/* Галочка — пиксельно выровнена */}
+        {/* Галочка */}
         <div
           onClick={() => setAgreed(!agreed)}
           style={{
-            ...scale(92, 905, 26, 26), // точные координаты и размер
+            ...scale(90, 910, 24, 24),
             border: '2px solid #FFD700',
             backgroundColor: agreed ? '#FFD700' : 'transparent',
             display: 'flex',
@@ -72,19 +72,19 @@ export default function RulesScreen() {
         {!agreed && (
           <div
             style={{
-              ...scale(88, 962, 308, 48), // координаты по кнопке
+              ...scale(88, 968, 312, 46),
               backgroundColor: 'rgba(0, 0, 0, 0.4)',
               borderRadius: '8px',
             }}
           />
         )}
 
-        {/* Кликабельная область по кнопке */}
+        {/* Кликабельная зона */}
         {agreed && (
           <div
             onClick={() => navigate('/start')}
             style={{
-              ...scale(88, 962, 308, 48),
+              ...scale(88, 968, 312, 46),
               cursor: 'pointer',
             }}
           />
