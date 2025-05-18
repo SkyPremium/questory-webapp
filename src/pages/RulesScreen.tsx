@@ -1,50 +1,33 @@
-import React, { useState, useRef, useEffect, CSSProperties } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import rulesImg from '../assets/images/rules.jpg'; // 768×1024
+import rulesImg from '../assets/images/rules.jpg';
 
 export default function RulesScreen() {
   const [agreed, setAgreed] = useState(false);
-  const [imgSize, setImgSize] = useState({ width: 0, height: 0 });
-  const imgRef = useRef<HTMLImageElement | null>(null);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const updateSize = () => {
-      if (imgRef.current) {
-        const rect = imgRef.current.getBoundingClientRect();
-        setImgSize({ width: rect.width, height: rect.height });
-      }
-    };
-    window.addEventListener('resize', updateSize);
-    updateSize();
-    return () => window.removeEventListener('resize', updateSize);
-  }, []);
-
-  const scale = (x: number, y: number, w: number, h: number): CSSProperties => ({
+  const scale = (x: number, y: number, w: number, h: number): React.CSSProperties => ({
     position: 'absolute',
-    left: (x / 768) * imgSize.width,
-    top: (y / 1024) * imgSize.height,
-    width: (w / 768) * imgSize.width,
-    height: (h / 1024) * imgSize.height,
+    left: `${(x / 768) * 100}%`,
+    top: `${(y / 1024) * 100}%`,
+    width: `${(w / 768) * 100}%`,
+    height: `${(h / 1024) * 100}%`,
   });
 
   return (
-    <div className="w-full">
-      <div className="relative mx-auto" style={{ maxWidth: '768px' }}>
-        {/* Картинка задаёт точную высоту блока */}
+    <div className="w-full min-h-screen flex items-center justify-center bg-black">
+      <div className="relative w-full max-w-[768px]" style={{ aspectRatio: '3 / 4' }}>
         <img
-          ref={imgRef}
           src={rulesImg}
           alt="Правила"
-          className="block w-full h-auto"
-          style={{ display: 'block' }}
+          className="w-full h-full object-cover absolute top-0 left-0"
         />
 
         {/* Галочка */}
         <div
           onClick={() => setAgreed(!agreed)}
           style={{
-            ...scale(90, 910, 24, 24),
+            ...scale(90, 906, 24, 24),
             border: '2px solid #FFD700',
             backgroundColor: agreed ? '#FFD700' : 'transparent',
             display: 'flex',
