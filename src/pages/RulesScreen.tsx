@@ -1,49 +1,50 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-
-import rulesBg from "../assets/images/rules.jpg";
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import rulesBg from '../assets/images/rules.jpg';
 
 export default function RulesScreen() {
   const [agreed, setAgreed] = useState(false);
   const navigate = useNavigate();
 
+  const toggleAgree = () => setAgreed(!agreed);
   const handleContinue = () => {
-    if (agreed) navigate("/start"); // замени на путь к следующей сцене
+    if (agreed) navigate('/start');
   };
 
   return (
-    <div className="relative w-full h-screen overflow-hidden">
-      {/* Фон с изображением */}
-      <img
-        src={rulesBg}
-        alt="Правила"
-        className="w-full h-full object-cover"
-      />
-
+    <div
+      className="relative w-full h-screen bg-cover bg-center"
+      style={{
+        backgroundImage: `url(${rulesBg})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+      }}
+    >
       {/* Галочка */}
-      <label
-        className="absolute left-1/2 transform -translate-x-1/2 bottom-28 flex items-center gap-2 text-white bg-black/50 px-4 py-2 rounded-lg backdrop-blur-sm"
-        style={{ cursor: "pointer" }}
+      <div
+        className="absolute flex items-center space-x-2"
+        style={{ top: '780px', left: '68px' }}
       >
         <input
+          id="agree"
           type="checkbox"
           checked={agreed}
-          onChange={(e) => setAgreed(e.target.checked)}
+          onChange={toggleAgree}
+          className="w-5 h-5"
         />
-        Я ознакомлен и принимаю правила
-      </label>
+        <label htmlFor="agree" className="text-white text-sm drop-shadow">
+          Я прочитал и принимаю правила
+        </label>
+      </div>
 
-      {/* Кнопка */}
+      {/* Кнопка СОГЛАСЕН */}
       <button
         onClick={handleContinue}
         disabled={!agreed}
-        className={`absolute bottom-10 left-1/2 transform -translate-x-1/2 px-6 py-3 rounded-xl text-lg font-semibold transition ${
-          agreed
-            ? "bg-emerald-500 hover:bg-emerald-600 text-white"
-            : "bg-gray-500 text-white opacity-50 cursor-not-allowed"
-        }`}
+        className="absolute text-lg font-bold px-10 py-2 rounded bg-yellow-600 text-white hover:bg-yellow-500 transition-all disabled:opacity-50"
+        style={{ top: '830px', left: '68px' }}
       >
-        Согласен
+        СОГЛАСЕН
       </button>
     </div>
   );
