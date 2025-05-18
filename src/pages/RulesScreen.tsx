@@ -1,14 +1,8 @@
 import React, { useState } from 'react';
+import rulesImage from '../assets/images/rules.jpg';
 
-export default function RulesScreen() {
-  const [agreed, setAgreed] = useState(false);
-
-  const handleAgree = () => {
-    if (agreed) {
-      console.log('Пользователь принял правила');
-      // Здесь навигация к следующему экрану (например, обучение)
-    }
-  };
+const RulesScreen: React.FC = () => {
+  const [checked, setChecked] = useState(false);
 
   return (
     <div
@@ -19,53 +13,79 @@ export default function RulesScreen() {
         overflow: 'hidden',
       }}
     >
-      {/* Фоновое изображение */}
+      {/* Фоновая картинка */}
       <img
-        src="/rules.jpg"
+        src={rulesImage}
         alt="rules"
         style={{
+          position: 'absolute',
           width: '100%',
           height: '100%',
           objectFit: 'cover',
+          top: 0,
+          left: 0,
+          zIndex: 1,
         }}
       />
 
       {/* Галочка */}
       <input
         type="checkbox"
-        checked={agreed}
-        onChange={() => setAgreed(!agreed)}
+        checked={checked}
+        onChange={() => setChecked(!checked)}
         style={{
           position: 'absolute',
-          left: '9%',
-          bottom: '17%',
-          width: '5%',
-          height: '3%',
-          accentColor: '#fcd34d',
-          cursor: 'pointer',
+          bottom: '100px',
+          left: '60px',
+          width: '24px',
+          height: '24px',
+          zIndex: 2,
         }}
       />
 
-      {/* Клик по картинке кнопки "СОГЛАСЕН" */}
-      <button
-        onClick={handleAgree}
-        disabled={!agreed}
+      {/* Клик по всей надписи — тоже переключает чекбокс */}
+      <label
+        onClick={() => setChecked(!checked)}
         style={{
           position: 'absolute',
-          bottom: '7%',
-          left: '50%',
-          transform: 'translateX(-50%)',
-          width: '45%',
-          height: '6%',
-          backgroundColor: 'transparent',
-          border: 'none',
-          cursor: agreed ? 'pointer' : 'default',
-          opacity: agreed ? 1 : 0.4,
+          bottom: '100px',
+          left: '95px',
+          color: 'yellow',
+          fontWeight: 'bold',
+          fontSize: '16px',
+          zIndex: 2,
+          cursor: 'pointer',
         }}
       >
-        {/* Текст скрыт — кнопка кликабельна по изображению */}
-        <span style={{ visibility: 'hidden' }}>СОГЛАСЕН</span>
+        Я прочитал и принимаю правила
+      </label>
+
+      {/* Кнопка "СОГЛАСЕН" */}
+      <button
+        disabled={!checked}
+        style={{
+          position: 'absolute',
+          bottom: '35px',
+          left: '50%',
+          transform: 'translateX(-50%)',
+          padding: '10px 30px',
+          fontSize: '20px',
+          fontWeight: 'bold',
+          borderRadius: '8px',
+          border: '2px solid #d89f3c',
+          backgroundColor: checked ? '#d89f3c' : '#444',
+          color: checked ? '#3b230d' : '#aaa',
+          cursor: checked ? 'pointer' : 'not-allowed',
+          zIndex: 2,
+        }}
+        onClick={() => {
+          alert('Правила приняты!');
+        }}
+      >
+        СОГЛАСЕН
       </button>
     </div>
   );
-}
+};
+
+export default RulesScreen;
