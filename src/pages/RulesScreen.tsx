@@ -1,52 +1,43 @@
-import React, { useState } from 'react';
+import rulesImage from "@/assets/images/rules.jpg";
 
 export default function RulesScreen() {
-  const [checked, setChecked] = useState(false);
+  const [agreed, setAgreed] = useState(false);
 
   return (
     <div
       className="relative w-full h-screen bg-cover bg-center"
-      style={{ backgroundImage: 'url(/src/assets/images/rules.jpg)' }}
+      style={{ backgroundImage: `url(${rulesImage})` }}
     >
       {/* Галочка */}
       <input
         type="checkbox"
-        checked={checked}
-        onChange={() => setChecked(!checked)}
+        checked={agreed}
+        onChange={() => setAgreed(!agreed)}
         className="absolute"
         style={{
-          top: '86.2%',   // Процентные значения, подобранные под изображение
-          left: '8.2%',
-          width: '20px',
-          height: '20px',
+          left: "10%",   // отрегулируй по своей картинке
+          bottom: "15%", // отрегулируй по своей картинке
+          width: "20px",
+          height: "20px"
         }}
       />
 
       {/* Затемнение кнопки */}
-      {!checked && (
-        <div
-          className="absolute bg-black opacity-50 rounded"
-          style={{
-            top: '90.6%',
-            left: '25.4%',
-            width: '49.2%',
-            height: '5.6%',
-          }}
-        />
-      )}
-
-      {/* Прозрачная кнопка для обработки клика */}
       <button
-        disabled={!checked}
-        className="absolute w-[49.2%] h-[5.6%]"
+        disabled={!agreed}
+        className={`absolute text-white font-bold rounded-md transition-opacity duration-300 ${
+          agreed ? "bg-transparent" : "bg-black/60"
+        }`}
         style={{
-          top: '90.6%',
-          left: '25.4%',
+          left: "50%",
+          bottom: "7%",
+          transform: "translateX(-50%)",
+          width: "200px",
+          height: "50px"
         }}
-        onClick={() => console.log('Принял правила')}
       >
-        {/* Невидимая, т.к. кнопка уже нарисована на фоне */}
-        <span className="sr-only">СОГЛАСЕН</span>
+        {/* Невидимый текст (для кликабельности) */}
+        {agreed ? " " : " "}
       </button>
     </div>
   );
