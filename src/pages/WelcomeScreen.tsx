@@ -1,5 +1,5 @@
 import React from "react";
-import welcomeBg from "../assets/welcome.jpg";
+import welcomeBg from "../assets/images/welcome.jpg";
 
 const WelcomeScreen = () => {
   return (
