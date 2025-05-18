@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+import rulesBg from "../assets/images/rules.jpg";
+
 export default function RulesScreen() {
   const [agreed, setAgreed] = useState(false);
   const navigate = useNavigate();
@@ -13,7 +15,7 @@ export default function RulesScreen() {
     <div className="relative w-full h-screen overflow-hidden">
       {/* Фон с изображением */}
       <img
-        src="/assets/images/rules.jpg"
+        src={rulesBg}
         alt="Правила"
         className="w-full h-full object-cover"
       />
