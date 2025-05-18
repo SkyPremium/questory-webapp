@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import rulesImg from '../assets/images/rules.jpg'; // 768×1024
+import rulesImg from '../assets/images/rules.jpg'; // размер: 768x1366
 
 export default function RulesScreen() {
   const [agreed, setAgreed] = useState(false);
@@ -23,29 +23,29 @@ export default function RulesScreen() {
   const scale = (x: number, y: number, w: number, h: number): React.CSSProperties => ({
     position: 'absolute',
     left: `${(x / 768) * size.width}px`,
-    top: `${(y / 1024) * size.height}px`,
+    top: `${(y / 1366) * size.height}px`,
     width: `${(w / 768) * size.width}px`,
-    height: `${(h / 1024) * size.height}px`,
+    height: `${(h / 1366) * size.height}px`,
   });
 
   return (
-    <div className="w-full min-h-screen flex items-center justify-center bg-black">
+    <div className="w-screen h-screen flex items-center justify-center bg-black">
       <div
-        className="relative w-full max-w-[768px]"
-        style={{ aspectRatio: '3 / 4' }}
         ref={containerRef}
+        className="relative w-full max-w-[768px]"
+        style={{ aspectRatio: '768 / 1366' }}
       >
         <img
           src={rulesImg}
           alt="Правила"
-          className="w-full h-full object-cover absolute inset-0"
+          className="absolute inset-0 w-full h-full object-cover"
         />
 
         {/* Галочка */}
         <div
           onClick={() => setAgreed(!agreed)}
           style={{
-            ...scale(90, 906, 24, 24),
+            ...scale(78, 1202, 30, 30),
             border: '2px solid #FFD700',
             backgroundColor: agreed ? '#FFD700' : 'transparent',
             display: 'flex',
@@ -73,7 +73,7 @@ export default function RulesScreen() {
         {!agreed && (
           <div
             style={{
-              ...scale(88, 968, 312, 46),
+              ...scale(220, 1260, 325, 55),
               backgroundColor: 'rgba(0, 0, 0, 0.4)',
               borderRadius: '8px',
             }}
@@ -85,7 +85,7 @@ export default function RulesScreen() {
           <div
             onClick={() => navigate('/start')}
             style={{
-              ...scale(88, 968, 312, 46),
+              ...scale(220, 1260, 325, 55),
               cursor: 'pointer',
             }}
           />
