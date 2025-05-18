@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import rulesImage from '../../assets/images/rules.jpg' // теперь будет работать
+import rulesImage from '../assets/images/rules.jpg' // теперь будет работать
 import './RulesScreen.css'
 
 export default function RulesScreen() {
