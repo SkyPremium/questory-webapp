@@ -1,46 +1,17 @@
-.rules-wrapper {
+.rules-screen {
+  position: relative;
   width: 100vw;
   height: 100vh;
-  background-image: url('../assets/images/rules.jpg');
-  background-size: cover;        /* подгоняет по ширине */
-  background-position: center;   /* центрирует */
-  background-repeat: no-repeat;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
   overflow: hidden;
 }
 
-.overlay-ui {
+.rules-image {
   position: absolute;
-  bottom: 5%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  top: 0;
+  left: 0;
   width: 100%;
-}
-
-.checkbox-area {
-  color: #ffd700;
-  font-size: 16px;
-  margin-bottom: 10px;
-  display: flex;
-  gap: 10px;
-  align-items: center;
-}
-
-.confirm-button {
-  background-color: rgba(0, 0, 0, 0.5);
-  color: #f0d060;
-  font-size: 18px;
-  padding: 10px 30px;
-  border: 2px solid #f0d060;
-  border-radius: 8px;
-  cursor: pointer;
-}
-
-.confirm-button:disabled {
-  opacity: 0.4;
-  cursor: not-allowed;
+  height: 100%;
+  object-fit: cover;  /* 🔥 Ключевой момент */
+  object-position: center;
+  z-index: -1;
 }
