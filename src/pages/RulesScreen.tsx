@@ -7,83 +7,83 @@ const RulesScreen: React.FC = () => {
   return (
     <div
       style={{
-        position: 'relative',
         width: '100vw',
         height: '100vh',
-        overflow: 'hidden',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: 'black',
       }}
     >
-      {/* Фоновая картинка */}
-      <img
-        src={rulesImage}
-        alt="rules"
+      <div
         style={{
-          position: 'absolute',
+          position: 'relative',
           width: '100%',
-          height: '100%',
-          objectFit: 'cover',
-          top: 0,
-          left: 0,
-          zIndex: 1,
-        }}
-      />
-
-      {/* Галочка */}
-      <input
-        type="checkbox"
-        checked={checked}
-        onChange={() => setChecked(!checked)}
-        style={{
-          position: 'absolute',
-          bottom: '100px',
-          left: '60px',
-          width: '24px',
-          height: '24px',
-          zIndex: 2,
-        }}
-      />
-
-      {/* Клик по всей надписи — тоже переключает чекбокс */}
-      <label
-        onClick={() => setChecked(!checked)}
-        style={{
-          position: 'absolute',
-          bottom: '100px',
-          left: '95px',
-          color: 'yellow',
-          fontWeight: 'bold',
-          fontSize: '16px',
-          zIndex: 2,
-          cursor: 'pointer',
+          maxWidth: '768px',
+          aspectRatio: '9 / 16',
+          backgroundImage: `url(${rulesImage})`,
+          backgroundSize: 'contain',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
         }}
       >
-        Я прочитал и принимаю правила
-      </label>
+        {/* Галочка */}
+        <input
+          type="checkbox"
+          checked={checked}
+          onChange={() => setChecked(!checked)}
+          style={{
+            position: 'absolute',
+            left: '9.5%',
+            bottom: '12%',
+            width: '24px',
+            height: '24px',
+            zIndex: 2,
+          }}
+        />
 
-      {/* Кнопка "СОГЛАСЕН" */}
-      <button
-        disabled={!checked}
-        style={{
-          position: 'absolute',
-          bottom: '35px',
-          left: '50%',
-          transform: 'translateX(-50%)',
-          padding: '10px 30px',
-          fontSize: '20px',
-          fontWeight: 'bold',
-          borderRadius: '8px',
-          border: '2px solid #d89f3c',
-          backgroundColor: checked ? '#d89f3c' : '#444',
-          color: checked ? '#3b230d' : '#aaa',
-          cursor: checked ? 'pointer' : 'not-allowed',
-          zIndex: 2,
-        }}
-        onClick={() => {
-          alert('Правила приняты!');
-        }}
-      >
-        СОГЛАСЕН
-      </button>
+        {/* Клик по надписи */}
+        <label
+          onClick={() => setChecked(!checked)}
+          style={{
+            position: 'absolute',
+            left: '15%',
+            bottom: '12%',
+            fontSize: '1.1rem',
+            color: 'yellow',
+            fontWeight: 'bold',
+            zIndex: 2,
+            cursor: 'pointer',
+          }}
+        >
+          Я прочитал и принимаю правила
+        </label>
+
+        {/* Кнопка */}
+        <button
+          disabled={!checked}
+          style={{
+            position: 'absolute',
+            bottom: '5.5%',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            padding: '10px 25px',
+            fontSize: '1.3rem',
+            fontWeight: 'bold',
+            backgroundColor: checked ? '#d89f3c' : '#444',
+            border: '2px solid #d89f3c',
+            color: checked ? '#3b230d' : '#aaa',
+            borderRadius: '8px',
+            cursor: checked ? 'pointer' : 'not-allowed',
+            zIndex: 2,
+          }}
+          onClick={() => {
+            alert('Правила приняты');
+          }}
+        >
+          СОГЛАСЕН
+        </button>
+      </div>
     </div>
   );
 };
