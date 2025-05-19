@@ -1,5 +1,6 @@
 import React from "react";
 import rules from "../assets/images/rules.jpg";
+import buttonAgree from "../assets/images/button_agree.png";
 
 export default function RulesScreen() {
   return (
@@ -13,6 +14,7 @@ export default function RulesScreen() {
 
       {/* UI-элементы */}
       <div className="absolute bottom-4 left-0 w-full flex flex-col items-center gap-3 px-4 z-10">
+        {/* Галочка */}
         <label className="flex items-center gap-2 text-sm text-white bg-black/40 px-3 py-2 rounded">
           <input
             type="checkbox"
@@ -21,10 +23,15 @@ export default function RulesScreen() {
           Я прочитал и принимаю правила
         </label>
 
+        {/* Кнопка */}
         <button
-          className="w-full max-w-[420px] py-3 bg-yellow-700 text-white text-sm font-bold rounded-md border border-yellow-300 shadow-md hover:bg-yellow-800 transition"
+          onClick={() => console.log("Agree clicked")}
+          className="w-[320px] h-[64px] bg-no-repeat bg-contain bg-center active:scale-95 transition-transform"
+          style={{
+            backgroundImage: `url(${buttonAgree})`,
+          }}
         >
-          СОГЛАСЕН
+          <span className="sr-only">СОГЛАСЕН</span>
         </button>
       </div>
     </div>
