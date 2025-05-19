@@ -1,6 +1,6 @@
 import React from "react";
-import bg from "@/assets/images/rules_bg.jpg";
-import logo from "@/assets/images/logo.png";
+import bg from "../assets/images/rules_bg.jpg";
+import logo from "../assets/images/logo.png";
 
 export default function RulesScreen() {
   return (
