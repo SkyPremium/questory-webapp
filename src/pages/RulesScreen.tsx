@@ -1,19 +1,19 @@
 import { useState } from "react";
 import Image from "next/image";
 
-// 🔁 Импорты из src/assets/images
-import buttonAgree from "@/assets/images/button_agree.png";
-import checkboxChecked from "@/assets/images/checkbox_checked.png";
-import checkboxEmpty from "@/assets/images/checkbox_empty.png";
-import logo from "@/assets/images/logo.png";
-import rulesBackground from "@/assets/images/rules.jpg";
+// 🖼 Импорт картинок через относительные пути
+import buttonAgree from "../../assets/images/button_agree.png";
+import checkboxChecked from "../../assets/images/checkbox_checked.png";
+import checkboxEmpty from "../../assets/images/checkbox_empty.png";
+import logo from "../../assets/images/logo.png";
+import rulesBackground from "../../assets/images/rules.jpg";
 
 export default function RulesScreen({ onAgree }: { onAgree: () => void }) {
   const [checked, setChecked] = useState(false);
 
   return (
     <div className="relative w-full h-full flex justify-center items-center bg-black">
-      {/* 📜 Фон с текстом правил */}
+      {/* 📜 Фон */}
       <Image
         src={rulesBackground}
         alt="Правила"
@@ -25,16 +25,10 @@ export default function RulesScreen({ onAgree }: { onAgree: () => void }) {
 
       {/* 🔥 Логотип */}
       <div className="absolute top-4 left-4 z-10">
-        <Image
-          src={logo}
-          alt="Questory Logo"
-          width={180}
-          height={80}
-          priority
-        />
+        <Image src={logo} alt="Questory Logo" width={180} height={80} />
       </div>
 
-      {/* ✅ Галочка */}
+      {/* ✅ Чекбокс */}
       <div
         className="absolute bottom-24 left-1/2 transform -translate-x-1/2 cursor-pointer z-10"
         onClick={() => setChecked(!checked)}
