@@ -11,23 +11,23 @@ export default function RulesScreen({ onAgree }: { onAgree: () => void }) {
   return (
     <div className="relative w-full h-screen flex justify-center items-center bg-black overflow-hidden">
 
-      {/* 🔁 Размытый растянутый фон — под основной сценой */}
+      {/* 🌫 Размытый задний фон, адаптированный по цвету */}
       <img
         src={rulesBg}
         alt="Размытый фон"
-        className="absolute inset-0 w-full h-full object-cover blur-2xl scale-125 opacity-60 z-0"
+        className="absolute inset-0 w-full h-full object-cover blur-[40px] scale-110 brightness-[1.1] saturate-[1.1] opacity-70 z-0"
       />
 
-      {/* 📜 Центральный контейнер 768×1024 */}
+      {/* 📜 Центральный контейнер 3:4 */}
       <div className="relative w-full max-w-[768px] aspect-[3/4] z-10">
-        {/* Основная сцена */}
+        {/* Основная чёткая сцена */}
         <img
           src={rulesBg}
           alt="Фон сцены"
           className="absolute inset-0 w-full h-full object-cover z-10"
         />
 
-        {/* UI-контейнер */}
+        {/* UI-элементы поверх */}
         <div className="absolute inset-0 z-20 flex flex-col justify-between">
           {/* 🔥 Логотип */}
           <div className="pt-[2%] flex justify-center">
