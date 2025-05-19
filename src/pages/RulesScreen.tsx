@@ -11,53 +11,24 @@ export default function RulesScreen({ onAgree }: { onAgree: () => void }) {
   return (
     <div className="relative w-full h-screen flex justify-center items-center bg-black overflow-hidden">
 
-      {/* 🌫 Левая размытие-зона */}
-      <div className="absolute left-0 top-0 bottom-0 w-full max-w-[calc(50%-384px)] z-0 overflow-hidden">
-        <img
-          src={rulesBg}
-          className="w-full h-full object-cover blur-md scale-125 opacity-40"
-          alt=""
-        />
-      </div>
+      {/* 🔁 Размытый растянутый фон — под основной сценой */}
+      <img
+        src={rulesBg}
+        alt="Размытый фон"
+        className="absolute inset-0 w-full h-full object-cover blur-2xl scale-125 opacity-60 z-0"
+      />
 
-      {/* 🌫 Правая размытие-зона */}
-      <div className="absolute right-0 top-0 bottom-0 w-full max-w-[calc(50%-384px)] z-0 overflow-hidden">
+      {/* 📜 Центральный контейнер 768×1024 */}
+      <div className="relative w-full max-w-[768px] aspect-[3/4] z-10">
+        {/* Основная сцена */}
         <img
           src={rulesBg}
-          className="w-full h-full object-cover blur-md scale-125 opacity-40"
-          alt=""
-        />
-      </div>
-
-      {/* 🌫 Верхнее размытие-зона */}
-      <div className="absolute top-0 left-0 right-0 h-full max-h-[calc(50%-512px)] z-0 overflow-hidden">
-        <img
-          src={rulesBg}
-          className="w-full h-full object-cover blur-md scale-125 opacity-40"
-          alt=""
-        />
-      </div>
-
-      {/* 🌫 Нижнее размытие-зона */}
-      <div className="absolute bottom-0 left-0 right-0 h-full max-h-[calc(50%-512px)] z-0 overflow-hidden">
-        <img
-          src={rulesBg}
-          className="w-full h-full object-cover blur-md scale-125 opacity-40"
-          alt=""
-        />
-      </div>
-
-      {/* 📜 Центральный контейнер 3:4 */}
-      <div className="relative w-full max-w-[768px]" style={{ aspectRatio: "3 / 4" }}>
-        {/* Фон */}
-        <img
-          src={rulesBg}
-          alt="Правила"
-          className="absolute inset-0 w-full h-full object-cover z-0"
+          alt="Фон сцены"
+          className="absolute inset-0 w-full h-full object-cover z-10"
         />
 
         {/* UI-контейнер */}
-        <div className="absolute inset-0 z-10 flex flex-col justify-between">
+        <div className="absolute inset-0 z-20 flex flex-col justify-between">
           {/* 🔥 Логотип */}
           <div className="pt-[2%] flex justify-center">
             <img src={logo} alt="Questory Logo" className="w-[130px]" />
