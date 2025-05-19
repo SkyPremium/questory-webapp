@@ -9,52 +9,62 @@ export default function RulesScreen({ onAgree }: { onAgree: () => void }) {
   const [checked, setChecked] = useState(false);
 
   return (
-    <div className="w-full h-screen flex justify-center items-center bg-black">
-      {/* 💡 Контейнер с aspect ratio 3:4 */}
+    <div className="relative w-full h-screen flex justify-center items-center bg-black overflow-hidden">
+
+      {/* Левая размытие-зона */}
+      <div className="absolute left-0 top-0 bottom-0 w-[max(0px,calc(50%-384px))] z-0 overflow-hidden">
+        <img
+          src={rulesBg}
+          className="w-full h-full object-cover blur-md scale-125 opacity-40"
+          alt=""
+        />
+      </div>
+
+      {/* Правая размытие-зона */}
+      <div className="absolute right-0 top-0 bottom-0 w-[max(0px,calc(50%-384px))] z-0 overflow-hidden">
+        <img
+          src={rulesBg}
+          className="w-full h-full object-cover blur-md scale-125 opacity-40"
+          alt=""
+        />
+      </div>
+
+      {/* Центральный 3:4 фрейм */}
       <div className="relative w-full max-w-[768px]" style={{ aspectRatio: "3 / 4" }}>
-        {/* 📜 Фон */}
+        {/* 📜 Основной фон */}
         <img
           src={rulesBg}
           alt="Правила"
           className="absolute inset-0 w-full h-full object-cover z-0"
         />
 
-        {/* 🔥 Логотип */}
-        <div className="absolute top-[2%] left-1/2 transform -translate-x-1/2 z-10">
-          <img
-            src={logo}
-            alt="Questory Logo"
-            className="w-[130px]"
-          />
-        </div>
+        {/* UI */}
+        <div className="absolute inset-0 z-10 flex flex-col justify-between">
+          {/* 🔥 Логотип */}
+          <div className="pt-[2%] flex justify-center">
+            <img src={logo} alt="Questory Logo" className="w-[130px]" />
+          </div>
 
-        {/* ✅ Галочка */}
-        <div
-          className="absolute bottom-[12%] left-[9%] z-10 cursor-pointer"
-          onClick={() => setChecked(!checked)}
-        >
-          <img
-            src={checked ? checkboxChecked : checkboxEmpty}
-            alt="Галочка"
-            className="w-[52px]"
-          />
-        </div>
+          {/* ✅ Галочка + кнопка */}
+          <div className="pb-[3%] flex flex-col items-center gap-4">
+            <div onClick={() => setChecked(!checked)} className="cursor-pointer">
+              <img
+                src={checked ? checkboxChecked : checkboxEmpty}
+                alt="Печать"
+                className="w-[52px]"
+              />
+            </div>
 
-        {/* 🟫 Кнопка */}
-        <div className="absolute bottom-[4%] left-1/2 transform -translate-x-1/2 z-10">
-          <button
-            onClick={onAgree}
-            disabled={!checked}
-            className={`transition-opacity duration-200 ${
-              checked ? "opacity-100" : "opacity-40 pointer-events-none"
-            }`}
-          >
-            <img
-              src={buttonAgree}
-              alt="Согласен"
-              className="w-[140px]"
-            />
-          </button>
+            <button
+              onClick={onAgree}
+              disabled={!checked}
+              className={`transition-opacity duration-200 ${
+                checked ? "opacity-100" : "opacity-40 pointer-events-none"
+              }`}
+            >
+              <img src={buttonAgree} alt="Согласен" className="w-[140px]" />
+            </button>
+          </div>
         </div>
       </div>
     </div>
