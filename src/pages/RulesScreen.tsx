@@ -50,4 +50,7 @@ export default function RulesScreen({ onAgree }: { onAgree: () => void }) {
             className="w-[180px]"
           />
         </button>
-      </div
+      </div>
+    </div>
+  );
+}
