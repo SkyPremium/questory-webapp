@@ -1,47 +1,62 @@
-import React, { useState } from "react";
-import rules from "../assets/images/rules.jpg";
-import buttonAgree from "../assets/images/button_agree.png";
-import checkboxEmpty from "../assets/images/checkbox_empty.png";
-import checkboxChecked from "../assets/images/checkbox_checked.png";
+import { useState } from "react";
+import Image from "next/image";
 
-export default function RulesScreen() {
-  const [agreed, setAgreed] = useState(false);
+// 🔁 Импорты из src/assets/images
+import buttonAgree from "@/assets/images/button_agree.png";
+import checkboxChecked from "@/assets/images/checkbox_checked.png";
+import checkboxEmpty from "@/assets/images/checkbox_empty.png";
+import logo from "@/assets/images/logo.png";
+import rulesBackground from "@/assets/images/rules.jpg";
+
+export default function RulesScreen({ onAgree }: { onAgree: () => void }) {
+  const [checked, setChecked] = useState(false);
 
   return (
-    <div className="relative w-screen h-screen overflow-hidden">
-      <img
-        src={rules}
-        alt="Правила Questory"
-        className="absolute inset-0 w-full h-full object-contain max-h-[calc(100vh-80px)] z-0"
+    <div className="relative w-full h-full flex justify-center items-center bg-black">
+      {/* 📜 Фон с текстом правил */}
+      <Image
+        src={rulesBackground}
+        alt="Правила"
+        layout="fill"
+        objectFit="cover"
+        priority
+        className="z-0"
       />
 
-      <div className="absolute bottom-4 left-0 w-full flex flex-col items-center gap-4 px-4 z-10">
-        {/* Стилизованная галочка */}
-        <div
-          className="flex items-center gap-3 cursor-pointer"
-          onClick={() => setAgreed(!agreed)}
-        >
-          <img
-            src={agreed ? checkboxChecked : checkboxEmpty}
-            alt="галочка"
-            className="w-10 h-10"
-          />
-          <span className="text-white text-sm bg-black/40 px-3 py-1 rounded">
-            Я прочитал и принимаю правила
-          </span>
-        </div>
+      {/* 🔥 Логотип */}
+      <div className="absolute top-4 left-4 z-10">
+        <Image
+          src={logo}
+          alt="Questory Logo"
+          width={180}
+          height={80}
+          priority
+        />
+      </div>
 
-        {/* Кастомная кнопка */}
+      {/* ✅ Галочка */}
+      <div
+        className="absolute bottom-24 left-1/2 transform -translate-x-1/2 cursor-pointer z-10"
+        onClick={() => setChecked(!checked)}
+      >
+        <Image
+          src={checked ? checkboxChecked : checkboxEmpty}
+          alt="Чекбокс"
+          width={80}
+          height={80}
+        />
+      </div>
+
+      {/* 🟫 Кнопка "Согласен" */}
+      <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 z-10">
         <button
-          disabled={!agreed}
-          className="w-[320px] h-[64px] bg-no-repeat bg-contain bg-center active:scale-95 transition-transform"
-          style={{
-            backgroundImage: `url(${buttonAgree})`,
-            opacity: agreed ? 1 : 0.5,
-            pointerEvents: agreed ? "auto" : "none",
-          }}
+          onClick={onAgree}
+          disabled={!checked}
+          className={`transition-all duration-200 ${
+            checked ? "opacity-100" : "opacity-40 pointer-events-none"
+          }`}
         >
-          <span className="sr-only">СОГЛАСЕН</span>
+          <Image src={buttonAgree} alt="Согласен" width={250} height={80} />
         </button>
       </div>
     </div>
