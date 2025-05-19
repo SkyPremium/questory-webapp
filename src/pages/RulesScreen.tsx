@@ -18,12 +18,12 @@ export default function RulesScreen({ onAgree }: { onAgree: () => void }) {
         className="absolute inset-0 w-full h-full object-cover z-0"
       />
 
-      {/* 🔥 Логотип — ещё выше */}
-      <div className="absolute top-[4px] left-1/2 transform -translate-x-1/2 z-10">
-        <img src={logo} alt="Questory Logo" className="w-[160px]" />
+      {/* 🔥 Логотип — меньше и выше */}
+      <div className="absolute top-[2px] left-1/2 transform -translate-x-1/2 z-10">
+        <img src={logo} alt="Questory Logo" className="w-[140px]" />
       </div>
 
-      {/* ✅ Печать — на 2px выше */}
+      {/* ✅ Печать — идеально */}
       <div
         className="absolute bottom-[64px] left-[32px] z-10 cursor-pointer"
         onClick={() => setChecked(!checked)}
@@ -36,7 +36,7 @@ export default function RulesScreen({ onAgree }: { onAgree: () => void }) {
       </div>
 
       {/* 🟫 Кнопка — меньше и ниже */}
-      <div className="absolute bottom-[10px] left-1/2 transform -translate-x-1/2 z-10">
+      <div className="absolute bottom-[4px] left-1/2 transform -translate-x-1/2 z-10">
         <button
           onClick={onAgree}
           disabled={!checked}
@@ -47,7 +47,7 @@ export default function RulesScreen({ onAgree }: { onAgree: () => void }) {
           <img
             src={buttonAgree}
             alt="Согласен"
-            className="w-[180px]"
+            className="w-[160px]"
           />
         </button>
       </div>
