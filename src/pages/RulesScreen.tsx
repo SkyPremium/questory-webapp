@@ -3,16 +3,16 @@ import rules from "../assets/images/rules.jpg";
 
 export default function RulesScreen() {
   return (
-    <div className="w-screen h-screen flex flex-col items-center justify-end relative overflow-hidden">
-      {/* Фоновая картинка */}
+    <div className="relative w-screen h-screen overflow-hidden">
+      {/* Фон */}
       <img
         src={rules}
         alt="Правила Questory"
-        className="absolute inset-0 w-full h-full object-contain z-0"
+        className="absolute inset-0 w-full h-full object-contain max-h-[calc(100vh-80px)] z-0"
       />
 
-      {/* UI поверх картинки */}
-      <div className="relative z-10 mb-6 px-4 w-full max-w-[420px] flex flex-col items-center gap-4">
+      {/* UI-элементы */}
+      <div className="absolute bottom-4 left-0 w-full flex flex-col items-center gap-3 px-4 z-10">
         <label className="flex items-center gap-2 text-sm text-white bg-black/40 px-3 py-2 rounded">
           <input
             type="checkbox"
@@ -22,7 +22,7 @@ export default function RulesScreen() {
         </label>
 
         <button
-          className="w-full py-3 bg-yellow-700 text-white text-sm font-bold rounded-md border border-yellow-300 shadow-md hover:bg-yellow-800 transition"
+          className="w-full max-w-[420px] py-3 bg-yellow-700 text-white text-sm font-bold rounded-md border border-yellow-300 shadow-md hover:bg-yellow-800 transition"
         >
           СОГЛАСЕН
         </button>
