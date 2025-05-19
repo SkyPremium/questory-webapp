@@ -1,6 +1,5 @@
 import { useState } from "react";
 
-// Прямые импорты
 import buttonAgree from "../assets/images/button_agree.png";
 import checkboxChecked from "../assets/images/checkbox_checked.png";
 import checkboxEmpty from "../assets/images/checkbox_empty.png";
@@ -12,21 +11,21 @@ export default function RulesScreen({ onAgree }: { onAgree: () => void }) {
 
   return (
     <div className="relative w-full h-screen flex items-center justify-center overflow-hidden bg-black">
-      {/* 📜 Фон с текстом */}
+      {/* Фон */}
       <img
         src={rulesBackground}
         alt="Правила"
         className="absolute inset-0 w-full h-full object-cover z-0"
       />
 
-      {/* 🔥 Логотип */}
-      <div className="absolute top-6 left-6 z-10">
+      {/* Логотип — центр верхней части */}
+      <div className="absolute top-[26px] left-1/2 transform -translate-x-1/2 z-10">
         <img src={logo} alt="Questory Logo" className="w-[180px]" />
       </div>
 
-      {/* ✅ Чекбокс */}
+      {/* Галочка — в нужном месте над кнопкой */}
       <div
-        className="absolute bottom-[120px] left-1/2 transform -translate-x-1/2 z-10 cursor-pointer"
+        className="absolute bottom-[110px] left-1/2 transform -translate-x-1/2 z-10 cursor-pointer"
         onClick={() => setChecked(!checked)}
       >
         <img
@@ -36,8 +35,8 @@ export default function RulesScreen({ onAgree }: { onAgree: () => void }) {
         />
       </div>
 
-      {/* 🟫 Кнопка "Согласен" */}
-      <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 z-10">
+      {/* Кнопка "Согласен" */}
+      <div className="absolute bottom-[30px] left-1/2 transform -translate-x-1/2 z-10">
         <button
           onClick={onAgree}
           disabled={!checked}
@@ -48,7 +47,7 @@ export default function RulesScreen({ onAgree }: { onAgree: () => void }) {
           <img
             src={buttonAgree}
             alt="Согласен"
-            className="w-[240px] drop-shadow-md"
+            className="w-[240px]"
           />
         </button>
       </div>
