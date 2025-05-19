@@ -12,7 +12,7 @@ export default function RulesScreen({ onAgree }: { onAgree: () => void }) {
     <div className="relative w-full h-screen flex justify-center items-center bg-black overflow-hidden">
 
       {/* 🌫 Левая размытие-зона */}
-      <div className="absolute left-0 top-0 bottom-0 w-[max(0px,calc(50%-384px))] z-0 overflow-hidden">
+      <div className="absolute left-0 top-0 bottom-0 w-full max-w-[calc(50%-384px)] z-0 overflow-hidden">
         <img
           src={rulesBg}
           className="w-full h-full object-cover blur-md scale-125 opacity-40"
@@ -21,7 +21,7 @@ export default function RulesScreen({ onAgree }: { onAgree: () => void }) {
       </div>
 
       {/* 🌫 Правая размытие-зона */}
-      <div className="absolute right-0 top-0 bottom-0 w-[max(0px,calc(50%-384px))] z-0 overflow-hidden">
+      <div className="absolute right-0 top-0 bottom-0 w-full max-w-[calc(50%-384px)] z-0 overflow-hidden">
         <img
           src={rulesBg}
           className="w-full h-full object-cover blur-md scale-125 opacity-40"
@@ -30,7 +30,7 @@ export default function RulesScreen({ onAgree }: { onAgree: () => void }) {
       </div>
 
       {/* 🌫 Верхнее размытие-зона */}
-      <div className="absolute top-0 left-0 right-0 h-[max(0px,calc(50%-512px))] z-0 overflow-hidden">
+      <div className="absolute top-0 left-0 right-0 h-full max-h-[calc(50%-512px)] z-0 overflow-hidden">
         <img
           src={rulesBg}
           className="w-full h-full object-cover blur-md scale-125 opacity-40"
@@ -39,7 +39,7 @@ export default function RulesScreen({ onAgree }: { onAgree: () => void }) {
       </div>
 
       {/* 🌫 Нижнее размытие-зона */}
-      <div className="absolute bottom-0 left-0 right-0 h-[max(0px,calc(50%-512px))] z-0 overflow-hidden">
+      <div className="absolute bottom-0 left-0 right-0 h-full max-h-[calc(50%-512px)] z-0 overflow-hidden">
         <img
           src={rulesBg}
           className="w-full h-full object-cover blur-md scale-125 opacity-40"
