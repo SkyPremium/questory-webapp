@@ -10,7 +10,7 @@ export default function RulesScreen({ onAgree }: { onAgree: () => void }) {
   const [checked, setChecked] = useState(false);
 
   return (
-    <div className="relative w-full h-screen flex items-center justify-center overflow-hidden bg-black">
+    <div className="relative w-full h-screen overflow-hidden bg-black">
       {/* Фон */}
       <img
         src={rulesBackground}
@@ -18,14 +18,14 @@ export default function RulesScreen({ onAgree }: { onAgree: () => void }) {
         className="absolute inset-0 w-full h-full object-cover z-0"
       />
 
-      {/* Логотип — центр верхней части */}
-      <div className="absolute top-[26px] left-1/2 transform -translate-x-1/2 z-10">
-        <img src={logo} alt="Questory Logo" className="w-[180px]" />
+      {/* Логотип — центр, отступ сверху */}
+      <div className="absolute top-[12px] left-1/2 transform -translate-x-1/2 z-10">
+        <img src={logo} alt="Questory Logo" className="w-[160px]" />
       </div>
 
-      {/* Галочка — в нужном месте над кнопкой */}
+      {/* Галочка */}
       <div
-        className="absolute bottom-[110px] left-1/2 transform -translate-x-1/2 z-10 cursor-pointer"
+        className="absolute bottom-[105px] left-1/2 transform -translate-x-1/2 z-10 cursor-pointer"
         onClick={() => setChecked(!checked)}
       >
         <img
@@ -35,8 +35,8 @@ export default function RulesScreen({ onAgree }: { onAgree: () => void }) {
         />
       </div>
 
-      {/* Кнопка "Согласен" */}
-      <div className="absolute bottom-[30px] left-1/2 transform -translate-x-1/2 z-10">
+      {/* Кнопка "СОГЛАСЕН" */}
+      <div className="absolute bottom-[40px] left-1/2 transform -translate-x-1/2 z-10">
         <button
           onClick={onAgree}
           disabled={!checked}
@@ -44,11 +44,7 @@ export default function RulesScreen({ onAgree }: { onAgree: () => void }) {
             checked ? "opacity-100" : "opacity-40 pointer-events-none"
           }`}
         >
-          <img
-            src={buttonAgree}
-            alt="Согласен"
-            className="w-[240px]"
-          />
+          <img src={buttonAgree} alt="Согласен" className="w-[240px]" />
         </button>
       </div>
     </div>
