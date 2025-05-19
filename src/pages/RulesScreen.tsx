@@ -9,29 +9,28 @@ export default function RulesScreen({ onAgree }: { onAgree: () => void }) {
   const [checked, setChecked] = useState(false);
 
   return (
-    <div className="relative w-full h-screen flex justify-center items-center bg-black overflow-hidden">
+    <div className="relative w-full h-screen bg-black overflow-hidden flex items-center justify-center">
 
-      {/* 🌫 Размытый задний фон (растянутый на экран) */}
+      {/* 🌫 Размытый фон позади */}
       <img
         src={rulesBg}
         alt="Размытый фон"
         className="absolute inset-0 w-full h-full object-cover blur-[40px] scale-110 brightness-[1.1] saturate-[1.1] opacity-70 z-0"
       />
 
-      {/* 🧱 Центральный блок 1080×1920 с aspect-[9/16] */}
-      <div className="relative w-full max-w-[1080px] aspect-[9/16] z-10">
-        {/* Чёткое изображение сцены */}
+      {/* 🧱 Контейнер с оригинальным изображением — без обрезки */}
+      <div className="relative w-full max-w-[1080px] max-h-full z-10">
         <img
           src={rulesBg}
           alt="Фон сцены"
-          className="absolute inset-0 w-full h-full object-cover z-10"
+          className="w-full h-auto max-h-screen object-contain mx-auto"
         />
 
-        {/* UI-контейнер */}
-        <div className="absolute inset-0 z-20 flex flex-col justify-between">
+        {/* ✅ UI поверх — позиционируется независимо */}
+        <div className="absolute inset-0 flex flex-col justify-between z-20">
           {/* 🔥 Логотип */}
           <div className="pt-[4%] flex justify-center">
-            <img src={logo} alt="Questory Logo" className="w-[140px]" />
+            <img src={logo} alt="Questory" className="w-[140px]" />
           </div>
 
           {/* ✅ Галочка и кнопка */}
