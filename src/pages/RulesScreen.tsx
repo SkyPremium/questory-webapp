@@ -14,10 +14,14 @@ export default function RulesScreen({ onAgree }: { onAgree: () => void }) {
     <FullScreenScene background={rulesBg}>
       {/* 🔥 Логотип */}
       <div className="w-full pt-[1vh] flex justify-center">
-        <img src={logo} alt="Questory Logo" className="w-[18%] min-w-[100px] max-w-[160px]" />
+        <img
+          src={logo}
+          alt="Questory Logo"
+          className="w-[18%] min-w-[100px] max-w-[160px]"
+        />
       </div>
 
-      {/* 🧾 Чекбокс и кнопка — низ экрана */}
+      {/* ✅ Галочка и кнопка — низ */}
       <div className="w-full pb-[2vh] flex flex-col items-center gap-4">
         <div onClick={() => setChecked(!checked)} className="cursor-pointer">
           <img
@@ -34,7 +38,11 @@ export default function RulesScreen({ onAgree }: { onAgree: () => void }) {
             checked ? "opacity-100" : "opacity-40 pointer-events-none"
           }`}
         >
-          <img src={buttonAgree} alt="Согласен" className="w-[140px]" />
+          <img
+            src={buttonAgree}
+            alt="Согласен"
+            className="w-[140px]"
+          />
         </button>
       </div>
     </FullScreenScene>
