@@ -12,8 +12,8 @@ export default function RulesScreen({ onAgree }: { onAgree: () => void }) {
 
   return (
     <div
-      className="w-screen h-screen flex items-center justify-center bg-black"
-      style={{ fontSize: "1.6vw" }} // Базовый масштаб под размер экрана
+      className="w-screen h-screen flex items-center justify-center bg-black overflow-hidden"
+      style={{ fontSize: "1.6vh" }} // Масштаб теперь от высоты экрана
     >
       <div
         className="relative w-[67.5em] h-[120em] overflow-hidden"
