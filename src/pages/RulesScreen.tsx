@@ -10,8 +10,7 @@ export default function RulesScreen({ onAgree }: { onAgree: () => void }) {
 
   return (
     <div className="relative w-full h-screen bg-black overflow-hidden flex items-center justify-center">
-
-      {/* 🌫 Фон на весь экран (может слегка искажаться, но не обрезается) */}
+      {/* 🌫 Фон на весь экран */}
       <img
         src={rulesBg}
         alt="Фон"
@@ -20,18 +19,19 @@ export default function RulesScreen({ onAgree }: { onAgree: () => void }) {
 
       {/* 🧱 UI поверх */}
       <div className="absolute inset-0 z-10 flex flex-col justify-between pointer-events-none">
-        {/* 🔥 Логотип выше */}
-        <div className="pt-[1.5%] flex justify-center pointer-events-none">
+        
+        {/* 🔥 Логотип — максимально вверх */}
+        <div className="pt-[1%] flex justify-center pointer-events-none">
           <img src={logo} alt="Questory Logo" className="w-[140px]" />
         </div>
 
-        {/* 🧩 Галочка и кнопка */}
+        {/* ✅ Галочка и кнопка */}
         <div className="pb-[5%] relative flex flex-col items-center gap-4">
           
-          {/* ✅ Галочка — точно у текста */}
+          {/* 🟤 Печать — ещё левее и чуть выше */}
           <div
             onClick={() => setChecked(!checked)}
-            className="absolute left-[18%] bottom-[58px] cursor-pointer pointer-events-auto"
+            className="absolute left-[13%] bottom-[66px] cursor-pointer pointer-events-auto"
           >
             <img
               src={checked ? checkboxChecked : checkboxEmpty}
