@@ -105,12 +105,12 @@ export default function NameScreen({ onSubmit }: { onSubmit: (nickname: string) 
             <image href={confirmBG} x="160" y="680" width="760" height="520" />
 
             <foreignObject x="300" y="915" width="480" height="60">
-              <div className="w-full h-full text-3xl font-bold text-yellow-100 text-center leading-[60px]">
+              <div className="w-full h-full text-4xl font-bold text-yellow-100 text-center leading-[60px]">
                 {nickname}
               </div>
             </foreignObject>
 
-            <foreignObject x="240" y="1100" width="160" height="80">
+            <foreignObject x="240" y="1100" width="180" height="80">
               <button
                 onClick={confirmSubmit}
                 className="w-full h-full transition-transform duration-150 active:scale-95"
@@ -120,7 +120,7 @@ export default function NameScreen({ onSubmit }: { onSubmit: (nickname: string) 
               </button>
             </foreignObject>
 
-            <foreignObject x="680" y="1100" width="160" height="80">
+            <foreignObject x="680" y="1100" width="180" height="80">
               <button
                 onClick={() => setShowConfirm(false)}
                 className="w-full h-full transition-transform duration-150 active:scale-95"
