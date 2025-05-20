@@ -11,38 +11,44 @@ export default function RulesScreen({ onAgree }: { onAgree: () => void }) {
   return (
     <div className="relative w-full h-screen bg-black overflow-hidden flex items-center justify-center">
 
-      {/* 🌫 Фон на весь экран, без обрезки (может немного искажаться) */}
+      {/* 🌫 Фон на весь экран (может слегка искажаться, но не обрезается) */}
       <img
         src={rulesBg}
         alt="Фон"
         className="absolute inset-0 w-full h-full object-fill z-0"
       />
 
-      {/* 🔧 UI поверх — независимо от фона */}
-      <div className="absolute inset-0 z-10 flex flex-col justify-between">
-        {/* 🔥 Логотип */}
-        <div className="pt-[4%] flex justify-center">
+      {/* 🧱 UI поверх */}
+      <div className="absolute inset-0 z-10 flex flex-col justify-between pointer-events-none">
+        {/* 🔥 Логотип выше */}
+        <div className="pt-[1.5%] flex justify-center pointer-events-none">
           <img src={logo} alt="Questory Logo" className="w-[140px]" />
         </div>
 
-        {/* ✅ Галочка и кнопка */}
-        <div className="pb-[5%] flex flex-col items-center gap-4">
-          <div onClick={() => setChecked(!checked)} className="cursor-pointer">
+        {/* 🧩 Галочка и кнопка */}
+        <div className="pb-[5%] relative flex flex-col items-center gap-4">
+          
+          {/* ✅ Галочка — точно у текста */}
+          <div
+            onClick={() => setChecked(!checked)}
+            className="absolute left-[18%] bottom-[58px] cursor-pointer pointer-events-auto"
+          >
             <img
               src={checked ? checkboxChecked : checkboxEmpty}
               alt="Галочка"
-              className="w-[54px]"
+              className="w-[58px]"
             />
           </div>
 
+          {/* 🟠 Кнопка "Согласен" */}
           <button
             onClick={onAgree}
             disabled={!checked}
-            className={`transition-opacity duration-200 ${
+            className={`pointer-events-auto transition-opacity duration-200 ${
               checked ? "opacity-100" : "opacity-40 pointer-events-none"
             }`}
           >
-            <img src={buttonAgree} alt="Согласен" className="w-[150px]" />
+            <img src={buttonAgree} alt="Согласен" className="w-[160px]" />
           </button>
         </div>
       </div>
