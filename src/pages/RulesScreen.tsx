@@ -9,41 +9,47 @@ export default function RulesScreen({ onAgree }: { onAgree: () => void }) {
   const [checked, setChecked] = useState(false);
 
   return (
-    <div className="w-full h-screen bg-black flex items-center justify-center">
-      {/* 🌍 Ограниченный по аспекту контейнер */}
-      <div className="relative w-full max-w-[1080px] aspect-[9/16]">
-        {/* 🎨 Фон */}
-        <img
-          src={rulesBg}
-          alt="Фон"
-          className="absolute inset-0 w-full h-full object-fill z-0"
-        />
+    <div className="relative w-full h-screen bg-black overflow-hidden">
+      {/* 📜 Фоновое изображение */}
+      <img
+        src={rulesBg}
+        alt="Фон"
+        className="absolute inset-0 w-full h-full object-fill z-0"
+      />
 
-        {/* 📊 Логотип */}
-        <img
-          src={logo}
-          alt="Логотип"
-          className="absolute top-[5.5%] left-1/2 w-[22%] translate-x-[-50%] z-10"
-        />
+      {/* 🧱 UI-элементы */}
+      <div className="absolute inset-0 z-10 flex flex-col justify-between pointer-events-none">
 
-        {/* ✅ Галочка */}
-        <img
-          src={checked ? checkboxChecked : checkboxEmpty}
-          alt="Галочка"
-          onClick={() => setChecked(!checked)}
-          className="absolute left-[12%] bottom-[13.5%] w-[10%] cursor-pointer z-10"
-        />
+        {/* 🔥 Логотип */}
+        <div className="flex justify-center mt-[2vh]">
+          <img src={logo} alt="Questory Logo" className="w-[22vw] max-w-[150px] pointer-events-none" />
+        </div>
 
-        {/* 🔹 Кнопка "Согласен" */}
-        <button
-          onClick={onAgree}
-          disabled={!checked}
-          className={`absolute left-1/2 bottom-[6.8%] w-[37%] translate-x-[-50%] z-10 pointer-events-auto transition-opacity duration-200 ${
-            checked ? "opacity-100" : "opacity-40 pointer-events-none"
-          }`}
-        >
-          <img src={buttonAgree} alt="Согласен" className="w-full" />
-        </button>
+        {/* ✅ Галочка и кнопка */}
+        <div className="relative mb-[4vh] flex flex-col items-center gap-[2vh]">
+          {/* 🟤 Печать (чекбокс) */}
+          <div
+            onClick={() => setChecked(!checked)}
+            className="absolute left-[10vw] bottom-[9vh] w-[11vw] max-w-[60px] cursor-pointer pointer-events-auto"
+          >
+            <img
+              src={checked ? checkboxChecked : checkboxEmpty}
+              alt="Галочка"
+              className="w-full"
+            />
+          </div>
+
+          {/* 🟠 Кнопка "Согласен" */}
+          <button
+            onClick={onAgree}
+            disabled={!checked}
+            className={`pointer-events-auto transition-opacity duration-200 w-[40vw] max-w-[180px] ${
+              checked ? "opacity-100" : "opacity-40 pointer-events-none"
+            }`}
+          >
+            <img src={buttonAgree} alt="Согласен" className="w-full" />
+          </button>
+        </div>
       </div>
     </div>
   );
