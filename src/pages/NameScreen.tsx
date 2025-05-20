@@ -105,13 +105,13 @@ export default function NameScreen({ onSubmit }: { onSubmit: (nickname: string) 
           <div className="relative w-[760px] h-[520px]">
             <img src={confirmBG} alt="Подтверждение" className="w-full h-full object-contain" />
 
-            {/* Никнейм */}
-            <div className="absolute left-0 right-0 top-[253px] text-center text-2xl font-bold text-yellow-100">
+            {/* Никнейм — адаптивное позиционирование */}
+            <div className="absolute left-0 right-0 top-[33.3%] text-center text-2xl font-bold text-yellow-100">
               {nickname}
             </div>
 
-            {/* Кнопки */}
-            <div className="absolute bottom-[130px] w-full flex justify-center gap-6">
+            {/* Кнопки — адаптивное позиционирование */}
+            <div className="absolute bottom-[22%] w-full flex justify-center gap-6">
               <img
                 src={confirmYes}
                 alt="Подтвердить"
