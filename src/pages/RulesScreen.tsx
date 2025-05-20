@@ -11,43 +11,40 @@ export default function RulesScreen({ onAgree }: { onAgree: () => void }) {
   const [checked, setChecked] = useState(false);
 
   return (
-    <div className="w-screen h-screen bg-black overflow-hidden flex items-center justify-center">
-      {/* 📜 Контейнер с aspect-ratio 1080x1920 */}
-      <div
-        className="relative w-full h-full max-h-screen"
-        style={{ aspectRatio: "1080 / 1920" }}
-      >
-        {/* Фон */}
-        <img
-          src={rulesBg}
-          alt="Фон"
-          className="absolute inset-0 w-full h-full object-contain z-0"
-        />
+    <div className="w-screen h-screen relative overflow-hidden bg-black">
+      {/* 📜 Фон на весь экран, без обрезаний */}
+      <img
+        src={rulesBg}
+        alt="Фон"
+        className="absolute inset-0 w-full h-full object-fill z-0"
+      />
 
-        {/* UI-элементы, точно позиционированные относительно 1080x1920 */}
-        {/* Логотип */}
+      {/* 🧱 UI-элементы поверх фона */}
+      <div className="absolute inset-0 z-10 pointer-events-none">
+
+        {/* 🔥 Логотип */}
         <img
           src={logo}
           alt="Логотип"
-          className="absolute z-10"
+          className="absolute pointer-events-none"
           style={{
-            top: `${140 / 1920 * 100}%`,
-            left: `50%`,
+            top: "7.3%",         // от 140px из 1920
+            left: "50%",
             transform: "translateX(-50%)",
-            width: `${240 / 1080 * 100}%`,
-            maxWidth: "150px",
+            width: "22.2%",     // 240px из 1080
+            maxWidth: "150px"
           }}
         />
 
-        {/* Галочка */}
+        {/* ✅ Галочка */}
         <div
           onClick={() => setChecked(!checked)}
-          className="absolute z-10 cursor-pointer"
+          className="absolute cursor-pointer pointer-events-auto"
           style={{
-            left: `${130 / 1080 * 100}%`,
-            bottom: `${240 / 1920 * 100}%`,
-            width: `${110 / 1080 * 100}%`,
-            maxWidth: "60px",
+            bottom: "12.5%",     // 240 из 1920
+            left: "12%",         // 130 из 1080
+            width: "10.2%",      // 110 из 1080
+            maxWidth: "60px"
           }}
         >
           <img
@@ -57,19 +54,19 @@ export default function RulesScreen({ onAgree }: { onAgree: () => void }) {
           />
         </div>
 
-        {/* Кнопка "Согласен" */}
+        {/* 🟠 Кнопка "Согласен" */}
         <button
           onClick={onAgree}
           disabled={!checked}
-          className={`absolute z-10 transition-opacity duration-200 pointer-events-auto ${
+          className={`absolute transition-opacity duration-200 pointer-events-auto ${
             checked ? "opacity-100" : "opacity-40 pointer-events-none"
           }`}
           style={{
-            left: `50%`,
-            bottom: `${120 / 1920 * 100}%`,
+            bottom: "6.25%",     // 120 из 1920
+            left: "50%",
             transform: "translateX(-50%)",
-            width: `${420 / 1080 * 100}%`,
-            maxWidth: "200px",
+            width: "38.8%",      // 420 из 1080
+            maxWidth: "200px"
           }}
         >
           <img src={buttonAgree} alt="Согласен" className="w-full" />
