@@ -40,12 +40,7 @@ export default function NameScreen({ onSubmit }: { onSubmit: (nickname: string) 
       >
         {/* 🖼 Фон */}
         <defs>
-          <pattern
-            id="bg"
-            patternUnits="userSpaceOnUse"
-            width="1080"
-            height="1920"
-          >
+          <pattern id="bg" patternUnits="userSpaceOnUse" width="1080" height="1920">
             <image href={background} x="0" y="0" width="1080" height="1920" />
           </pattern>
         </defs>
@@ -59,8 +54,8 @@ export default function NameScreen({ onSubmit }: { onSubmit: (nickname: string) 
             onChange={handleChange}
             placeholder="Введите ник"
             className="w-full h-full text-3xl font-semibold text-center rounded-xl outline-none 
-              bg-transparent text-yellow-100 placeholder-yellow-400 
-              border-2 border-yellow-700 focus:ring-2 focus:ring-yellow-500 transition-all"
+                       bg-transparent text-yellow-100 placeholder-yellow-400 
+                       focus:ring-0 focus:outline-none"
           />
         </foreignObject>
 
