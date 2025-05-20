@@ -106,7 +106,7 @@ export default function NameScreen({ onSubmit }: { onSubmit: (nickname: string) 
             <img src={confirmBG} alt="Подтверждение" className="w-full h-full object-contain" />
 
             {/* Никнейм */}
-            <div className="absolute left-0 right-0 top-[252px] text-center text-2xl font-bold text-yellow-100">
+            <div className="absolute left-0 right-0 top-[253px] text-center text-2xl font-bold text-yellow-100">
               {nickname}
             </div>
 
