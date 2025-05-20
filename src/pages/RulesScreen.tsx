@@ -11,21 +11,19 @@ export default function RulesScreen({ onAgree }: { onAgree: () => void }) {
   const [checked, setChecked] = useState(false);
 
   return (
-    <div className="w-screen h-screen flex items-center justify-center bg-black overflow-hidden">
-      {/* Контейнер с фиксированным соотношением 9:16 */}
-      <div
-        className="relative w-[56.25vh] h-[100vh] max-w-full"
-        style={{ aspectRatio: "9 / 16" }}
-      >
-        {/* 📜 Фон */}
-        <img
-          src={rulesBg}
-          alt="Фон"
-          className="absolute inset-0 w-full h-full object-fill z-0"
-        />
+    <div className="w-screen h-screen bg-black overflow-hidden relative">
+      {/* 📜 Фон на весь экран */}
+      <img
+        src={rulesBg}
+        alt="Фон"
+        className="absolute inset-0 w-full h-full object-fill z-0"
+      />
 
-        {/* 🧱 UI-элементы */}
-        <div className="absolute inset-0 z-10 pointer-events-none">
+      {/* 🔧 Контейнер-пропорция 1080x1920, масштабируемый */}
+      <div className="absolute inset-0 z-10 flex items-center justify-center pointer-events-none">
+        <div className="relative w-[56.25vh] h-[100vh] max-w-full" style={{ aspectRatio: "9 / 16" }}>
+          {/* 🧱 UI внутри пропорционального слоя */}
+
           {/* 🔥 Логотип */}
           <img
             src={logo}
