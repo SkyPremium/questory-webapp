@@ -9,47 +9,40 @@ export default function RulesScreen({ onAgree }: { onAgree: () => void }) {
   const [checked, setChecked] = useState(false);
 
   return (
-    <div className="relative w-full h-screen overflow-hidden bg-black">
-      {/* 🌫 Размытый фон */}
-      <div
-        className="absolute inset-0 bg-cover bg-center blur-lg scale-110"
-        style={{ backgroundImage: `url(${rulesBg})` }}
-      />
+    <div className="w-full h-screen bg-black flex items-center justify-center">
+      {/* 🌍 Ограниченный по аспекту контейнер */}
+      <div className="relative w-full max-w-[1080px] aspect-[9/16]">
+        {/* 🎨 Фон */}
+        <img
+          src={rulesBg}
+          alt="Фон"
+          className="absolute inset-0 w-full h-full object-fill z-0"
+        />
 
-      {/* 🖼 Основное изображение с правилами */}
-      <img
-        src={rulesBg}
-        alt="Фон с правилами"
-        className="absolute inset-0 w-full h-full object-fill z-10"
-      />
-
-      {/* 🧱 UI: логотип, печать и кнопка */}
-      <div className="absolute inset-0 z-20">
-        {/* 🔥 Логотип */}
-        <div className="absolute left-[50%] top-[5.6%] translate-x-[-50%]">
-          <img src={logo} alt="Questory Logo" className="w-[120px]" />
-        </div>
+        {/* 📊 Логотип */}
+        <img
+          src={logo}
+          alt="Логотип"
+          className="absolute top-[5.5%] left-1/2 w-[22%] translate-x-[-50%] z-10"
+        />
 
         {/* ✅ Галочка */}
-        <div
-          className="absolute left-[13.5%] bottom-[14.5%] w-[60px] cursor-pointer"
+        <img
+          src={checked ? checkboxChecked : checkboxEmpty}
+          alt="Галочка"
           onClick={() => setChecked(!checked)}
-        >
-          <img
-            src={checked ? checkboxChecked : checkboxEmpty}
-            alt="Галочка"
-          />
-        </div>
+          className="absolute left-[12%] bottom-[13.5%] w-[10%] cursor-pointer z-10"
+        />
 
-        {/* 🟠 Кнопка "Согласен" */}
+        {/* 🔹 Кнопка "Согласен" */}
         <button
           onClick={onAgree}
           disabled={!checked}
-          className={`absolute left-1/2 bottom-[7.5%] w-[160px] translate-x-[-50%] pointer-events-auto transition-opacity duration-200 z-30 ${
+          className={`absolute left-1/2 bottom-[6.8%] w-[37%] translate-x-[-50%] z-10 pointer-events-auto transition-opacity duration-200 ${
             checked ? "opacity-100" : "opacity-40 pointer-events-none"
           }`}
         >
-          <img src={buttonAgree} alt="Согласен" />
+          <img src={buttonAgree} alt="Согласен" className="w-full" />
         </button>
       </div>
     </div>
