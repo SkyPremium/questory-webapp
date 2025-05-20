@@ -11,69 +11,48 @@ export default function RulesScreen({ onAgree }: { onAgree: () => void }) {
   const [checked, setChecked] = useState(false);
 
   return (
-    <div className="w-screen h-screen bg-black overflow-hidden flex items-center justify-center">
-      {/* Контейнер с фиксированной пропорцией 9:16 */}
-      <div
-        className="relative"
-        style={{
-          width: "100%",
-          height: "100%",
-          aspectRatio: "9 / 16",
-          backgroundImage: `url(${rulesBg})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
+    <div className="w-screen h-screen flex items-center justify-center bg-black overflow-hidden">
+      <svg
+        viewBox="0 0 1080 1920"
+        className="w-full h-full"
+        preserveAspectRatio="xMidYMid slice"
       >
+        {/* 📜 Фон */}
+        <image href={rulesBg} x="0" y="0" width="1080" height="1920" />
+
         {/* 🔥 Логотип */}
-        <img
-          src={logo}
-          alt="Логотип"
-          className="absolute pointer-events-none"
-          style={{
-            top: "7.3%", // 140px из 1920
-            left: "50%",
-            transform: "translateX(-50%)",
-            width: "22.2%", // 240px из 1080
-            maxWidth: "150px",
-          }}
-        />
+        <image href={logo} x="420" y="140" width="240" height="100" />
 
         {/* ✅ Галочка */}
-        <div
+        <image
+          href={checked ? checkboxChecked : checkboxEmpty}
+          x="130"
+          y="1620"
+          width="110"
+          height="110"
+          className="cursor-pointer"
           onClick={() => setChecked(!checked)}
-          className="absolute cursor-pointer pointer-events-auto"
-          style={{
-            bottom: "12.5%", // 240 из 1920
-            left: "12%", // 130 из 1080
-            width: "10.2%", // 110 из 1080
-            maxWidth: "60px",
-          }}
-        >
-          <img
-            src={checked ? checkboxChecked : checkboxEmpty}
-            alt="Галочка"
-            className="w-full"
-          />
-        </div>
+        />
 
-        {/* 🟠 Кнопка "Согласен" */}
-        <button
-          onClick={onAgree}
-          disabled={!checked}
-          className={`absolute transition-opacity duration-200 pointer-events-auto ${
-            checked ? "opacity-100" : "opacity-40 pointer-events-none"
-          }`}
-          style={{
-            bottom: "6.25%", // 120 из 1920
-            left: "50%",
-            transform: "translateX(-50%)",
-            width: "38.8%", // 420 из 1080
-            maxWidth: "200px",
-          }}
-        >
-          <img src={buttonAgree} alt="Согласен" className="w-full" />
-        </button>
-      </div>
+        {/* 🟠 Кнопка */}
+        <foreignObject x="330" y="1780" width="420" height="100">
+          <button
+            onClick={onAgree}
+            disabled={!checked}
+            style={{
+              width: "100%",
+              height: "100%",
+              opacity: checked ? 1 : 0.4,
+              pointerEvents: checked ? "auto" : "none",
+              background: "none",
+              border: "none",
+              padding: 0,
+            }}
+          >
+            <img src={buttonAgree} alt="Согласен" style={{ width: "100%", height: "100%" }} />
+          </button>
+        </foreignObject>
+      </svg>
     </div>
   );
 }
