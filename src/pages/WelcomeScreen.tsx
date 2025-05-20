@@ -32,8 +32,8 @@ export default function WelcomeScreen() {
         </defs>
         <rect x="0" y="0" width="1080" height="1920" fill="url(#bg)" />
 
-        {/* 🟢 Кнопка "Начать" */}
-        <foreignObject x="360" y="1740" width="360" height="120">
+        {/* 🟢 Кнопка "Начать" с анимацией для всех устройств */}
+        <foreignObject x="330" y="1720" width="420" height="160">
           <button
             onClick={handleStart}
             style={{
@@ -48,8 +48,14 @@ export default function WelcomeScreen() {
             onMouseDown={e => (e.currentTarget.style.transform = "scale(0.95)")}
             onMouseUp={e => (e.currentTarget.style.transform = "scale(1)")}
             onMouseLeave={e => (e.currentTarget.style.transform = "scale(1)")}
+            onTouchStart={e => (e.currentTarget.style.transform = "scale(0.95)")}
+            onTouchEnd={e => (e.currentTarget.style.transform = "scale(1)")}
           >
-            <img src={buttonWelcome} alt="Начать" style={{ width: "100%", height: "100%" }} />
+            <img
+              src={buttonWelcome}
+              alt="Начать"
+              style={{ width: "100%", height: "100%" }}
+            />
           </button>
         </foreignObject>
       </svg>
