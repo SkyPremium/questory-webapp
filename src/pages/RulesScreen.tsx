@@ -1,14 +1,20 @@
 // src/screens/RulesScreen.tsx
 
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import rulesBg from "../assets/images/rules.jpg";
 import logo from "../assets/images/logo.png";
 import buttonRules from "../assets/images/button_rules.png";
 import checkboxChecked from "../assets/images/checkbox_checked.png";
 import checkboxEmpty from "../assets/images/checkbox_empty.png";
 
-export default function RulesScreen({ onAgree }: { onAgree: () => void }) {
+export default function RulesScreen() {
   const [checked, setChecked] = useState(false);
+  const navigate = useNavigate();
+
+  const handleAgree = () => {
+    navigate("/name");
+  };
 
   return (
     <div className="w-screen h-screen flex items-center justify-center bg-black overflow-hidden">
@@ -18,7 +24,6 @@ export default function RulesScreen({ onAgree }: { onAgree: () => void }) {
         preserveAspectRatio="none"
         xmlns="http://www.w3.org/2000/svg"
       >
-        {/* ⬛ Фон через <rect> с pattern */}
         <defs>
           <pattern
             id="bg"
@@ -34,7 +39,7 @@ export default function RulesScreen({ onAgree }: { onAgree: () => void }) {
         {/* 🔥 Логотип */}
         <image href={logo} x="0" y="0" width="1080" height="300" />
 
-        {/* ✅ Галочка / Печать (ускоренный отклик) */}
+        {/* ✅ Галочка / Печать */}
         <image
           href={checked ? checkboxChecked : checkboxEmpty}
           x="130"
@@ -42,13 +47,13 @@ export default function RulesScreen({ onAgree }: { onAgree: () => void }) {
           width="110"
           height="110"
           className="cursor-pointer"
-          onClick={() => requestAnimationFrame(() => setChecked(prev => !prev))}
+          onClick={() => setChecked(!checked)}
         />
 
-        {/* 🟠 Кнопка "Согласен" с анимацией нажатия (включая touch) */}
+        {/* 🟠 Кнопка "Согласен" с анимацией нажатия */}
         <foreignObject x="280" y="1700" width="520" height="150">
           <button
-            onClick={onAgree}
+            onClick={handleAgree}
             disabled={!checked}
             style={{
               width: "100%",
@@ -59,13 +64,11 @@ export default function RulesScreen({ onAgree }: { onAgree: () => void }) {
               border: "none",
               padding: 0,
               transition: "transform 0.15s ease",
-              cursor: "pointer",
+              touchAction: "manipulation",
             }}
-            onMouseDown={e => (e.currentTarget.style.transform = "scale(0.95)")}
-            onMouseUp={e => (e.currentTarget.style.transform = "scale(1)")}
-            onMouseLeave={e => (e.currentTarget.style.transform = "scale(1)")}
-            onTouchStart={e => (e.currentTarget.style.transform = "scale(0.95)")}
-            onTouchEnd={e => (e.currentTarget.style.transform = "scale(1)")}
+            onPointerDown={e => (e.currentTarget.style.transform = "scale(0.95)")}
+            onPointerUp={e => (e.currentTarget.style.transform = "scale(1)")}
+            onPointerLeave={e => (e.currentTarget.style.transform = "scale(1)")}
           >
             <img src={buttonRules} alt="Согласен" style={{ width: "100%", height: "100%" }} />
           </button>
