@@ -31,22 +31,22 @@ export default function RulesScreen({ onAgree }: { onAgree: () => void }) {
         </defs>
         <rect x="0" y="0" width="1080" height="1920" fill="url(#bg)" />
 
-        {/* 🔥 Логотип */}
-        <image href={logo} x="420" y="140" width="240" height="100" />
+        {/* 🔥 Логотип (увеличен) */}
+        <image href={logo} x="390" y="120" width="300" height="120" />
 
-        {/* ✅ Галочка */}
+        {/* ✅ Галочка / Печать (поднята) */}
         <image
           href={checked ? checkboxChecked : checkboxEmpty}
           x="130"
-          y="1620"
+          y="1520"
           width="110"
           height="110"
           className="cursor-pointer"
           onClick={() => setChecked(!checked)}
         />
 
-        {/* 🟠 Кнопка "Согласен" */}
-        <foreignObject x="330" y="1780" width="420" height="100">
+        {/* 🟠 Кнопка "Согласен" (шире и выше) */}
+        <foreignObject x="300" y="1710" width="480" height="130">
           <button
             onClick={onAgree}
             disabled={!checked}
