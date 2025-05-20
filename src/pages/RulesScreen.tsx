@@ -9,38 +9,36 @@ export default function RulesScreen({ onAgree }: { onAgree: () => void }) {
   const [checked, setChecked] = useState(false);
 
   return (
-    <div className="relative w-full h-screen bg-black overflow-hidden flex items-center justify-center">
-      {/* 🌫 Фон на весь экран, не обрезается */}
+    <div className="relative w-full h-screen bg-black overflow-hidden">
+      {/* Фон */}
       <img
         src={rulesBg}
         alt="Фон"
         className="absolute inset-0 w-full h-full object-fill z-0"
       />
 
-      {/* 🧱 UI поверх */}
-      <div className="absolute inset-0 z-10 flex flex-col justify-between pointer-events-none">
-
-        {/* 🔥 Логотип — чуть выше и компактнее */}
-        <div className="pt-[1%] flex justify-center pointer-events-none">
-          <img src={logo} alt="Questory Logo" className="w-[110px]" />
+      {/* UI поверх */}
+      <div className="absolute inset-0 z-10 flex flex-col items-center justify-between px-[5vw] py-[3vh]">
+        {/* Логотип */}
+        <div className="flex justify-center w-full">
+          <img src={logo} alt="Questory Logo" className="w-[22vw] max-w-[140px]" />
         </div>
 
-        {/* ✅ Галочка и кнопка */}
-        <div className="pb-[5%] relative flex flex-col items-center gap-4">
-
-          {/* 🟤 Печать — левее и выше */}
+        {/* Галочка и кнопка */}
+        <div className="flex flex-col items-center gap-[2vh] mb-[2vh]">
+          {/* Галочка (печать) */}
           <div
             onClick={() => setChecked(!checked)}
-            className="absolute left-[8%] bottom-[78px] cursor-pointer pointer-events-auto"
+            className="cursor-pointer pointer-events-auto"
           >
             <img
               src={checked ? checkboxChecked : checkboxEmpty}
               alt="Галочка"
-              className="w-[58px]"
+              className="w-[12vw] max-w-[60px]"
             />
           </div>
 
-          {/* 🟠 Кнопка "Согласен" */}
+          {/* Кнопка */}
           <button
             onClick={onAgree}
             disabled={!checked}
@@ -48,7 +46,7 @@ export default function RulesScreen({ onAgree }: { onAgree: () => void }) {
               checked ? "opacity-100" : "opacity-40 pointer-events-none"
             }`}
           >
-            <img src={buttonAgree} alt="Согласен" className="w-[160px]" />
+            <img src={buttonAgree} alt="Согласен" className="w-[36vw] max-w-[180px]" />
           </button>
         </div>
       </div>
