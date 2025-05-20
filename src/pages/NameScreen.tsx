@@ -106,7 +106,7 @@ export default function NameScreen({ onSubmit }: { onSubmit: (nickname: string) 
             <img src={confirmBG} alt="Подтверждение" className="w-full h-full object-contain" />
 
             {/* Никнейм */}
-            <div className="absolute left-0 right-0 top-[248px] text-center text-2xl font-bold text-yellow-100">
+            <div className="absolute left-0 right-0 top-[252px] text-center text-2xl font-bold text-yellow-100">
               {nickname}
             </div>
 
@@ -115,13 +115,13 @@ export default function NameScreen({ onSubmit }: { onSubmit: (nickname: string) 
               <img
                 src={confirmYes}
                 alt="Подтвердить"
-                className="w-[160px] cursor-pointer transition-transform duration-150 active:scale-95"
+                className="w-[140px] cursor-pointer transition-transform duration-150 active:scale-95"
                 onClick={confirmSubmit}
               />
               <img
                 src={confirmNo}
                 alt="Отмена"
-                className="w-[160px] cursor-pointer transition-transform duration-150 active:scale-95"
+                className="w-[140px] cursor-pointer transition-transform duration-150 active:scale-95"
                 onClick={() => setShowConfirm(false)}
               />
             </div>
