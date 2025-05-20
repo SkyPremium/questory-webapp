@@ -3,7 +3,7 @@
 import { useState } from "react";
 import background from "../assets/images/name.jpg";
 import buttonContinue from "../assets/images/button_name.png";
-import confirmBG from "../assets/images/name_save.jpg";
+import confirmBG from "../assets/images/name_save.png";
 import confirmYes from "../assets/images/button_name_save_1.png";
 import confirmNo from "../assets/images/button_name_save_2.png";
 
@@ -55,7 +55,7 @@ export default function NameScreen({ onSubmit }: { onSubmit: (nickname: string) 
         </defs>
         <rect x="0" y="0" width="1080" height="1920" fill="url(#bg)" />
 
-        {/* Поле ввода ника */}
+        {/* Поле ввода */}
         <foreignObject x="190" y="960" width="700" height="120">
           <input
             type="text"
@@ -103,14 +103,14 @@ export default function NameScreen({ onSubmit }: { onSubmit: (nickname: string) 
         </foreignObject>
       </svg>
 
-      {/* Модальное окно подтверждения */}
+      {/* Кастомное окно подтверждения */}
       {showConfirm && (
         <div className="absolute inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50">
           <div className="relative w-[760px] h-[520px]">
             <img src={confirmBG} alt="Подтверждение" className="w-full h-full object-contain" />
-            
-            {/* Отображение ника */}
-            <div className="absolute left-0 right-0 top-[255px] text-center text-4xl font-extrabold text-yellow-100">
+
+            {/* Никнейм */}
+            <div className="absolute left-0 right-0 top-[255px] text-center text-3xl font-bold text-yellow-100">
               {nickname}
             </div>
 
@@ -119,13 +119,13 @@ export default function NameScreen({ onSubmit }: { onSubmit: (nickname: string) 
               <img
                 src={confirmYes}
                 alt="Подтвердить"
-                className="w-[300px] cursor-pointer transition-transform duration-150 active:scale-95"
+                className="w-[200px] cursor-pointer transition-transform duration-150 active:scale-95"
                 onClick={confirmSubmit}
               />
               <img
                 src={confirmNo}
                 alt="Отмена"
-                className="w-[300px] cursor-pointer transition-transform duration-150 active:scale-95"
+                className="w-[200px] cursor-pointer transition-transform duration-150 active:scale-95"
                 onClick={() => setShowConfirm(false)}
               />
             </div>
