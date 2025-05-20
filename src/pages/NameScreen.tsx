@@ -1,13 +1,10 @@
-// src/screens/NameScreen.tsx
-
 import { useState } from "react";
 import background from "../assets/images/name.jpg";
 import buttonContinue from "../assets/images/button_name.png";
 import confirmBG from "../assets/images/name_save.png";
 import confirmYes from "../assets/images/button_name_save_1.png";
 import confirmNo from "../assets/images/button_name_save_2.png";
-
-const blackList = ["admin", "support", "fuck", "мат", "хуй", "сука", "бляд", "pidor"];
+import blackList from "../utils/blacklist";
 
 export default function NameScreen({ onSubmit }: { onSubmit: (nickname: string) => void }) {
   const [nickname, setNickname] = useState("");
@@ -47,7 +44,6 @@ export default function NameScreen({ onSubmit }: { onSubmit: (nickname: string) 
         preserveAspectRatio="none"
         xmlns="http://www.w3.org/2000/svg"
       >
-        {/* Фон */}
         <defs>
           <pattern id="bg" patternUnits="userSpaceOnUse" width="1080" height="1920">
             <image href={background} x="0" y="0" width="1080" height="1920" />
@@ -103,14 +99,14 @@ export default function NameScreen({ onSubmit }: { onSubmit: (nickname: string) 
         </foreignObject>
       </svg>
 
-      {/* Кастомное окно подтверждения */}
+      {/* Кастомная модалка */}
       {showConfirm && (
         <div className="absolute inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50">
           <div className="relative w-[760px] h-[520px]">
             <img src={confirmBG} alt="Подтверждение" className="w-full h-full object-contain" />
 
             {/* Никнейм */}
-            <div className="absolute left-0 right-0 top-[255px] text-center text-3xl font-bold text-yellow-100">
+            <div className="absolute left-0 right-0 top-[235px] text-center text-2xl font-bold text-yellow-100">
               {nickname}
             </div>
 
@@ -119,13 +115,13 @@ export default function NameScreen({ onSubmit }: { onSubmit: (nickname: string) 
               <img
                 src={confirmYes}
                 alt="Подтвердить"
-                className="w-[200px] cursor-pointer transition-transform duration-150 active:scale-95"
+                className="w-[160px] cursor-pointer transition-transform duration-150 active:scale-95"
                 onClick={confirmSubmit}
               />
               <img
                 src={confirmNo}
                 alt="Отмена"
-                className="w-[200px] cursor-pointer transition-transform duration-150 active:scale-95"
+                className="w-[160px] cursor-pointer transition-transform duration-150 active:scale-95"
                 onClick={() => setShowConfirm(false)}
               />
             </div>
