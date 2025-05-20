@@ -15,10 +15,21 @@ export default function RulesScreen({ onAgree }: { onAgree: () => void }) {
       <svg
         viewBox="0 0 1080 1920"
         className="w-full h-full"
-        preserveAspectRatio="xMidYMid slice"
+        preserveAspectRatio="none"
+        xmlns="http://www.w3.org/2000/svg"
       >
-        {/* 📜 Фон */}
-        <image href={rulesBg} x="0" y="0" width="1080" height="1920" />
+        {/* ⬛ Фон через <rect> с pattern */}
+        <defs>
+          <pattern
+            id="bg"
+            patternUnits="userSpaceOnUse"
+            width="1080"
+            height="1920"
+          >
+            <image href={rulesBg} x="0" y="0" width="1080" height="1920" />
+          </pattern>
+        </defs>
+        <rect x="0" y="0" width="1080" height="1920" fill="url(#bg)" />
 
         {/* 🔥 Логотип */}
         <image href={logo} x="420" y="140" width="240" height="100" />
@@ -34,7 +45,7 @@ export default function RulesScreen({ onAgree }: { onAgree: () => void }) {
           onClick={() => setChecked(!checked)}
         />
 
-        {/* 🟠 Кнопка */}
+        {/* 🟠 Кнопка "Согласен" */}
         <foreignObject x="330" y="1780" width="420" height="100">
           <button
             onClick={onAgree}
