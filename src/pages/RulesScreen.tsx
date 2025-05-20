@@ -11,49 +11,69 @@ export default function RulesScreen({ onAgree }: { onAgree: () => void }) {
   const [checked, setChecked] = useState(false);
 
   return (
-    <div className="w-screen h-screen bg-black overflow-hidden relative">
-      {/* 📜 Фон на весь экран */}
-      <img
-        src={rulesBg}
-        alt="Фон"
-        className="absolute inset-0 w-full h-full object-fill z-0"
-      />
+    <div className="w-screen h-screen bg-black overflow-hidden flex items-center justify-center">
+      {/* 📜 Контейнер с aspect-ratio 1080x1920 */}
+      <div
+        className="relative w-full h-full max-h-screen"
+        style={{ aspectRatio: "1080 / 1920" }}
+      >
+        {/* Фон */}
+        <img
+          src={rulesBg}
+          alt="Фон"
+          className="absolute inset-0 w-full h-full object-contain z-0"
+        />
 
-      {/* 🔧 Контейнер-пропорция 1080x1920, масштабируемый */}
-      <div className="absolute inset-0 z-10 flex items-center justify-center pointer-events-none">
-        <div className="relative w-[56.25vh] h-[100vh] max-w-full" style={{ aspectRatio: "9 / 16" }}>
-          {/* 🧱 UI внутри пропорционального слоя */}
+        {/* UI-элементы, точно позиционированные относительно 1080x1920 */}
+        {/* Логотип */}
+        <img
+          src={logo}
+          alt="Логотип"
+          className="absolute z-10"
+          style={{
+            top: `${140 / 1920 * 100}%`,
+            left: `50%`,
+            transform: "translateX(-50%)",
+            width: `${240 / 1080 * 100}%`,
+            maxWidth: "150px",
+          }}
+        />
 
-          {/* 🔥 Логотип */}
+        {/* Галочка */}
+        <div
+          onClick={() => setChecked(!checked)}
+          className="absolute z-10 cursor-pointer"
+          style={{
+            left: `${130 / 1080 * 100}%`,
+            bottom: `${240 / 1920 * 100}%`,
+            width: `${110 / 1080 * 100}%`,
+            maxWidth: "60px",
+          }}
+        >
           <img
-            src={logo}
-            alt="Questory Logo"
-            className="absolute top-[5%] left-1/2 translate-x-[-50%] w-[20%] max-w-[150px] pointer-events-none"
+            src={checked ? checkboxChecked : checkboxEmpty}
+            alt="Галочка"
+            className="w-full"
           />
-
-          {/* ✅ Галочка (чекбокс) */}
-          <div
-            onClick={() => setChecked(!checked)}
-            className="absolute left-[10%] bottom-[12%] w-[10%] max-w-[60px] cursor-pointer pointer-events-auto"
-          >
-            <img
-              src={checked ? checkboxChecked : checkboxEmpty}
-              alt="Галочка"
-              className="w-full"
-            />
-          </div>
-
-          {/* 🟠 Кнопка "Согласен" */}
-          <button
-            onClick={onAgree}
-            disabled={!checked}
-            className={`absolute bottom-[6%] left-1/2 translate-x-[-50%] w-[40%] max-w-[180px] transition-opacity duration-200 pointer-events-auto ${
-              checked ? "opacity-100" : "opacity-40 pointer-events-none"
-            }`}
-          >
-            <img src={buttonAgree} alt="Согласен" className="w-full" />
-          </button>
         </div>
+
+        {/* Кнопка "Согласен" */}
+        <button
+          onClick={onAgree}
+          disabled={!checked}
+          className={`absolute z-10 transition-opacity duration-200 pointer-events-auto ${
+            checked ? "opacity-100" : "opacity-40 pointer-events-none"
+          }`}
+          style={{
+            left: `50%`,
+            bottom: `${120 / 1920 * 100}%`,
+            transform: "translateX(-50%)",
+            width: `${420 / 1080 * 100}%`,
+            maxWidth: "200px",
+          }}
+        >
+          <img src={buttonAgree} alt="Согласен" className="w-full" />
+        </button>
       </div>
     </div>
   );
