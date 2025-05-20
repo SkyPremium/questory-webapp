@@ -1,34 +1,58 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
-import welcomeBg from "../assets/images/welcome.jpg"; // путь к картинке в src
+// src/screens/WelcomeScreen.tsx
 
-const WelcomeScreen: React.FC = () => {
+import { useNavigate } from "react-router-dom";
+import welcomeBg from "../assets/images/welcome.jpg";
+import buttonWelcome from "../assets/images/button_welcome.png";
+
+export default function WelcomeScreen() {
   const navigate = useNavigate();
 
   const handleStart = () => {
-    navigate("/rules"); // Переход ко второй сцене
+    navigate("/rules");
   };
 
   return (
-    <div className="relative w-full h-screen overflow-hidden">
-      {/* Фоновое изображение */}
-      <img
-        src={welcomeBg}
-        alt="Questory Welcome"
-        className="w-full h-full object-cover"
-      />
-
-      {/* Невидимая кнопка с эффектом нажатия */}
-      <div
-        onClick={handleStart}
-        className="absolute bottom-[80px] left-1/2 transform -translate-x-1/2 w-[200px] h-[60px] cursor-pointer rounded-lg transition-all duration-150 active:scale-95 active:bg-black/20"
-        title="Начать"
+    <div className="w-screen h-screen flex items-center justify-center bg-black overflow-hidden">
+      <svg
+        viewBox="0 0 1080 1920"
+        className="w-full h-full"
+        preserveAspectRatio="none"
+        xmlns="http://www.w3.org/2000/svg"
       >
-        {/* Для доступности, но визуально скрыто */}
-        <span className="sr-only">Начать</span>
-      </div>
+        {/* 🎨 Фон */}
+        <defs>
+          <pattern
+            id="bg"
+            patternUnits="userSpaceOnUse"
+            width="1080"
+            height="1920"
+          >
+            <image href={welcomeBg} x="0" y="0" width="1080" height="1920" />
+          </pattern>
+        </defs>
+        <rect x="0" y="0" width="1080" height="1920" fill="url(#bg)" />
+
+        {/* 🟢 Кнопка "Начать" */}
+        <foreignObject x="360" y="1740" width="360" height="120">
+          <button
+            onClick={handleStart}
+            style={{
+              width: "100%",
+              height: "100%",
+              background: "none",
+              border: "none",
+              padding: 0,
+              transition: "transform 0.15s ease",
+              cursor: "pointer",
+            }}
+            onMouseDown={e => (e.currentTarget.style.transform = "scale(0.95)")}
+            onMouseUp={e => (e.currentTarget.style.transform = "scale(1)")}
+            onMouseLeave={e => (e.currentTarget.style.transform = "scale(1)")}
+          >
+            <img src={buttonWelcome} alt="Начать" style={{ width: "100%", height: "100%" }} />
+          </button>
+        </foreignObject>
+      </svg>
     </div>
   );
-};
-
-export default WelcomeScreen;
+}
