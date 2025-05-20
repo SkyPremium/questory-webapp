@@ -62,7 +62,7 @@ export default function NameScreen({ onSubmit }: { onSubmit: (nickname: string) 
         {/* ⚠️ Сообщение об ошибке */}
         {error && (
           <foreignObject x="190" y="1090" width="700" height="60">
-            <div className="text-red-500 text-center text-2xl font-bold">
+            <div className="text-red-500 text-center text-3xl font-extrabold">
               {error}
             </div>
           </foreignObject>
