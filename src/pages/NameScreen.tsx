@@ -26,7 +26,12 @@ export default function NameScreen({ onSubmit }: { onSubmit: (nickname: string) 
 
   const handleSubmit = () => {
     if (!error && nickname) {
-      onSubmit(nickname);
+      const confirmed = window.confirm(
+        `Вы уверены, что хотите выбрать ник "${nickname}"?\nИзменить его потом будет нельзя.`
+      );
+      if (confirmed) {
+        onSubmit(nickname);
+      }
     }
   };
 
