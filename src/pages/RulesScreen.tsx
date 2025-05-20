@@ -20,18 +20,18 @@ export default function RulesScreen({ onAgree }: { onAgree: () => void }) {
       {/* 🧱 UI поверх */}
       <div className="absolute inset-0 z-10 flex flex-col justify-between pointer-events-none">
 
-        {/* 🔥 Логотип — ещё выше */}
+        {/* 🔥 Логотип — чуть меньше */}
         <div className="pt-[0.5%] flex justify-center pointer-events-none">
-          <img src={logo} alt="Questory Logo" className="w-[140px]" />
+          <img src={logo} alt="Questory Logo" className="w-[120px]" />
         </div>
 
         {/* ✅ Галочка и кнопка */}
         <div className="pb-[5%] relative flex flex-col items-center gap-4">
           
-          {/* 🟤 Печать — ещё левее и выше */}
+          {/* 🟤 Печать — ещё левее */}
           <div
             onClick={() => setChecked(!checked)}
-            className="absolute left-[10.5%] bottom-[72px] cursor-pointer pointer-events-auto"
+            className="absolute left-[9%] bottom-[72px] cursor-pointer pointer-events-auto"
           >
             <img
               src={checked ? checkboxChecked : checkboxEmpty}
