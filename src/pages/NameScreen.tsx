@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import background from "../assets/images/name.jpg";
 import buttonContinue from "../assets/images/button_name.png";
@@ -101,55 +102,29 @@ export default function NameScreen({ onSubmit }: { onSubmit: (nickname: string) 
         {/* Модалка подтверждения */}
         {showConfirm && (
           <>
-            {/* Фон окна подтверждения */}
             <image href={confirmBG} x="160" y="680" width="760" height="520" />
 
-            {/* Ник */}
             <foreignObject x="300" y="915" width="480" height="60">
-              <div className="w-full h-full text-2xl font-bold text-yellow-100 text-center leading-[60px]">
+              <div className="w-full h-full text-3xl font-bold text-yellow-100 text-center leading-[60px]">
                 {nickname}
               </div>
             </foreignObject>
 
-            {/* Кнопка Подтвердить */}
             <foreignObject x="240" y="1100" width="160" height="80">
               <button
                 onClick={confirmSubmit}
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  background: "none",
-                  border: "none",
-                  padding: 0,
-                  transition: "transform 0.15s ease",
-                }}
-                onMouseDown={(e) => (e.currentTarget.style.transform = "scale(0.95)")}
-                onMouseUp={(e) => (e.currentTarget.style.transform = "scale(1)")}
-                onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
-                onTouchStart={(e) => (e.currentTarget.style.transform = "scale(0.95)")}
-                onTouchEnd={(e) => (e.currentTarget.style.transform = "scale(1)")}
+                className="w-full h-full transition-transform duration-150 active:scale-95"
+                style={{ background: "none", border: "none", padding: 0 }}
               >
                 <img src={confirmYes} alt="Подтвердить" style={{ width: "100%", height: "100%" }} />
               </button>
             </foreignObject>
 
-            {/* Кнопка Отмена */}
             <foreignObject x="680" y="1100" width="160" height="80">
               <button
                 onClick={() => setShowConfirm(false)}
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  background: "none",
-                  border: "none",
-                  padding: 0,
-                  transition: "transform 0.15s ease",
-                }}
-                onMouseDown={(e) => (e.currentTarget.style.transform = "scale(0.95)")}
-                onMouseUp={(e) => (e.currentTarget.style.transform = "scale(1)")}
-                onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
-                onTouchStart={(e) => (e.currentTarget.style.transform = "scale(0.95)")}
-                onTouchEnd={(e) => (e.currentTarget.style.transform = "scale(1)")}
+                className="w-full h-full transition-transform duration-150 active:scale-95"
+                style={{ background: "none", border: "none", padding: 0 }}
               >
                 <img src={confirmNo} alt="Отмена" style={{ width: "100%", height: "100%" }} />
               </button>
