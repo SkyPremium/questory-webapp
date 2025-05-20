@@ -1,3 +1,5 @@
+// src/screens/RulesScreen.tsx
+
 import { useState } from "react";
 import rulesBg from "../assets/images/rules.jpg";
 import logo from "../assets/images/logo.png";
