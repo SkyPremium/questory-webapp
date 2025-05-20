@@ -31,8 +31,8 @@ export default function RulesScreen({ onAgree }: { onAgree: () => void }) {
         </defs>
         <rect x="0" y="0" width="1080" height="1920" fill="url(#bg)" />
 
-        {/* 🔥 Логотип (увеличен) */}
-        <image href={logo} x="390" y="120" width="300" height="120" />
+        {/* 🔥 Логотип (сильно увеличен) */}
+        <image href={logo} x="360" y="100" width="360" height="140" />
 
         {/* ✅ Галочка / Печать (поднята) */}
         <image
@@ -46,7 +46,7 @@ export default function RulesScreen({ onAgree }: { onAgree: () => void }) {
         />
 
         {/* 🟠 Кнопка "Согласен" (шире и выше) */}
-        <foreignObject x="300" y="1710" width="480" height="130">
+        <foreignObject x="280" y="1700" width="520" height="150">
           <button
             onClick={onAgree}
             disabled={!checked}
