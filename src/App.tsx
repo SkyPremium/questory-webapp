@@ -4,7 +4,7 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import WelcomeScreen from "./pages/WelcomeScreen";
 import RulesScreen from "./pages/RulesScreen";
-// Подключи другие экраны позже (TrainingScreen, MainMenu и т.д.)
+import NameScreen from "./pages/NameScreen"; // ✅ Подключаем экран выбора ника
 
 function App() {
   return (
@@ -12,10 +12,11 @@ function App() {
       <Routes>
         <Route path="/" element={<WelcomeScreen />} />
         <Route path="/rules" element={<RulesScreen />} />
-        {/* Добавишь позже:
-        <Route path="/training" element={<TrainingScreen />} />
-        <Route path="/menu" element={<MainMenu />} />
-        */}
+        <Route path="/name" element={<NameScreen />} /> {/* ✅ Новый маршрут */}
+        
+        {/* Позже добавишь: */}
+        {/* <Route path="/training" element={<TrainingScreen />} /> */}
+        {/* <Route path="/menu" element={<MainMenu />} /> */}
       </Routes>
     </Router>
   );
