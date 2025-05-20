@@ -99,19 +99,19 @@ export default function NameScreen({ onSubmit }: { onSubmit: (nickname: string) 
         </foreignObject>
       </svg>
 
-      {/* Кастомная модалка */}
+      {/* Модалка подтверждения */}
       {showConfirm && (
         <div className="absolute inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50">
           <div className="relative w-[760px] h-[520px]">
             <img src={confirmBG} alt="Подтверждение" className="w-full h-full object-contain" />
 
             {/* Никнейм */}
-            <div className="absolute left-0 right-0 top-[278px] text-center text-2xl font-bold text-yellow-100">
+            <div className="absolute left-0 right-0 top-[268px] text-center text-2xl font-bold text-yellow-100">
               {nickname}
             </div>
 
             {/* Кнопки */}
-            <div className="absolute bottom-[60px] w-full flex justify-center gap-6">
+            <div className="absolute bottom-[80px] w-full flex justify-center gap-6">
               <img
                 src={confirmYes}
                 alt="Подтвердить"
