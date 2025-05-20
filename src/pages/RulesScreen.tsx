@@ -1,56 +1,42 @@
-import { useState } from "react";
-import rulesBg from "../assets/images/rules.jpg";
-import logo from "../assets/images/logo.png";
-import buttonAgree from "../assets/images/button_agree.png";
-import checkboxChecked from "../assets/images/checkbox_checked.png";
-import checkboxEmpty from "../assets/images/checkbox_empty.png";
+import React from "react";
 
-export default function RulesScreen({ onAgree }: { onAgree: () => void }) {
-  const [checked, setChecked] = useState(false);
-
+export default function RulesScreen() {
   return (
-    <div className="relative w-full h-screen bg-black overflow-hidden flex items-center justify-center">
-      {/* 🌫 Фон на весь экран */}
-      <img
-        src={rulesBg}
-        alt="Фон"
-        className="absolute inset-0 w-full h-full object-fill z-0"
-      />
+    <div className="w-full h-full flex items-center justify-center bg-black">
+      <div
+        className="relative"
+        style={{ width: "100%", maxWidth: 540, aspectRatio: "9 / 16" }}
+      >
+        {/* Фон */}
+        <img
+          src="/src/assets/images/rules.jpg"
+          alt="Правила"
+          className="w-full h-full object-contain"
+        />
 
-      {/* 🧱 UI поверх */}
-      <div className="absolute inset-0 z-10 flex flex-col justify-between pointer-events-none">
+        {/* Логотип */}
+        <img
+          src="/src/assets/images/logo.png"
+          alt="Логотип"
+          className="absolute"
+          style={{ top: 60, left: "50%", transform: "translateX(-50%)", width: 220 }}
+        />
 
-        {/* 🔥 Логотип — чуть меньше */}
-        <div className="pt-[0.5%] flex justify-center pointer-events-none">
-          <img src={logo} alt="Questory Logo" className="w-[120px]" />
-        </div>
+        {/* Галочка (или пустой чекбокс) */}
+        <img
+          src="/src/assets/images/checkbox_empty.png"
+          alt="Чекбокс"
+          className="absolute"
+          style={{ left: 80, bottom: 240, width: 100 }}
+        />
 
-        {/* ✅ Галочка и кнопка */}
-        <div className="pb-[5%] relative flex flex-col items-center gap-4">
-          
-          {/* 🟤 Печать — ещё левее */}
-          <div
-            onClick={() => setChecked(!checked)}
-            className="absolute left-[9%] bottom-[72px] cursor-pointer pointer-events-auto"
-          >
-            <img
-              src={checked ? checkboxChecked : checkboxEmpty}
-              alt="Галочка"
-              className="w-[58px]"
-            />
-          </div>
-
-          {/* 🟠 Кнопка "Согласен" */}
-          <button
-            onClick={onAgree}
-            disabled={!checked}
-            className={`pointer-events-auto transition-opacity duration-200 ${
-              checked ? "opacity-100" : "opacity-40 pointer-events-none"
-            }`}
-          >
-            <img src={buttonAgree} alt="Согласен" className="w-[160px]" />
-          </button>
-        </div>
+        {/* Кнопка СОГЛАСЕН */}
+        <img
+          src="/src/assets/images/button_agree.png"
+          alt="Согласен"
+          className="absolute cursor-pointer"
+          style={{ left: "50%", transform: "translateX(-50%)", bottom: 120, width: 260 }}
+        />
       </div>
     </div>
   );
