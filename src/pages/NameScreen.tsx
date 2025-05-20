@@ -53,7 +53,7 @@ export default function NameScreen({ onSubmit }: { onSubmit: (nickname: string) 
             value={nickname}
             onChange={handleChange}
             placeholder="Введите ник"
-            className="w-full h-full text-4xl font-bold text-center rounded-xl outline-none 
+            className="w-full h-full text-5xl font-extrabold text-center rounded-xl outline-none 
                        bg-transparent text-yellow-100 placeholder-yellow-400 
                        focus:ring-0 focus:outline-none"
           />
@@ -62,7 +62,7 @@ export default function NameScreen({ onSubmit }: { onSubmit: (nickname: string) 
         {/* ⚠️ Сообщение об ошибке */}
         {error && (
           <foreignObject x="190" y="1090" width="700" height="60">
-            <div className="text-red-500 text-center text-xl font-semibold">
+            <div className="text-red-500 text-center text-2xl font-bold">
               {error}
             </div>
           </foreignObject>
