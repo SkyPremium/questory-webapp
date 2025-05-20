@@ -31,7 +31,7 @@ export default function RulesScreen({ onAgree }: { onAgree: () => void }) {
         </defs>
         <rect x="0" y="0" width="1080" height="1920" fill="url(#bg)" />
 
-        {/* 🔥 Логотип (ещё больше и выше) */}
+        {/* 🔥 Логотип */}
         <image href={logo} x="0" y="0" width="1080" height="300" />
 
         {/* ✅ Галочка / Печать */}
@@ -45,7 +45,7 @@ export default function RulesScreen({ onAgree }: { onAgree: () => void }) {
           onClick={() => setChecked(!checked)}
         />
 
-        {/* 🟠 Кнопка "Согласен" */}
+        {/* 🟠 Кнопка "Согласен" с анимацией нажатия */}
         <foreignObject x="280" y="1700" width="520" height="150">
           <button
             onClick={onAgree}
@@ -58,7 +58,11 @@ export default function RulesScreen({ onAgree }: { onAgree: () => void }) {
               background: "none",
               border: "none",
               padding: 0,
+              transition: "transform 0.15s ease",
             }}
+            onMouseDown={e => (e.currentTarget.style.transform = "scale(0.95)")}
+            onMouseUp={e => (e.currentTarget.style.transform = "scale(1)")}
+            onMouseLeave={e => (e.currentTarget.style.transform = "scale(1)")}
           >
             <img src={buttonAgree} alt="Согласен" style={{ width: "100%", height: "100%" }} />
           </button>
