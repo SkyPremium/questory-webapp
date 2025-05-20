@@ -3,12 +3,16 @@
 import { useState } from "react";
 import background from "../assets/images/name.jpg";
 import buttonContinue from "../assets/images/button_name.png";
+import confirmBG from "../assets/images/name_save.jpg";
+import confirmYes from "../assets/images/button_name_save_1.png";
+import confirmNo from "../assets/images/button_name_save_2.png";
 
 const blackList = ["admin", "support", "fuck", "мат", "хуй", "сука", "бляд", "pidor"];
 
 export default function NameScreen({ onSubmit }: { onSubmit: (nickname: string) => void }) {
   const [nickname, setNickname] = useState("");
   const [error, setError] = useState("");
+  const [showConfirm, setShowConfirm] = useState(false);
 
   const validateNickname = (name: string) => {
     if (name.length < 4) return "Минимум 4 символа";
@@ -26,24 +30,24 @@ export default function NameScreen({ onSubmit }: { onSubmit: (nickname: string) 
 
   const handleSubmit = () => {
     if (!error && nickname) {
-      const confirmed = window.confirm(
-        `Вы уверены, что хотите выбрать ник "${nickname}"?\nИзменить его потом будет нельзя.`
-      );
-      if (confirmed) {
-        onSubmit(nickname);
-      }
+      setShowConfirm(true);
     }
   };
 
+  const confirmSubmit = () => {
+    setShowConfirm(false);
+    onSubmit(nickname);
+  };
+
   return (
-    <div className="w-screen h-screen flex items-center justify-center bg-black overflow-hidden">
+    <div className="w-screen h-screen flex items-center justify-center bg-black overflow-hidden relative">
       <svg
         viewBox="0 0 1080 1920"
         className="w-full h-full"
         preserveAspectRatio="none"
         xmlns="http://www.w3.org/2000/svg"
       >
-        {/* 🖼 Фон */}
+        {/* Фон */}
         <defs>
           <pattern id="bg" patternUnits="userSpaceOnUse" width="1080" height="1920">
             <image href={background} x="0" y="0" width="1080" height="1920" />
@@ -51,7 +55,7 @@ export default function NameScreen({ onSubmit }: { onSubmit: (nickname: string) 
         </defs>
         <rect x="0" y="0" width="1080" height="1920" fill="url(#bg)" />
 
-        {/* 🧾 Поле ввода ника */}
+        {/* Поле ввода ника */}
         <foreignObject x="190" y="960" width="700" height="120">
           <input
             type="text"
@@ -64,7 +68,7 @@ export default function NameScreen({ onSubmit }: { onSubmit: (nickname: string) 
           />
         </foreignObject>
 
-        {/* ⚠️ Сообщение об ошибке */}
+        {/* Ошибка */}
         {error && (
           <foreignObject x="190" y="1060" width="700" height="60">
             <div className="text-red-500 text-center text-3xl font-extrabold">
@@ -73,7 +77,7 @@ export default function NameScreen({ onSubmit }: { onSubmit: (nickname: string) 
           </foreignObject>
         )}
 
-        {/* 🔘 Кнопка "Продолжить" */}
+        {/* Кнопка "Продолжить" */}
         <foreignObject x="330" y="1720" width="420" height="160">
           <button
             onClick={handleSubmit}
@@ -98,6 +102,36 @@ export default function NameScreen({ onSubmit }: { onSubmit: (nickname: string) 
           </button>
         </foreignObject>
       </svg>
+
+      {/* Модальное окно подтверждения */}
+      {showConfirm && (
+        <div className="absolute inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50">
+          <div className="relative w-[760px] h-[520px]">
+            <img src={confirmBG} alt="Подтверждение" className="w-full h-full object-contain" />
+            
+            {/* Отображение ника */}
+            <div className="absolute left-0 right-0 top-[255px] text-center text-4xl font-extrabold text-yellow-100">
+              {nickname}
+            </div>
+
+            {/* Кнопки */}
+            <div className="absolute bottom-[30px] w-full flex justify-center gap-6">
+              <img
+                src={confirmYes}
+                alt="Подтвердить"
+                className="w-[300px] cursor-pointer transition-transform duration-150 active:scale-95"
+                onClick={confirmSubmit}
+              />
+              <img
+                src={confirmNo}
+                alt="Отмена"
+                className="w-[300px] cursor-pointer transition-transform duration-150 active:scale-95"
+                onClick={() => setShowConfirm(false)}
+              />
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
