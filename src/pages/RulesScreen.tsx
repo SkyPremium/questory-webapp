@@ -32,7 +32,7 @@ export default function RulesScreen({ onAgree }: { onAgree: () => void }) {
         <rect x="0" y="0" width="1080" height="1920" fill="url(#bg)" />
 
         {/* 🔥 Логотип (ещё больше) */}
-        <image href={logo} x="330" y="80" width="420" height="160" />
+        <image href={logo} x="240" y="60" width="600" height="180" />
 
         {/* ✅ Галочка / Печать */}
         <image
