@@ -31,10 +31,10 @@ export default function RulesScreen({ onAgree }: { onAgree: () => void }) {
         </defs>
         <rect x="0" y="0" width="1080" height="1920" fill="url(#bg)" />
 
-        {/* 🔥 Логотип (сильно увеличен) */}
-        <image href={logo} x="360" y="100" width="360" height="140" />
+        {/* 🔥 Логотип (ещё больше) */}
+        <image href={logo} x="330" y="80" width="420" height="160" />
 
-        {/* ✅ Галочка / Печать (поднята) */}
+        {/* ✅ Галочка / Печать */}
         <image
           href={checked ? checkboxChecked : checkboxEmpty}
           x="130"
@@ -45,7 +45,7 @@ export default function RulesScreen({ onAgree }: { onAgree: () => void }) {
           onClick={() => setChecked(!checked)}
         />
 
-        {/* 🟠 Кнопка "Согласен" (шире и выше) */}
+        {/* 🟠 Кнопка "Согласен" */}
         <foreignObject x="280" y="1700" width="520" height="150">
           <button
             onClick={onAgree}
