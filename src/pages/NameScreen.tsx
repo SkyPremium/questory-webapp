@@ -49,22 +49,22 @@ export default function NameScreen({ onSubmit }: { onSubmit: (nickname: string) 
             <image href={background} x="0" y="0" width="1080" height="1920" />
           </pattern>
         </defs>
-        <rect x="0" y="0" width="1080" height="1920" fill="url(#bg)" />
+        <rect width="1080" height="1920" fill="url(#bg)" />
 
-        {/* Поле ввода */}
+        {/* Поле ввода ника */}
         <foreignObject x="190" y="960" width="700" height="120">
           <input
             type="text"
             value={nickname}
             onChange={handleChange}
             placeholder="Введите ник"
-            className="w-full h-full text-5xl font-extrabold text-center rounded-xl outline-none 
-                       bg-transparent text-yellow-100 placeholder-yellow-400 
+            className="w-full h-full text-5xl font-extrabold text-center rounded-xl outline-none
+                       bg-transparent text-yellow-100 placeholder-yellow-400
                        focus:ring-0 focus:outline-none"
           />
         </foreignObject>
 
-        {/* Ошибка */}
+        {/* Сообщение об ошибке */}
         {error && (
           <foreignObject x="190" y="1060" width="700" height="60">
             <div className="text-red-500 text-center text-3xl font-extrabold">
@@ -73,7 +73,7 @@ export default function NameScreen({ onSubmit }: { onSubmit: (nickname: string) 
           </foreignObject>
         )}
 
-        {/* Кнопка "Продолжить" */}
+        {/* Кнопка продолжить */}
         <foreignObject x="330" y="1720" width="420" height="160">
           <button
             onClick={handleSubmit}
@@ -88,46 +88,75 @@ export default function NameScreen({ onSubmit }: { onSubmit: (nickname: string) 
               cursor: error || nickname === "" ? "default" : "pointer",
               opacity: error || nickname === "" ? 0.4 : 1,
             }}
-            onMouseDown={e => (e.currentTarget.style.transform = "scale(0.95)")}
-            onMouseUp={e => (e.currentTarget.style.transform = "scale(1)")}
-            onMouseLeave={e => (e.currentTarget.style.transform = "scale(1)")}
-            onTouchStart={e => (e.currentTarget.style.transform = "scale(0.95)")}
-            onTouchEnd={e => (e.currentTarget.style.transform = "scale(1)")}
+            onMouseDown={(e) => (e.currentTarget.style.transform = "scale(0.95)")}
+            onMouseUp={(e) => (e.currentTarget.style.transform = "scale(1)")}
+            onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
+            onTouchStart={(e) => (e.currentTarget.style.transform = "scale(0.95)")}
+            onTouchEnd={(e) => (e.currentTarget.style.transform = "scale(1)")}
           >
             <img src={buttonContinue} alt="Продолжить" style={{ width: "100%", height: "100%" }} />
           </button>
         </foreignObject>
-      </svg>
 
-      {/* Модалка подтверждения */}
-      {showConfirm && (
-        <div className="absolute inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50">
-          <div className="relative w-[760px] h-[520px]">
-            <img src={confirmBG} alt="Подтверждение" className="w-full h-full object-contain" />
+        {/* Модалка подтверждения */}
+        {showConfirm && (
+          <>
+            {/* Фон окна подтверждения */}
+            <image href={confirmBG} x="160" y="680" width="760" height="520" />
 
-            {/* Никнейм — адаптивное позиционирование */}
-            <div className="absolute left-0 right-0 top-[33.3%] text-center text-2xl font-bold text-yellow-100">
-              {nickname}
-            </div>
+            {/* Ник */}
+            <foreignObject x="300" y="915" width="480" height="60">
+              <div className="w-full h-full text-2xl font-bold text-yellow-100 text-center leading-[60px]">
+                {nickname}
+              </div>
+            </foreignObject>
 
-            {/* Кнопки — адаптивное позиционирование */}
-            <div className="absolute bottom-[22%] w-full flex justify-center gap-6">
-              <img
-                src={confirmYes}
-                alt="Подтвердить"
-                className="w-[140px] cursor-pointer transition-transform duration-150 active:scale-95"
+            {/* Кнопка Подтвердить */}
+            <foreignObject x="240" y="1100" width="160" height="80">
+              <button
                 onClick={confirmSubmit}
-              />
-              <img
-                src={confirmNo}
-                alt="Отмена"
-                className="w-[140px] cursor-pointer transition-transform duration-150 active:scale-95"
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  background: "none",
+                  border: "none",
+                  padding: 0,
+                  transition: "transform 0.15s ease",
+                }}
+                onMouseDown={(e) => (e.currentTarget.style.transform = "scale(0.95)")}
+                onMouseUp={(e) => (e.currentTarget.style.transform = "scale(1)")}
+                onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
+                onTouchStart={(e) => (e.currentTarget.style.transform = "scale(0.95)")}
+                onTouchEnd={(e) => (e.currentTarget.style.transform = "scale(1)")}
+              >
+                <img src={confirmYes} alt="Подтвердить" style={{ width: "100%", height: "100%" }} />
+              </button>
+            </foreignObject>
+
+            {/* Кнопка Отмена */}
+            <foreignObject x="680" y="1100" width="160" height="80">
+              <button
                 onClick={() => setShowConfirm(false)}
-              />
-            </div>
-          </div>
-        </div>
-      )}
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  background: "none",
+                  border: "none",
+                  padding: 0,
+                  transition: "transform 0.15s ease",
+                }}
+                onMouseDown={(e) => (e.currentTarget.style.transform = "scale(0.95)")}
+                onMouseUp={(e) => (e.currentTarget.style.transform = "scale(1)")}
+                onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
+                onTouchStart={(e) => (e.currentTarget.style.transform = "scale(0.95)")}
+                onTouchEnd={(e) => (e.currentTarget.style.transform = "scale(1)")}
+              >
+                <img src={confirmNo} alt="Отмена" style={{ width: "100%", height: "100%" }} />
+              </button>
+            </foreignObject>
+          </>
+        )}
+      </svg>
     </div>
   );
 }
