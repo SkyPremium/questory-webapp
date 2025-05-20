@@ -58,7 +58,9 @@ export default function NameScreen({ onSubmit }: { onSubmit: (nickname: string) 
             value={nickname}
             onChange={handleChange}
             placeholder="Введите ник"
-            className="w-full h-full text-3xl font-semibold text-center rounded-xl outline-none bg-white/80"
+            className="w-full h-full text-3xl font-semibold text-center rounded-xl outline-none 
+              bg-transparent text-yellow-100 placeholder-yellow-400 
+              border-2 border-yellow-700 focus:ring-2 focus:ring-yellow-500 transition-all"
           />
         </foreignObject>
 
