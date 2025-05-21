@@ -2,11 +2,11 @@
 
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import rulesBg from "../assets/images/rules.jpg";
-import logo from "../assets/images/logo.png";
-import buttonRules from "../assets/images/button_rules.png";
-import checkboxChecked from "../assets/images/checkbox_checked.png";
-import checkboxEmpty from "../assets/images/checkbox_empty.png";
+import rulesBg from "@/assets/images/rules.jpg";
+import logo from "@/assets/images/logo.png";
+import buttonRules from "@/assets/images/button_rules.png";
+import checkboxChecked from "@/assets/images/checkbox_checked.png";
+import checkboxEmpty from "@/assets/images/checkbox_empty.png";
 
 export default function RulesScreen() {
   const [checked, setChecked] = useState(false);

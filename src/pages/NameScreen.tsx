@@ -1,9 +1,9 @@
 import { useState } from "react";
-import background from "../assets/images/name.jpg";
-import buttonContinue from "../assets/images/button_name.png";
-import confirmBG from "../assets/images/name_save.png";
-import confirmYes from "../assets/images/button_name_save_1.png";
-import confirmNo from "../assets/images/button_name_save_2.png";
+import background from "@/assets/images/name.jpg";
+import buttonContinue from "@/assets/images/button_name.png";
+import confirmBG from "@/assets/images/name_save.png";
+import confirmYes from "@/assets/images/button_name_save_1.png";
+import confirmNo from "@/assets/images/button_name_save_2.png";
 import blackList from "../utils/blacklist";
 
 export default function NameScreen({ onSubmit }: { onSubmit: (nickname: string) => void }) {

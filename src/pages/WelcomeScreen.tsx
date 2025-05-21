@@ -1,8 +1,8 @@
 // src/screens/WelcomeScreen.tsx
 
 import { useNavigate } from "react-router-dom";
-import welcomeBg from "../assets/images/welcome.jpg";
-import buttonWelcome from "../assets/images/button_welcome.png";
+import welcomeBg from "@/assets/images/welcome.jpg";
+import buttonWelcome from "@/assets/images/button_welcome.png";
 
 export default function WelcomeScreen() {
   const navigate = useNavigate();
