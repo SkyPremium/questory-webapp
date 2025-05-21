@@ -109,8 +109,8 @@ export default function NameScreen({ onSubmit }: { onSubmit: (nickname: string) 
             {/* 📜 Табличка */}
             <image href={confirmBG} x="20" y="540" width="1040" height="820" />
 
-            {/* ✏️ Ник — поднят до центра рамки */}
-            <foreignObject x="190" y="910" width="700" height="130">
+            {/* ✏️ Ник — опущен на 5 пикселей для выравнивания */}
+            <foreignObject x="190" y="915" width="700" height="130">
               <div
                 className="w-full h-full text-center"
                 style={{
