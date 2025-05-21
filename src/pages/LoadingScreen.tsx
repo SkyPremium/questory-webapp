@@ -36,15 +36,12 @@ export default function LoadingScreen() {
       new URL("../assets/images/checkbox_empty.png", import.meta.url).href,
     ]);
 
-    // первая фраза
     setCurrentTip(tips[Math.floor(Math.random() * tips.length)]);
 
-    // ✅ фразы каждые 4 секунды
     const tipTimer = setInterval(() => {
       setCurrentTip(tips[Math.floor(Math.random() * tips.length)]);
     }, 4000);
 
-    // ✅ прогресс
     const interval = setInterval(() => {
       setProgress((prev) => {
         if (prev >= 100) {
@@ -84,8 +81,8 @@ export default function LoadingScreen() {
 
         <rect x="0" y="0" width="1080" height="1920" fill="url(#bg)" />
 
-        {/* 🔁 Полоска загрузки (ещё выше) */}
-        <foreignObject x="190" y="1100" width="700" height="60">
+        {/* 🔁 Полоска загрузки — ещё выше */}
+        <foreignObject x="190" y="1070" width="700" height="60">
           <div
             style={{
               width: "100%",
@@ -115,10 +112,10 @@ export default function LoadingScreen() {
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                color: "#000",
                 fontWeight: "bold",
                 fontSize: "32px",
-                textShadow: "0 0 4px #fff",
+                color: "#ffffff",
+                textShadow: "0 0 5px #000, 0 0 8px #000",
               }}
             >
               {progress}%
@@ -126,8 +123,8 @@ export default function LoadingScreen() {
           </div>
         </foreignObject>
 
-        {/* 💬 Подсказка */}
-        <foreignObject x="140" y="1200" width="800" height="100">
+        {/* 💬 Фраза */}
+        <foreignObject x="140" y="1180" width="800" height="100">
           <div
             style={{
               fontSize: "36px",
