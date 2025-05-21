@@ -37,10 +37,11 @@ export default function NameScreen({ onSubmit }: { onSubmit: (nickname: string) 
   };
 
   return (
-    <div className="w-screen h-screen flex items-center justify-center bg-black overflow-hidden relative">
+    <div className="w-screen h-screen bg-black overflow-hidden relative">
+      {/* ⬇️ Сама SVG-сцена */}
       <svg
         viewBox="0 0 1080 1920"
-        className="w-full h-full"
+        className="w-full h-full absolute top-0 left-0"
         preserveAspectRatio="none"
         xmlns="http://www.w3.org/2000/svg"
       >
@@ -51,25 +52,24 @@ export default function NameScreen({ onSubmit }: { onSubmit: (nickname: string) 
         </defs>
         <rect width="1080" height="1920" fill="url(#bg)" />
 
-        {/* Поле ввода ника — скрывается при показе модалки */}
-        {!showConfirm && (
-          <foreignObject x="190" y="960" width="700" height="120">
-            <input
-              type="text"
-              value={nickname}
-              onChange={handleChange}
-              placeholder="Введите ник"
-              className="w-full h-full text-center rounded-xl outline-none bg-transparent"
-              style={{
-                fontSize: "52px",
-                color: "#fce5a0",
-                fontFamily: "Georgia, serif",
-                textShadow: "0 0 4px #000",
-                fontWeight: 600,
-              }}
-            />
-          </foreignObject>
-        )}
+        {/* Поле ввода ника */}
+        <foreignObject x="190" y="960" width="700" height="120">
+          <input
+            type="text"
+            value={nickname}
+            onChange={handleChange}
+            placeholder="Введите ник"
+            disabled={showConfirm}
+            className="w-full h-full text-center rounded-xl outline-none bg-transparent"
+            style={{
+              fontSize: "52px",
+              color: "#fce5a0",
+              fontFamily: "Georgia, serif",
+              textShadow: "0 0 4px #000",
+              fontWeight: 600,
+            }}
+          />
+        </foreignObject>
 
         {/* Сообщение об ошибке */}
         {!showConfirm && error && (
@@ -106,14 +106,21 @@ export default function NameScreen({ onSubmit }: { onSubmit: (nickname: string) 
             </button>
           </foreignObject>
         )}
+      </svg>
 
-        {/* Модалка подтверждения ника */}
-        {showConfirm && (
-          <>
+      {/* ⬆️ Поверх всего: модалка подтверждения ника */}
+      {showConfirm && (
+        <div className="absolute top-0 left-0 w-full h-full z-50 pointer-events-auto">
+          <svg
+            viewBox="0 0 1080 1920"
+            className="w-full h-full"
+            preserveAspectRatio="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
             {/* 📜 Табличка */}
             <image href={confirmBG} x="20" y="540" width="1040" height="820" />
 
-            {/* ✏️ Ник — чуть ниже, идеально по центру рамки */}
+            {/* ✏️ Ник — по центру рамки */}
             <foreignObject x="190" y="915" width="700" height="130">
               <div
                 className="w-full h-full text-center"
@@ -151,9 +158,9 @@ export default function NameScreen({ onSubmit }: { onSubmit: (nickname: string) 
                 <img src={confirmNo} alt="Отмена" style={{ width: "100%", height: "100%" }} />
               </button>
             </foreignObject>
-          </>
-        )}
-      </svg>
+          </svg>
+        </div>
+      )}
     </div>
   );
 }
