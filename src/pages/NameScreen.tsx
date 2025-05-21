@@ -104,15 +104,23 @@ export default function NameScreen({ onSubmit }: { onSubmit: (nickname: string) 
             {/* 📜 Табличка */}
             <image href={confirmBG} x="20" y="540" width="1040" height="820" />
 
-            {/* ✏️ Ник — ещё выше */}
-            <foreignObject x="190" y="920" width="700" height="130">
-              <div className="w-full h-full text-5xl font-bold text-yellow-100 text-center leading-[130px]">
+            {/* ✏️ Ник — красиво и выше */}
+            <foreignObject x="190" y="880" width="700" height="130">
+              <div
+                className="w-full h-full text-center font-extrabold"
+                style={{
+                  fontSize: "56px",
+                  color: "#fff4c0",
+                  lineHeight: "130px",
+                  textShadow: "0 0 8px #000, 0 0 12px #000",
+                }}
+              >
                 {nickname}
               </div>
             </foreignObject>
 
-            {/* ✅ Подтвердить — ещё больше */}
-            <foreignObject x="120" y="1100" width="360" height="200">
+            {/* ✅ Подтвердить */}
+            <foreignObject x="120" y="1120" width="360" height="200">
               <button
                 onClick={confirmSubmit}
                 className="w-full h-full transition-transform duration-150 active:scale-95"
@@ -122,8 +130,8 @@ export default function NameScreen({ onSubmit }: { onSubmit: (nickname: string) 
               </button>
             </foreignObject>
 
-            {/* ❌ Отмена — тоже больше */}
-            <foreignObject x="600" y="1100" width="360" height="200">
+            {/* ❌ Отмена */}
+            <foreignObject x="600" y="1120" width="360" height="200">
               <button
                 onClick={() => setShowConfirm(false)}
                 className="w-full h-full transition-transform duration-150 active:scale-95"
