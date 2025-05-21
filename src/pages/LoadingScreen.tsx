@@ -40,7 +40,7 @@ export default function LoadingScreen() {
 
     const tipTimer = setInterval(() => {
       setCurrentTip(tips[Math.floor(Math.random() * tips.length)]);
-    }, 4000);
+    }, 3000); // ✅ каждые 3 секунды
 
     const interval = setInterval(() => {
       setProgress((prev) => {
@@ -81,8 +81,8 @@ export default function LoadingScreen() {
 
         <rect x="0" y="0" width="1080" height="1920" fill="url(#bg)" />
 
-        {/* 🔁 Полоска загрузки — ещё выше */}
-        <foreignObject x="190" y="1070" width="700" height="60">
+        {/* 🔁 Полоска загрузки — чуть ниже */}
+        <foreignObject x="190" y="1090" width="700" height="60">
           <div
             style={{
               width: "100%",
@@ -123,11 +123,11 @@ export default function LoadingScreen() {
           </div>
         </foreignObject>
 
-        {/* 💬 Фраза */}
-        <foreignObject x="140" y="1180" width="800" height="100">
+        {/* 💬 Подсказка — немного крупнее */}
+        <foreignObject x="140" y="1200" width="800" height="120">
           <div
             style={{
-              fontSize: "36px",
+              fontSize: "40px",
               color: "#fff7d5",
               textAlign: "center",
               textShadow: "0 0 5px black",
