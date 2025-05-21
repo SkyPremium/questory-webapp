@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import loadingBg from "../assets/images/loading.jpg";
 
+// Предзагрузка изображений
 const preloadImages = (sources: string[]) => {
   sources.forEach((src) => {
     const img = new Image();
@@ -25,7 +26,7 @@ export default function LoadingScreen() {
   ];
 
   useEffect(() => {
-    // ✅ Предзагрузка фонов и UI
+    // ✅ Предзагрузка всех изображений
     preloadImages([
       new URL("../assets/images/welcome.jpg", import.meta.url).href,
       new URL("../assets/images/rules.jpg", import.meta.url).href,
@@ -37,15 +38,15 @@ export default function LoadingScreen() {
       new URL("../assets/images/checkbox_empty.png", import.meta.url).href,
     ]);
 
-    // ✅ Случайная фраза сразу
+    // первая фраза
     setCurrentTip(tips[Math.floor(Math.random() * tips.length)]);
 
-    // ✅ Менять фразу каждые 10 секунд
+    // ✅ фразы каждые 5 секунд
     const tipTimer = setInterval(() => {
       setCurrentTip(tips[Math.floor(Math.random() * tips.length)]);
-    }, 10000);
+    }, 5000);
 
-    // ✅ Плавная загрузка
+    // прогресс
     const interval = setInterval(() => {
       setProgress((prev) => {
         if (prev >= 100) {
@@ -85,24 +86,8 @@ export default function LoadingScreen() {
 
         <rect x="0" y="0" width="1080" height="1920" fill="url(#bg)" />
 
-        {/* Проценты */}
-        <foreignObject x="290" y="1160" width="500" height="100">
-          <div
-            style={{
-              width: "100%",
-              height: "100%",
-              fontSize: "50px",
-              color: "#fff7c0",
-              textAlign: "center",
-              textShadow: "0 0 5px black",
-            }}
-          >
-            {progress}%
-          </div>
-        </foreignObject>
-
-        {/* Полоска загрузки */}
-        <foreignObject x="190" y="1250" width="700" height="50">
+        {/* 🔁 Полоска загрузки (под "Загрузка...") */}
+        <foreignObject x="190" y="1150" width="700" height="60">
           <div
             style={{
               width: "100%",
@@ -110,8 +95,10 @@ export default function LoadingScreen() {
               backgroundColor: "transparent",
               borderRadius: "999px",
               overflow: "hidden",
+              position: "relative",
             }}
           >
+            {/* Фоновая анимация */}
             <div
               style={{
                 height: "100%",
@@ -121,14 +108,33 @@ export default function LoadingScreen() {
                 transition: "width 0.3s ease",
               }}
             />
+            {/* 🔢 Проценты поверх полосы */}
+            <div
+              style={{
+                position: "absolute",
+                top: 0,
+                left: 0,
+                height: "100%",
+                width: "100%",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                color: "#000",
+                fontWeight: "bold",
+                fontSize: "32px",
+                textShadow: "0 0 4px #fff",
+              }}
+            >
+              {progress}%
+            </div>
           </div>
         </foreignObject>
 
-        {/* Фраза */}
-        <foreignObject x="140" y="1350" width="800" height="100">
+        {/* 💬 Подсказка */}
+        <foreignObject x="140" y="1240" width="800" height="100">
           <div
             style={{
-              fontSize: "40px",
+              fontSize: "36px",
               color: "#fff7d5",
               textAlign: "center",
               textShadow: "0 0 5px black",
