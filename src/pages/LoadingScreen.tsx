@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import loadingBg from "@/assets/images/loading.jpg";
 
-// ⏳ Импорты для предзагрузки
+// Импорт всех картинок, которые используются на первых экранах
 import welcome from "@/assets/images/welcome.jpg";
 import rules from "@/assets/images/rules.jpg";
 import name from "@/assets/images/name.jpg";
@@ -11,6 +11,10 @@ import buttonWelcome from "@/assets/images/button_welcome.png";
 import buttonRules from "@/assets/images/button_rules.png";
 import checkboxChecked from "@/assets/images/checkbox_checked.png";
 import checkboxEmpty from "@/assets/images/checkbox_empty.png";
+import buttonName from "@/assets/images/button_name.png";
+import nameSave from "@/assets/images/name_save.png";
+import nameSave1 from "@/assets/images/button_name_save_1.png";
+import nameSave2 from "@/assets/images/button_name_save_2.png";
 
 const preloadImages = (sources: string[]) => {
   sources.forEach((src) => {
@@ -44,13 +48,17 @@ export default function LoadingScreen() {
       buttonRules,
       checkboxChecked,
       checkboxEmpty,
+      buttonName,
+      nameSave,
+      nameSave1,
+      nameSave2,
     ]);
 
     setCurrentTip(tips[Math.floor(Math.random() * tips.length)]);
 
     const tipTimer = setInterval(() => {
       setCurrentTip(tips[Math.floor(Math.random() * tips.length)]);
-    }, 3000);
+    }, 2000); // ✅ теперь каждые 2 секунды
 
     const interval = setInterval(() => {
       setProgress((prev) => {
@@ -91,14 +99,13 @@ export default function LoadingScreen() {
 
         <rect x="0" y="0" width="1080" height="1920" fill="url(#bg)" />
 
-        {/* 🔁 Полоска загрузки — уже и выше */}
-        <foreignObject x="240" y="1090" width="600" height="70">
+        {/* 🔁 Полоска загрузки — уже в точной ширине рамки */}
+        <foreignObject x="240" y="1090" width="600" height="65">
           <div
             style={{
               width: "100%",
               height: "100%",
               backgroundColor: "transparent",
-              borderRadius: "999px",
               overflow: "hidden",
               position: "relative",
             }}
@@ -108,7 +115,6 @@ export default function LoadingScreen() {
                 height: "100%",
                 width: `${progress}%`,
                 background: "linear-gradient(90deg, #ffd66c, #ffeb99)",
-                borderRadius: "999px",
                 transition: "width 0.3s ease",
               }}
             />
@@ -123,7 +129,7 @@ export default function LoadingScreen() {
                 alignItems: "center",
                 justifyContent: "center",
                 fontWeight: "bold",
-                fontSize: "32px",
+                fontSize: "30px",
                 color: "#ffffff",
                 textShadow: "0 0 5px #000, 0 0 8px #000",
               }}
@@ -133,7 +139,7 @@ export default function LoadingScreen() {
           </div>
         </foreignObject>
 
-        {/* 💬 Подсказка — крупнее, под полосой */}
+        {/* 💬 Подсказка — чуть крупнее, под полосой */}
         <foreignObject x="140" y="1200" width="800" height="120">
           <div
             style={{
