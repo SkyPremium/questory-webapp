@@ -1,16 +1,18 @@
 import { useNavigate } from "react-router-dom";
 import { useSound } from "../utils/useSound";
 import clickSound from "../assets/sounds/click_ui.mp3";
+import transitionSound from "../assets/sounds/transition.mp3";
 import welcomeBg from "../assets/images/welcome.jpg";
 import buttonWelcome from "../assets/images/button_welcome.png";
 
 export default function WelcomeScreen() {
   const navigate = useNavigate();
-
   const playClick = useSound(clickSound, 0.8);
+  const playTransition = useSound(transitionSound, 0.8);
 
   const handleStart = () => {
     playClick();
+    playTransition();
     navigate("/rules");
   };
 
@@ -22,7 +24,6 @@ export default function WelcomeScreen() {
         preserveAspectRatio="none"
         xmlns="http://www.w3.org/2000/svg"
       >
-        {/* 🎨 Фон */}
         <defs>
           <pattern
             id="bg"
@@ -35,7 +36,7 @@ export default function WelcomeScreen() {
         </defs>
         <rect x="0" y="0" width="1080" height="1920" fill="url(#bg)" />
 
-        {/* 🟢 Кнопка "Начать" с анимацией для всех устройств */}
+        {/* 🟢 Кнопка "Начать" */}
         <foreignObject x="330" y="1720" width="420" height="160">
           <button
             onClick={handleStart}
