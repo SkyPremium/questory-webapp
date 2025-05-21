@@ -2,6 +2,19 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import loadingBg from "@/assets/images/loading.jpg";
 
+// Импорт всех изображений для предзагрузки
+import logo from "@/assets/images/logo.png";
+import welcome from "@/assets/images/welcome.jpg";
+import rules from "@/assets/images/rules.jpg";
+import name from "@/assets/images/name.jpg";
+import buttonRules from "@/assets/images/button_rules.png";
+import buttonName from "@/assets/images/button_name.png";
+import nameSave from "@/assets/images/name_save.png";
+import nameSave1 from "@/assets/images/button_name_save_1.png";
+import nameSave2 from "@/assets/images/button_name_save_2.png";
+import checkboxChecked from "@/assets/images/checkbox_checked.png";
+import checkboxEmpty from "@/assets/images/checkbox_empty.png";
+
 export default function LoadingScreen() {
   const navigate = useNavigate();
   const [progress, setProgress] = useState(0);
@@ -18,23 +31,24 @@ export default function LoadingScreen() {
   ];
 
   useEffect(() => {
-    // 🔄 Предзагрузка всех важных изображений
+    // 🔄 Реальная предзагрузка всех картинок через import
     const preloadImages = [
-      'logo.png',
-      'button_rules.png',
-      'checkbox_checked.png',
-      'checkbox_empty.png',
-      'welcome.jpg',
-      'rules.jpg',
-      'name.jpg',
-      'button_name.png',
-      'name_save.png',
-      'button_name_save_1.png',
-      'button_name_save_2.png',
+      logo,
+      welcome,
+      rules,
+      name,
+      buttonRules,
+      buttonName,
+      nameSave,
+      nameSave1,
+      nameSave2,
+      checkboxChecked,
+      checkboxEmpty,
     ];
-    preloadImages.forEach((img) => {
+
+    preloadImages.forEach((src) => {
       const i = new Image();
-      i.src = `/assets/images/${img}`;
+      i.src = src;
     });
 
     const interval = setInterval(() => {
@@ -48,6 +62,7 @@ export default function LoadingScreen() {
       });
       setTipIndex((prev) => (prev + 1) % tips.length);
     }, 40);
+
     return () => clearInterval(interval);
   }, []);
 
