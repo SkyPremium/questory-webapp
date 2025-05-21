@@ -57,7 +57,7 @@ export default function LoadingScreen() {
 
     const tipTimer = setInterval(() => {
       setCurrentTip(tips[Math.floor(Math.random() * tips.length)]);
-    }, 2000); // каждые 2 секунды
+    }, 2000); // 🔁 каждые 2 секунды
 
     const interval = setInterval(() => {
       setProgress((prev) => {
@@ -99,7 +99,7 @@ export default function LoadingScreen() {
         <rect x="0" y="0" width="1080" height="1920" fill="url(#bg)" />
 
         {/* 🔁 Полоска загрузки — растянута максимально точно */}
-        <foreignObject x="210" y="1085" width="660" height="65">
+        <foreignObject x="208" y="1085" width="664" height="65">
           <div
             style={{
               width: "100%",
