@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import loadingBg from "../assets/images/loading.jpg";
 
-// Предзагрузка изображений
 const preloadImages = (sources: string[]) => {
   sources.forEach((src) => {
     const img = new Image();
@@ -26,7 +25,6 @@ export default function LoadingScreen() {
   ];
 
   useEffect(() => {
-    // ✅ Предзагрузка всех изображений
     preloadImages([
       new URL("../assets/images/welcome.jpg", import.meta.url).href,
       new URL("../assets/images/rules.jpg", import.meta.url).href,
@@ -41,12 +39,12 @@ export default function LoadingScreen() {
     // первая фраза
     setCurrentTip(tips[Math.floor(Math.random() * tips.length)]);
 
-    // ✅ фразы каждые 5 секунд
+    // ✅ фразы каждые 4 секунды
     const tipTimer = setInterval(() => {
       setCurrentTip(tips[Math.floor(Math.random() * tips.length)]);
-    }, 5000);
+    }, 4000);
 
-    // прогресс
+    // ✅ прогресс
     const interval = setInterval(() => {
       setProgress((prev) => {
         if (prev >= 100) {
@@ -86,8 +84,8 @@ export default function LoadingScreen() {
 
         <rect x="0" y="0" width="1080" height="1920" fill="url(#bg)" />
 
-        {/* 🔁 Полоска загрузки (под "Загрузка...") */}
-        <foreignObject x="190" y="1150" width="700" height="60">
+        {/* 🔁 Полоска загрузки (ещё выше) */}
+        <foreignObject x="190" y="1100" width="700" height="60">
           <div
             style={{
               width: "100%",
@@ -98,7 +96,6 @@ export default function LoadingScreen() {
               position: "relative",
             }}
           >
-            {/* Фоновая анимация */}
             <div
               style={{
                 height: "100%",
@@ -108,7 +105,6 @@ export default function LoadingScreen() {
                 transition: "width 0.3s ease",
               }}
             />
-            {/* 🔢 Проценты поверх полосы */}
             <div
               style={{
                 position: "absolute",
@@ -131,7 +127,7 @@ export default function LoadingScreen() {
         </foreignObject>
 
         {/* 💬 Подсказка */}
-        <foreignObject x="140" y="1240" width="800" height="100">
+        <foreignObject x="140" y="1200" width="800" height="100">
           <div
             style={{
               fontSize: "36px",
