@@ -1,8 +1,8 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
-import LoadingScreen from "./screens/LoadingScreen";
-import WelcomeScreen from "./screens/WelcomeScreen";
-import RulesScreen from "./screens/RulesScreen";
-import NameScreen from "./screens/NameScreen";
+import LoadingScreen from "./pages/LoadingScreen";
+import WelcomeScreen from "./pages/WelcomeScreen";
+import RulesScreen from "./pages/RulesScreen";
+import NameScreen from "./pages/NameScreen";
 // добавляй дальше другие экраны...
 
 export default function App() {
