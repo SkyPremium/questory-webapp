@@ -18,10 +18,38 @@ function AnimatedRoutes() {
   return (
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>
-        <Route path="/" element={<motion.div {...animationProps}><LoadingScreen /></motion.div>} />
-        <Route path="/welcome" element={<motion.div {...animationProps}><WelcomeScreen /></motion.div>} />
-        <Route path="/rules" element={<motion.div {...animationProps}><RulesScreen /></motion.div>} />
-        <Route path="/name" element={<motion.div {...animationProps}><NameScreen /></motion.div>} />
+        <Route
+          path="/"
+          element={
+            <motion.div className="w-screen h-screen bg-black" {...animationProps}>
+              <LoadingScreen />
+            </motion.div>
+          }
+        />
+        <Route
+          path="/welcome"
+          element={
+            <motion.div className="w-screen h-screen bg-black" {...animationProps}>
+              <WelcomeScreen />
+            </motion.div>
+          }
+        />
+        <Route
+          path="/rules"
+          element={
+            <motion.div className="w-screen h-screen bg-black" {...animationProps}>
+              <RulesScreen />
+            </motion.div>
+          }
+        />
+        <Route
+          path="/name"
+          element={
+            <motion.div className="w-screen h-screen bg-black" {...animationProps}>
+              <NameScreen />
+            </motion.div>
+          }
+        />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </AnimatePresence>
