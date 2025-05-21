@@ -51,26 +51,28 @@ export default function NameScreen({ onSubmit }: { onSubmit: (nickname: string) 
         </defs>
         <rect width="1080" height="1920" fill="url(#bg)" />
 
-        {/* Поле ввода ника */}
-        <foreignObject x="190" y="960" width="700" height="120">
-          <input
-            type="text"
-            value={nickname}
-            onChange={handleChange}
-            placeholder="Введите ник"
-            className="w-full h-full text-center rounded-xl outline-none bg-transparent"
-            style={{
-              fontSize: "52px",
-              color: "#fce5a0",
-              fontFamily: "Georgia, serif",
-              textShadow: "0 0 4px #000",
-              fontWeight: 600,
-            }}
-          />
-        </foreignObject>
+        {/* Поле ввода ника — скрывается при показе модалки */}
+        {!showConfirm && (
+          <foreignObject x="190" y="960" width="700" height="120">
+            <input
+              type="text"
+              value={nickname}
+              onChange={handleChange}
+              placeholder="Введите ник"
+              className="w-full h-full text-center rounded-xl outline-none bg-transparent"
+              style={{
+                fontSize: "52px",
+                color: "#fce5a0",
+                fontFamily: "Georgia, serif",
+                textShadow: "0 0 4px #000",
+                fontWeight: 600,
+              }}
+            />
+          </foreignObject>
+        )}
 
         {/* Сообщение об ошибке */}
-        {error && (
+        {!showConfirm && error && (
           <foreignObject x="190" y="1060" width="700" height="60">
             <div className="text-red-500 text-center text-3xl font-extrabold">
               {error}
@@ -79,29 +81,31 @@ export default function NameScreen({ onSubmit }: { onSubmit: (nickname: string) 
         )}
 
         {/* Кнопка продолжить */}
-        <foreignObject x="330" y="1720" width="420" height="160">
-          <button
-            onClick={handleSubmit}
-            disabled={!!error || nickname === ""}
-            style={{
-              width: "100%",
-              height: "100%",
-              background: "none",
-              border: "none",
-              padding: 0,
-              transition: "transform 0.15s ease",
-              cursor: error || nickname === "" ? "default" : "pointer",
-              opacity: error || nickname === "" ? 0.4 : 1,
-            }}
-            onMouseDown={(e) => (e.currentTarget.style.transform = "scale(0.95)")}
-            onMouseUp={(e) => (e.currentTarget.style.transform = "scale(1)")}
-            onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
-            onTouchStart={(e) => (e.currentTarget.style.transform = "scale(0.95)")}
-            onTouchEnd={(e) => (e.currentTarget.style.transform = "scale(1)")}
-          >
-            <img src={buttonContinue} alt="Продолжить" style={{ width: "100%", height: "100%" }} />
-          </button>
-        </foreignObject>
+        {!showConfirm && (
+          <foreignObject x="330" y="1720" width="420" height="160">
+            <button
+              onClick={handleSubmit}
+              disabled={!!error || nickname === ""}
+              style={{
+                width: "100%",
+                height: "100%",
+                background: "none",
+                border: "none",
+                padding: 0,
+                transition: "transform 0.15s ease",
+                cursor: error || nickname === "" ? "default" : "pointer",
+                opacity: error || nickname === "" ? 0.4 : 1,
+              }}
+              onMouseDown={(e) => (e.currentTarget.style.transform = "scale(0.95)")}
+              onMouseUp={(e) => (e.currentTarget.style.transform = "scale(1)")}
+              onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
+              onTouchStart={(e) => (e.currentTarget.style.transform = "scale(0.95)")}
+              onTouchEnd={(e) => (e.currentTarget.style.transform = "scale(1)")}
+            >
+              <img src={buttonContinue} alt="Продолжить" style={{ width: "100%", height: "100%" }} />
+            </button>
+          </foreignObject>
+        )}
 
         {/* Модалка подтверждения ника */}
         {showConfirm && (
@@ -109,7 +113,7 @@ export default function NameScreen({ onSubmit }: { onSubmit: (nickname: string) 
             {/* 📜 Табличка */}
             <image href={confirmBG} x="20" y="540" width="1040" height="820" />
 
-            {/* ✏️ Ник — опущен на 5 пикселей для выравнивания */}
+            {/* ✏️ Ник — чуть ниже, идеально по центру рамки */}
             <foreignObject x="190" y="915" width="700" height="130">
               <div
                 className="w-full h-full text-center"
