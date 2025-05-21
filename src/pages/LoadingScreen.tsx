@@ -23,60 +23,46 @@ const preloadImages = (sources: string[]) => {
 };
 
 export default function LoadingScreen() {
-  const navigate = useNavigate();
   const [progress, setProgress] = useState(0);
-  const [currentTip, setCurrentTip] = useState("");
-
-  const tips = [
-    "Распаковываем манускрипты...",
-    "Привязываем волшебную нить...",
-    "Собираем перья сказочников...",
-    "Проверяем чернильницы...",
-    "Устанавливаем ловушки...",
-    "Зажигаем фонари в подземельях...",
-    "Печатаем древние карты...",
-  ];
-
-  const playTransition = useSound(transitionSound, 0.8);
+  const [currentTip, setCurrentTip] = useState("Играйте каждый день и получайте награды!");
+  const navigate = useNavigate();
 
   useEffect(() => {
-    playTransition();
     preloadImages([
-      welcome,
-      rules,
-      name,
-      logo,
-      buttonWelcome,
-      buttonRules,
-      checkboxChecked,
-      checkboxEmpty,
-      buttonName,
-      nameSave,
-      nameSave1,
-      nameSave2,
+      welcome, rules, name, logo,
+      buttonWelcome, buttonRules,
+      checkboxChecked, checkboxEmpty,
+      buttonName, nameSave, nameSave1, nameSave2
     ]);
+  }, []);
 
-    setCurrentTip(tips[Math.floor(Math.random() * tips.length)]);
-
-    const tipTimer = setInterval(() => {
-      setCurrentTip(tips[Math.floor(Math.random() * tips.length)]);
-    }, 2000); // 🔁 каждые 2 секунды
-
+  useEffect(() => {
     const interval = setInterval(() => {
       setProgress((prev) => {
-        if (prev >= 100) {
-          clearInterval(interval);
-          clearInterval(tipTimer);
-          setTimeout(() => navigate("/welcome"), 500);
-          return 100;
-        }
-        return prev + 1;
+        const next = Math.min(prev + Math.random() * 10, 100);
+        return parseFloat(next.toFixed(1));
       });
-    }, 40);
+    }, 100);
+
+    const tips = [
+      "Играйте каждый день и получайте награды!",
+      "Получите титулы за достижения и бонусы!",
+      "Будьте осторожны — смерть отбрасывает вас в начало книги!"
+    ];
+
+    const tipInterval = setInterval(() => {
+      const randomTip = tips[Math.floor(Math.random() * tips.length)];
+      setCurrentTip(randomTip);
+    }, 2000);
+
+    const timeout = setTimeout(() => {
+      navigate("/welcome");
+    }, 1500);
 
     return () => {
       clearInterval(interval);
-      clearInterval(tipTimer);
+      clearInterval(tipInterval);
+      clearTimeout(timeout);
     };
   }, []);
 
@@ -89,24 +75,18 @@ export default function LoadingScreen() {
         xmlns="http://www.w3.org/2000/svg"
       >
         <defs>
-          <pattern
-            id="bg"
-            patternUnits="userSpaceOnUse"
-            width="1080"
-            height="1920"
-          >
+          <pattern id="bg" patternUnits="userSpaceOnUse" width="1080" height="1920">
             <image href={loadingBg} x="0" y="0" width="1080" height="1920" />
           </pattern>
         </defs>
-
         <rect x="0" y="0" width="1080" height="1920" fill="url(#bg)" />
 
-        {/* 🔁 Полоска загрузки — растянута максимально точно */}
-        <foreignObject x="208" y="1085" width="664" height="65">
+        {/* 🔄 Прогрессбар */}
+        <foreignObject x="140" y="1080" width="800" height="100">
           <div
             style={{
-              width: "100%",
               height: "100%",
+              width: "100%",
               backgroundColor: "transparent",
               overflow: "hidden",
               position: "relative",
