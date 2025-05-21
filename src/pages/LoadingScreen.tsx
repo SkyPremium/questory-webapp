@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import loadingBg from "../assets/images/loading.jpg";
 
-// ✅ Список всех изображений, которые нужно подгрузить
 const preloadImages = (sources: string[]) => {
   sources.forEach((src) => {
     const img = new Image();
@@ -26,27 +25,27 @@ export default function LoadingScreen() {
   ];
 
   useEffect(() => {
-    // ✅ Предзагрузка всех фонов и UI
+    // ✅ Предзагрузка фонов и UI
     preloadImages([
-      require("../assets/images/welcome.jpg"),
-      require("../assets/images/rules.jpg"),
-      require("../assets/images/name.jpg"),
-      require("../assets/images/logo.png"),
-      require("../assets/images/button_welcome.png"),
-      require("../assets/images/button_rules.png"),
-      require("../assets/images/checkbox_checked.png"),
-      require("../assets/images/checkbox_empty.png"),
+      new URL("../assets/images/welcome.jpg", import.meta.url).href,
+      new URL("../assets/images/rules.jpg", import.meta.url).href,
+      new URL("../assets/images/name.jpg", import.meta.url).href,
+      new URL("../assets/images/logo.png", import.meta.url).href,
+      new URL("../assets/images/button_welcome.png", import.meta.url).href,
+      new URL("../assets/images/button_rules.png", import.meta.url).href,
+      new URL("../assets/images/checkbox_checked.png", import.meta.url).href,
+      new URL("../assets/images/checkbox_empty.png", import.meta.url).href,
     ]);
 
-    // ✅ Первая фраза — случайная
+    // ✅ Случайная фраза сразу
     setCurrentTip(tips[Math.floor(Math.random() * tips.length)]);
 
-    // ✅ Рандомная фраза каждые 10 секунд
+    // ✅ Менять фразу каждые 10 секунд
     const tipTimer = setInterval(() => {
       setCurrentTip(tips[Math.floor(Math.random() * tips.length)]);
     }, 10000);
 
-    // ✅ Заполнение прогресса
+    // ✅ Плавная загрузка
     const interval = setInterval(() => {
       setProgress((prev) => {
         if (prev >= 100) {
@@ -74,7 +73,12 @@ export default function LoadingScreen() {
         xmlns="http://www.w3.org/2000/svg"
       >
         <defs>
-          <pattern id="bg" patternUnits="userSpaceOnUse" width="1080" height="1920">
+          <pattern
+            id="bg"
+            patternUnits="userSpaceOnUse"
+            width="1080"
+            height="1920"
+          >
             <image href={loadingBg} x="0" y="0" width="1080" height="1920" />
           </pattern>
         </defs>
@@ -120,7 +124,7 @@ export default function LoadingScreen() {
           </div>
         </foreignObject>
 
-        {/* Подсказка */}
+        {/* Фраза */}
         <foreignObject x="140" y="1350" width="800" height="100">
           <div
             style={{
