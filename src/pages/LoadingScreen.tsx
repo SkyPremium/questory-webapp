@@ -81,8 +81,8 @@ export default function LoadingScreen() {
 
         <rect x="0" y="0" width="1080" height="1920" fill="url(#bg)" />
 
-        {/* 🔁 Полоска загрузки — чуть ниже */}
-        <foreignObject x="190" y="1090" width="700" height="60">
+        {/* 🔁 Полоска загрузки — уже и выше */}
+        <foreignObject x="240" y="1090" width="600" height="70">
           <div
             style={{
               width: "100%",
@@ -123,7 +123,7 @@ export default function LoadingScreen() {
           </div>
         </foreignObject>
 
-        {/* 💬 Подсказка — немного крупнее */}
+        {/* 💬 Подсказка — крупнее, под полосой */}
         <foreignObject x="140" y="1200" width="800" height="120">
           <div
             style={{
