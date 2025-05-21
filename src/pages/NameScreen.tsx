@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import background from "../assets/images/name.jpg";
 import buttonContinue from "../assets/images/button_name.png";
@@ -102,15 +101,18 @@ export default function NameScreen({ onSubmit }: { onSubmit: (nickname: string) 
         {/* Модалка подтверждения */}
         {showConfirm && (
           <>
-            <image href={confirmBG} x="100" y="640" width="880" height="600" />
+            {/* Увеличенная табличка */}
+            <image href={confirmBG} x="70" y="600" width="940" height="700" />
 
-            <foreignObject x="280" y="980" width="520" height="80">
-              <div className="w-full h-full text-5xl font-bold text-yellow-100 text-center leading-[60px]">
+            {/* Ник */}
+            <foreignObject x="260" y="1020" width="560" height="100">
+              <div className="w-full h-full text-5xl font-bold text-yellow-100 text-center leading-[100px]">
                 {nickname}
               </div>
             </foreignObject>
 
-            <foreignObject x="250" y="1100" width="180" height="100">
+            {/* Кнопка Подтвердить */}
+            <foreignObject x="240" y="1160" width="220" height="120">
               <button
                 onClick={confirmSubmit}
                 className="w-full h-full transition-transform duration-150 active:scale-95"
@@ -120,7 +122,8 @@ export default function NameScreen({ onSubmit }: { onSubmit: (nickname: string) 
               </button>
             </foreignObject>
 
-            <foreignObject x="650" y="1100" width="180" height="100">
+            {/* Кнопка Отмена */}
+            <foreignObject x="620" y="1160" width="220" height="120">
               <button
                 onClick={() => setShowConfirm(false)}
                 className="w-full h-full transition-transform duration-150 active:scale-95"
