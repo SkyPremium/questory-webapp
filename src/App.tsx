@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { useSound } from "./utils/useSound";
 import transitionSound from "./assets/sounds/transition.mp3";
+
 import LoadingScreen from "./pages/LoadingScreen";
 import WelcomeScreen from "./pages/WelcomeScreen";
 import RulesScreen from "./pages/RulesScreen";
@@ -21,7 +22,7 @@ function AnimatedRoutes() {
       const timeout = setTimeout(() => {
         setPendingPath(location.pathname);
         setShowOverlay(false);
-      }, 300); // длительность затемнения (в мс)
+      }, 300);
       return () => clearTimeout(timeout);
     }
   }, [location.pathname]);
@@ -42,7 +43,14 @@ function AnimatedRoutes() {
       case "/rules":
         return <RulesScreen />;
       case "/name":
-        return <NameScreen />;
+        return (
+          <NameScreen
+            onSubmit={(nickname) => {
+              console.log("Ник сохранён:", nickname);
+              // здесь можно добавить переход в главное меню
+            }}
+          />
+        );
       default:
         return <Navigate to="/" replace />;
     }
@@ -50,7 +58,6 @@ function AnimatedRoutes() {
 
   return (
     <>
-      {/* Основная анимированная сцена */}
       <motion.div
         key={pendingPath}
         className="w-screen h-screen bg-black"
@@ -59,7 +66,6 @@ function AnimatedRoutes() {
         {renderScene(pendingPath)}
       </motion.div>
 
-      {/* Затемняющий слой поверх */}
       <AnimatePresence>
         {showOverlay && (
           <motion.div
