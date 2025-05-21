@@ -1,18 +1,11 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import loadingBg from "../assets/images/loading.jpg";
-
-const preloadImages = (sources: string[]) => {
-  sources.forEach((src) => {
-    const img = new Image();
-    img.src = src;
-  });
-};
+import loadingBg from "@/assets/images/loading.jpg";
 
 export default function LoadingScreen() {
   const navigate = useNavigate();
   const [progress, setProgress] = useState(0);
-  const [currentTip, setCurrentTip] = useState("");
+  const [tipIndex, setTipIndex] = useState(0);
 
   const tips = [
     "Распаковываем манускрипты...",
@@ -25,39 +18,37 @@ export default function LoadingScreen() {
   ];
 
   useEffect(() => {
-    preloadImages([
-      new URL("../assets/images/welcome.jpg", import.meta.url).href,
-      new URL("../assets/images/rules.jpg", import.meta.url).href,
-      new URL("../assets/images/name.jpg", import.meta.url).href,
-      new URL("../assets/images/logo.png", import.meta.url).href,
-      new URL("../assets/images/button_welcome.png", import.meta.url).href,
-      new URL("../assets/images/button_rules.png", import.meta.url).href,
-      new URL("../assets/images/checkbox_checked.png", import.meta.url).href,
-      new URL("../assets/images/checkbox_empty.png", import.meta.url).href,
-    ]);
-
-    setCurrentTip(tips[Math.floor(Math.random() * tips.length)]);
-
-    const tipTimer = setInterval(() => {
-      setCurrentTip(tips[Math.floor(Math.random() * tips.length)]);
-    }, 2000); // ✅ каждые 3 секунды
+    // 🔄 Предзагрузка всех важных изображений
+    const preloadImages = [
+      'logo.png',
+      'button_rules.png',
+      'checkbox_checked.png',
+      'checkbox_empty.png',
+      'welcome.jpg',
+      'rules.jpg',
+      'name.jpg',
+      'button_name.png',
+      'name_save.png',
+      'button_name_save_1.png',
+      'button_name_save_2.png',
+    ];
+    preloadImages.forEach((img) => {
+      const i = new Image();
+      i.src = `/assets/images/${img}`;
+    });
 
     const interval = setInterval(() => {
       setProgress((prev) => {
         if (prev >= 100) {
           clearInterval(interval);
-          clearInterval(tipTimer);
           setTimeout(() => navigate("/welcome"), 500);
           return 100;
         }
         return prev + 1;
       });
+      setTipIndex((prev) => (prev + 1) % tips.length);
     }, 40);
-
-    return () => {
-      clearInterval(interval);
-      clearInterval(tipTimer);
-    };
+    return () => clearInterval(interval);
   }, []);
 
   return (
@@ -69,20 +60,31 @@ export default function LoadingScreen() {
         xmlns="http://www.w3.org/2000/svg"
       >
         <defs>
-          <pattern
-            id="bg"
-            patternUnits="userSpaceOnUse"
-            width="1080"
-            height="1920"
-          >
+          <pattern id="bg" patternUnits="userSpaceOnUse" width="1080" height="1920">
             <image href={loadingBg} x="0" y="0" width="1080" height="1920" />
           </pattern>
         </defs>
 
         <rect x="0" y="0" width="1080" height="1920" fill="url(#bg)" />
 
-        {/* 🔁 Полоска загрузки — уже и выше */}
-        <foreignObject x="200" y="1078" width="680" height="80">
+        {/* Проценты */}
+        <foreignObject x="290" y="1160" width="500" height="100">
+          <div
+            style={{
+              width: "100%",
+              height: "100%",
+              fontSize: "50px",
+              color: "#fff7c0",
+              textAlign: "center",
+              textShadow: "0 0 5px black",
+            }}
+          >
+            {progress}%
+          </div>
+        </foreignObject>
+
+        {/* Полоска загрузки */}
+        <foreignObject x="190" y="1250" width="700" height="50">
           <div
             style={{
               width: "100%",
@@ -90,7 +92,6 @@ export default function LoadingScreen() {
               backgroundColor: "transparent",
               borderRadius: "999px",
               overflow: "hidden",
-              position: "relative",
             }}
           >
             <div
@@ -102,29 +103,11 @@ export default function LoadingScreen() {
                 transition: "width 0.3s ease",
               }}
             />
-            <div
-              style={{
-                position: "absolute",
-                top: 0,
-                left: 0,
-                height: "100%",
-                width: "100%",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                fontWeight: "bold",
-                fontSize: "32px",
-                color: "#ffffff",
-                textShadow: "0 0 5px #000, 0 0 8px #000",
-              }}
-            >
-              {progress}%
-            </div>
           </div>
         </foreignObject>
 
-        {/* 💬 Подсказка — крупнее, под полосой */}
-        <foreignObject x="140" y="1200" width="800" height="120">
+        {/* Подсказка */}
+        <foreignObject x="140" y="1350" width="800" height="100">
           <div
             style={{
               fontSize: "40px",
@@ -134,7 +117,7 @@ export default function LoadingScreen() {
               lineHeight: "1.2",
             }}
           >
-            {currentTip}
+            {tips[tipIndex]}
           </div>
         </foreignObject>
       </svg>
