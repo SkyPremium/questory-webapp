@@ -2,10 +2,18 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import loadingBg from "../assets/images/loading.jpg";
 
+// ✅ Список всех изображений, которые нужно подгрузить
+const preloadImages = (sources: string[]) => {
+  sources.forEach((src) => {
+    const img = new Image();
+    img.src = src;
+  });
+};
+
 export default function LoadingScreen() {
   const navigate = useNavigate();
   const [progress, setProgress] = useState(0);
-  const [tipIndex, setTipIndex] = useState(0);
+  const [currentTip, setCurrentTip] = useState("");
 
   const tips = [
     "Распаковываем манускрипты...",
@@ -18,18 +26,43 @@ export default function LoadingScreen() {
   ];
 
   useEffect(() => {
+    // ✅ Предзагрузка всех фонов и UI
+    preloadImages([
+      require("../assets/images/welcome.jpg"),
+      require("../assets/images/rules.jpg"),
+      require("../assets/images/name.jpg"),
+      require("../assets/images/logo.png"),
+      require("../assets/images/button_welcome.png"),
+      require("../assets/images/button_rules.png"),
+      require("../assets/images/checkbox_checked.png"),
+      require("../assets/images/checkbox_empty.png"),
+    ]);
+
+    // ✅ Первая фраза — случайная
+    setCurrentTip(tips[Math.floor(Math.random() * tips.length)]);
+
+    // ✅ Рандомная фраза каждые 10 секунд
+    const tipTimer = setInterval(() => {
+      setCurrentTip(tips[Math.floor(Math.random() * tips.length)]);
+    }, 10000);
+
+    // ✅ Заполнение прогресса
     const interval = setInterval(() => {
       setProgress((prev) => {
         if (prev >= 100) {
           clearInterval(interval);
+          clearInterval(tipTimer);
           setTimeout(() => navigate("/welcome"), 500);
           return 100;
         }
         return prev + 1;
       });
-      setTipIndex((prev) => (prev + 1) % tips.length);
     }, 40);
-    return () => clearInterval(interval);
+
+    return () => {
+      clearInterval(interval);
+      clearInterval(tipTimer);
+    };
   }, []);
 
   return (
@@ -98,7 +131,7 @@ export default function LoadingScreen() {
               lineHeight: "1.2",
             }}
           >
-            {tips[tipIndex]}
+            {currentTip}
           </div>
         </foreignObject>
       </svg>
