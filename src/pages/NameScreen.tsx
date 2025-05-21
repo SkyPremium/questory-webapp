@@ -51,7 +51,7 @@ export default function NameScreen({ onSubmit }: { onSubmit: (nickname: string) 
         </defs>
         <rect width="1080" height="1920" fill="url(#bg)" />
 
-        {/* Поле ввода ника (в стиле подтверждения) */}
+        {/* Поле ввода ника */}
         <foreignObject x="190" y="960" width="700" height="120">
           <input
             type="text"
@@ -109,8 +109,8 @@ export default function NameScreen({ onSubmit }: { onSubmit: (nickname: string) 
             {/* 📜 Табличка */}
             <image href={confirmBG} x="20" y="540" width="1040" height="820" />
 
-            {/* ✏️ Ник — чуть ниже и стилизован */}
-            <foreignObject x="190" y="930" width="700" height="130">
+            {/* ✏️ Ник — поднят до центра рамки */}
+            <foreignObject x="190" y="910" width="700" height="130">
               <div
                 className="w-full h-full text-center"
                 style={{
