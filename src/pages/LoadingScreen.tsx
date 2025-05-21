@@ -82,7 +82,7 @@ export default function LoadingScreen() {
         <rect x="0" y="0" width="1080" height="1920" fill="url(#bg)" />
 
         {/* 🔁 Полоска загрузки — уже и выше */}
-        <foreignObject x="240" y="1090" width="600" height="70">
+        <foreignObject x="240" y="1092" width="650" height="72">
           <div
             style={{
               width: "100%",
