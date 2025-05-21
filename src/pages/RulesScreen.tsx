@@ -1,8 +1,7 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useSound } from "../utils/useSound";
 import clickSound from "../assets/sounds/click_ui.mp3";
-import confirmSound from "../assets/sounds/confirm.mp3";
-import { useNavigate } from "react-router-dom";
 import rulesBg from "../assets/images/rules.jpg";
 import logo from "../assets/images/logo.png";
 import buttonRules from "../assets/images/button_rules.png";
@@ -13,10 +12,8 @@ export default function RulesScreen() {
   const [checked, setChecked] = useState(false);
   const navigate = useNavigate();
   const playClick = useSound(clickSound, 0.8);
-  const playConfirm = useSound(confirmSound, 0.8);
 
   const handleAgree = () => {
-    playConfirm();
     navigate("/name");
   };
 
@@ -57,7 +54,7 @@ export default function RulesScreen() {
         {/* 🟠 Кнопка "Согласен" с анимацией нажатия */}
         <foreignObject x="280" y="1700" width="520" height="150">
           <button
-            onClick={handleAgree}
+            onClick={() => { playClick(); handleAgree(); }}
             disabled={!checked}
             style={{
               width: "100%",

@@ -1,9 +1,6 @@
 import { BrowserRouter as Router, useLocation, Routes, Route, Navigate } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import { useSound } from "./utils/useSound";
-import transitionSound from "./assets/sounds/transition.mp3";
-
 import LoadingScreen from "./pages/LoadingScreen";
 import WelcomeScreen from "./pages/WelcomeScreen";
 import RulesScreen from "./pages/RulesScreen";
@@ -11,17 +8,18 @@ import NameScreen from "./pages/NameScreen";
 
 function AnimatedRoutes() {
   const location = useLocation();
-  const playTransition = useSound(transitionSound, 0.8);
-
   const [showOverlay, setShowOverlay] = useState(false);
+  const [pendingPath, setPendingPath] = useState(location.pathname);
 
   useEffect(() => {
-    setShowOverlay(true);
-    playTransition();
-    const timeout = setTimeout(() => {
-      setShowOverlay(false);
-    }, 300);
-    return () => clearTimeout(timeout);
+    if (location.pathname !== pendingPath) {
+      setShowOverlay(true);
+      const timeout = setTimeout(() => {
+        setPendingPath(location.pathname);
+        setShowOverlay(false);
+      }, 300); // длительность затемнения (в мс)
+      return () => clearTimeout(timeout);
+    }
   }, [location.pathname]);
 
   const animationProps = {
@@ -31,52 +29,33 @@ function AnimatedRoutes() {
     transition: { duration: 0.25, ease: "easeInOut" }
   };
 
+  const renderScene = (path: string) => {
+    switch (path) {
+      case "/":
+        return <LoadingScreen />;
+      case "/welcome":
+        return <WelcomeScreen />;
+      case "/rules":
+        return <RulesScreen />;
+      case "/name":
+        return <NameScreen />;
+      default:
+        return <Navigate to="/" replace />;
+    }
+  };
+
   return (
     <>
-      <AnimatePresence mode="wait">
-        <Routes location={location} key={location.pathname}>
-          <Route
-            path="/"
-            element={
-              <motion.div className="w-screen h-screen bg-black" {...animationProps}>
-                <LoadingScreen />
-              </motion.div>
-            }
-          />
-          <Route
-            path="/welcome"
-            element={
-              <motion.div className="w-screen h-screen bg-black" {...animationProps}>
-                <WelcomeScreen />
-              </motion.div>
-            }
-          />
-          <Route
-            path="/rules"
-            element={
-              <motion.div className="w-screen h-screen bg-black" {...animationProps}>
-                <RulesScreen />
-              </motion.div>
-            }
-          />
-          <Route
-            path="/name"
-            element={
-              <motion.div className="w-screen h-screen bg-black" {...animationProps}>
-                <NameScreen
-                  onSubmit={(nickname) => {
-                    console.log("Ник сохранён:", nickname);
-                    // Здесь можно перейти в главное меню или сохранить имя
-                  }}
-                />
-              </motion.div>
-            }
-          />
-          <Route path="*" element={<Navigate to="/" replace />} />
-        </Routes>
-      </AnimatePresence>
+      {/* Основная анимированная сцена */}
+      <motion.div
+        key={pendingPath}
+        className="w-screen h-screen bg-black"
+        {...animationProps}
+      >
+        {renderScene(pendingPath)}
+      </motion.div>
 
-      {/* Затемнение поверх во время перехода */}
+      {/* Затемняющий слой поверх */}
       <AnimatePresence>
         {showOverlay && (
           <motion.div
