@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import loadingBg from "@/assets/images/loading.jpg";
+import loadingBg from "../assets/images/loading.jpg";
 
 export default function LoadingScreen() {
   const navigate = useNavigate();
