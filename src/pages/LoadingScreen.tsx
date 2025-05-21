@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import loadingBg from "@/assets/images/loading.jpg";
 
-// Импорт всех картинок, которые используются на первых экранах
 import welcome from "@/assets/images/welcome.jpg";
 import rules from "@/assets/images/rules.jpg";
 import name from "@/assets/images/name.jpg";
@@ -58,7 +57,7 @@ export default function LoadingScreen() {
 
     const tipTimer = setInterval(() => {
       setCurrentTip(tips[Math.floor(Math.random() * tips.length)]);
-    }, 2000); // ✅ теперь каждые 2 секунды
+    }, 2000);
 
     const interval = setInterval(() => {
       setProgress((prev) => {
@@ -99,8 +98,8 @@ export default function LoadingScreen() {
 
         <rect x="0" y="0" width="1080" height="1920" fill="url(#bg)" />
 
-        {/* 🔁 Полоска загрузки — уже в точной ширине рамки */}
-        <foreignObject x="240" y="1090" width="600" height="65">
+        {/* ✅ Полоска загрузки — расширена, выше, скруглена */}
+        <foreignObject x="230" y="1085" width="620" height="65">
           <div
             style={{
               width: "100%",
@@ -108,6 +107,7 @@ export default function LoadingScreen() {
               backgroundColor: "transparent",
               overflow: "hidden",
               position: "relative",
+              borderRadius: "999px",
             }}
           >
             <div
@@ -116,6 +116,7 @@ export default function LoadingScreen() {
                 width: `${progress}%`,
                 background: "linear-gradient(90deg, #ffd66c, #ffeb99)",
                 transition: "width 0.3s ease",
+                borderRadius: "999px",
               }}
             />
             <div
@@ -139,7 +140,7 @@ export default function LoadingScreen() {
           </div>
         </foreignObject>
 
-        {/* 💬 Подсказка — чуть крупнее, под полосой */}
+        {/* 💬 Подсказка */}
         <foreignObject x="140" y="1200" width="800" height="120">
           <div
             style={{
