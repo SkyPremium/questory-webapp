@@ -1,6 +1,8 @@
 import { BrowserRouter as Router, useLocation, Routes, Route, Navigate } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import { useSound } from "./utils/useSound";
+import transitionSound from "./assets/sounds/transition.mp3";
 import LoadingScreen from "./pages/LoadingScreen";
 import WelcomeScreen from "./pages/WelcomeScreen";
 import RulesScreen from "./pages/RulesScreen";
@@ -8,12 +10,14 @@ import NameScreen from "./pages/NameScreen";
 
 function AnimatedRoutes() {
   const location = useLocation();
+  const playTransition = useSound(transitionSound, 0.8);
   const [showOverlay, setShowOverlay] = useState(false);
   const [pendingPath, setPendingPath] = useState(location.pathname);
 
   useEffect(() => {
     if (location.pathname !== pendingPath) {
       setShowOverlay(true);
+      playTransition();
       const timeout = setTimeout(() => {
         setPendingPath(location.pathname);
         setShowOverlay(false);

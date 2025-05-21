@@ -37,7 +37,10 @@ export default function LoadingScreen() {
     "Печатаем древние карты...",
   ];
 
+  const playTransition = useSound(transitionSound, 0.8);
+
   useEffect(() => {
+    playTransition();
     preloadImages([
       welcome,
       rules,

@@ -1,4 +1,7 @@
 import { useState } from "react";
+import { useSound } from "../utils/useSound";
+import clickSound from "../assets/sounds/click_ui.mp3";
+import confirmSound from "../assets/sounds/confirm.mp3";
 import { useNavigate } from "react-router-dom";
 import rulesBg from "../assets/images/rules.jpg";
 import logo from "../assets/images/logo.png";
@@ -9,8 +12,11 @@ import checkboxEmpty from "../assets/images/checkbox_empty.png";
 export default function RulesScreen() {
   const [checked, setChecked] = useState(false);
   const navigate = useNavigate();
+  const playClick = useSound(clickSound, 0.8);
+  const playConfirm = useSound(confirmSound, 0.8);
 
   const handleAgree = () => {
+    playConfirm();
     navigate("/name");
   };
 
@@ -45,7 +51,7 @@ export default function RulesScreen() {
           width="110"
           height="110"
           className="cursor-pointer"
-          onClick={() => setChecked(!checked)}
+          onClick={() => { playClick(); setChecked(!checked); }}
         />
 
         {/* 🟠 Кнопка "Согласен" с анимацией нажатия */}

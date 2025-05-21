@@ -1,11 +1,16 @@
 import { useNavigate } from "react-router-dom";
+import { useSound } from "../utils/useSound";
+import clickSound from "../assets/sounds/click_ui.mp3";
 import welcomeBg from "../assets/images/welcome.jpg";
 import buttonWelcome from "../assets/images/button_welcome.png";
 
 export default function WelcomeScreen() {
   const navigate = useNavigate();
 
+  const playClick = useSound(clickSound, 0.8);
+
   const handleStart = () => {
+    playClick();
     navigate("/rules");
   };
 

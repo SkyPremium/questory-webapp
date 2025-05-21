@@ -151,7 +151,7 @@ export default function NameScreen({ onSubmit }: { onSubmit: (nickname: string) 
             {/* ❌ Отмена */}
             <foreignObject x="600" y="1120" width="380" height="180">
               <button
-                onClick={() => setShowConfirm(false)}
+                onClick={() => { playClick(); setShowConfirm(false)}
                 className="w-full h-full transition-transform duration-150 active:scale-95"
                 style={{ background: "none", border: "none", padding: 0 }}
               >
