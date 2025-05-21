@@ -4,18 +4,15 @@ import LoadingScreen from "./pages/LoadingScreen";
 import WelcomeScreen from "./pages/WelcomeScreen";
 import RulesScreen from "./pages/RulesScreen";
 import NameScreen from "./pages/NameScreen";
-import { useEffect, useState } from "react";
 
 function AnimatedRoutes() {
   const location = useLocation();
 
-  const transition = { duration: 0.25 };
-
   const animationProps = {
-    initial: { scale: 1.05, opacity: 0 },
-    animate: { scale: 1, opacity: 1 },
-    exit: { scale: 0.95, opacity: 0 },
-    transition
+    initial: { opacity: 0, scale: 0.98 },
+    animate: { opacity: 1, scale: 1 },
+    exit: { opacity: 0, scale: 1.02 },
+    transition: { duration: 0.25, ease: "easeInOut" }
   };
 
   return (
