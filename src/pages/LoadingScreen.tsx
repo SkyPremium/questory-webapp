@@ -40,7 +40,7 @@ export default function LoadingScreen() {
 
     const tipTimer = setInterval(() => {
       setCurrentTip(tips[Math.floor(Math.random() * tips.length)]);
-    }, 3000); // ✅ каждые 3 секунды
+    }, 2000); // ✅ каждые 3 секунды
 
     const interval = setInterval(() => {
       setProgress((prev) => {
