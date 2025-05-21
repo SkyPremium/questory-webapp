@@ -101,18 +101,18 @@ export default function NameScreen({ onSubmit }: { onSubmit: (nickname: string) 
         {/* Модалка подтверждения ника */}
         {showConfirm && (
           <>
-            {/* 📜 Увеличенная табличка */}
+            {/* 📜 Табличка подтверждения */}
             <image href={confirmBG} x="20" y="540" width="1040" height="820" />
 
-            {/* ✏️ Ник */}
-            <foreignObject x="220" y="1090" width="640" height="110">
+            {/* ✏️ Ник — выше */}
+            <foreignObject x="220" y="1020" width="640" height="110">
               <div className="w-full h-full text-5xl font-bold text-yellow-100 text-center leading-[110px]">
                 {nickname}
               </div>
             </foreignObject>
 
-            {/* ✅ Подтвердить */}
-            <foreignObject x="180" y="1220" width="280" height="150">
+            {/* ✅ Подтвердить — крупнее и выше */}
+            <foreignObject x="160" y="1180" width="300" height="160">
               <button
                 onClick={confirmSubmit}
                 className="w-full h-full transition-transform duration-150 active:scale-95"
@@ -122,8 +122,8 @@ export default function NameScreen({ onSubmit }: { onSubmit: (nickname: string) 
               </button>
             </foreignObject>
 
-            {/* ❌ Отмена */}
-            <foreignObject x="620" y="1220" width="280" height="150">
+            {/* ❌ Отмена — крупнее и выше */}
+            <foreignObject x="620" y="1180" width="300" height="160">
               <button
                 onClick={() => setShowConfirm(false)}
                 className="w-full h-full transition-transform duration-150 active:scale-95"
