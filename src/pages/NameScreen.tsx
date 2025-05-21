@@ -6,10 +6,14 @@ import confirmYes from "@/assets/images/button_name_save_1.png";
 import confirmNo from "@/assets/images/button_name_save_2.png";
 import blackList from "../utils/blacklist";
 
+import { useSound } from "../utils/useSound";
+import clickSound from "../assets/sounds/click_ui.mp3";
+
 export default function NameScreen({ onSubmit }: { onSubmit: (nickname: string) => void }) {
   const [nickname, setNickname] = useState("");
   const [error, setError] = useState("");
   const [showConfirm, setShowConfirm] = useState(false);
+  const playClick = useSound(clickSound, 0.8);
 
   const validateNickname = (name: string) => {
     if (name.length < 4) return "Минимум 4 символа";
@@ -151,7 +155,7 @@ export default function NameScreen({ onSubmit }: { onSubmit: (nickname: string) 
             {/* ❌ Отмена */}
             <foreignObject x="600" y="1120" width="380" height="180">
               <button
-                onClick={() => { playClick(); setShowConfirm(false)}
+                onClick={() => { playClick(); setShowConfirm(false); }}
                 className="w-full h-full transition-transform duration-150 active:scale-95"
                 style={{ background: "none", border: "none", padding: 0 }}
               >
