@@ -1,17 +1,20 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import background from "@/assets/images/name.jpg";
 import buttonContinue from "@/assets/images/button_name.png";
 import confirmBG from "@/assets/images/name_save.png";
 import confirmYes from "@/assets/images/button_name_save_1.png";
 import confirmNo from "@/assets/images/button_name_save_2.png";
 import { useSound } from "../utils/useSound";
-import clickSound from "../assets/sounds/click_ui.mp3";
+import clickSound from "@/assets/sounds/click_ui.mp3";
 import blackList from "../utils/blacklist";
 
-export default function NameScreen({ onSubmit }: { onSubmit: (nickname: string) => void }) {
+export default function NameScreen() {
   const [nickname, setNickname] = useState("");
   const [error, setError] = useState("");
   const [showConfirm, setShowConfirm] = useState(false);
+  const navigate = useNavigate();
+  const playClick = useSound(clickSound, 0.8);
 
   const validateNickname = (name: string) => {
     if (name.length < 4) return "Минимум 4 символа";
@@ -33,22 +36,18 @@ export default function NameScreen({ onSubmit }: { onSubmit: (nickname: string) 
     }
   };
 
-  const playClick = useSound(clickSound, 0.8);
-
   const confirmSubmit = () => {
     playClick();
     setShowConfirm(false);
-    onSubmit(nickname);
+    navigate("/avatar");
   };
 
   return (
     <div className="w-screen h-screen bg-black overflow-hidden relative">
-      {/* ⬇️ Сама SVG-сцена */}
       <svg
         viewBox="0 0 1080 1920"
         className="w-full h-full absolute top-0 left-0"
         preserveAspectRatio="none"
-        xmlns="http://www.w3.org/2000/svg"
       >
         <defs>
           <pattern id="bg" patternUnits="userSpaceOnUse" width="1080" height="1920">
@@ -56,8 +55,6 @@ export default function NameScreen({ onSubmit }: { onSubmit: (nickname: string) 
           </pattern>
         </defs>
         <rect width="1080" height="1920" fill="url(#bg)" />
-
-        {/* Поле ввода ника */}
         <foreignObject x="190" y="960" width="700" height="120">
           <input
             type="text"
@@ -75,17 +72,11 @@ export default function NameScreen({ onSubmit }: { onSubmit: (nickname: string) 
             }}
           />
         </foreignObject>
-
-        {/* Сообщение об ошибке */}
         {!showConfirm && error && (
           <foreignObject x="190" y="1060" width="700" height="60">
-            <div className="text-red-500 text-center text-3xl font-extrabold">
-              {error}
-            </div>
+            <div className="text-red-500 text-center text-3xl font-extrabold">{error}</div>
           </foreignObject>
         )}
-
-        {/* Кнопка продолжить */}
         {!showConfirm && (
           <foreignObject x="330" y="1720" width="420" height="160">
             <button
@@ -113,53 +104,29 @@ export default function NameScreen({ onSubmit }: { onSubmit: (nickname: string) 
         )}
       </svg>
 
-      {/* ⬆️ Поверх всего: модалка подтверждения ника */}
       {showConfirm && (
         <div className="absolute top-0 left-0 w-full h-full z-50 pointer-events-auto">
-          <svg
-            viewBox="0 0 1080 1920"
-            className="w-full h-full"
-            preserveAspectRatio="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            {/* 📜 Табличка */}
+          <svg viewBox="0 0 1080 1920" className="w-full h-full" preserveAspectRatio="none">
             <image href={confirmBG} x="20" y="540" width="1040" height="820" />
-
-            {/* ✏️ Ник — по центру рамки */}
             <foreignObject x="190" y="915" width="700" height="130">
-              <div
-                className="w-full h-full text-center"
-                style={{
-                  fontSize: "52px",
-                  fontFamily: "Georgia, serif",
-                  color: "#fce5a0",
-                  lineHeight: "130px",
-                  textShadow: "0 0 4px #000",
-                  fontWeight: 600,
-                }}
-              >
+              <div className="w-full h-full text-center" style={{
+                fontSize: "52px",
+                fontFamily: "Georgia, serif",
+                color: "#fce5a0",
+                lineHeight: "130px",
+                textShadow: "0 0 4px #000",
+                fontWeight: 600,
+              }}>
                 {nickname}
               </div>
             </foreignObject>
-
-            {/* ✅ Подтвердить */}
             <foreignObject x="100" y="1120" width="380" height="180">
-              <button
-                onClick={confirmSubmit}
-                className="w-full h-full transition-transform duration-150 active:scale-95"
-                style={{ background: "none", border: "none", padding: 0 }}
-              >
+              <button onClick={confirmSubmit} className="w-full h-full transition-transform duration-150 active:scale-95" style={{ background: "none", border: "none", padding: 0 }}>
                 <img src={confirmYes} alt="Подтвердить" style={{ width: "100%", height: "100%" }} />
               </button>
             </foreignObject>
-
-            {/* ❌ Отмена */}
             <foreignObject x="600" y="1120" width="380" height="180">
-              <button
-                onClick={() => { playClick(); setShowConfirm(false); }}
-                className="w-full h-full transition-transform duration-150 active:scale-95"
-                style={{ background: "none", border: "none", padding: 0 }}
-              >
+              <button onClick={() => { playClick(); setShowConfirm(false); }} className="w-full h-full transition-transform duration-150 active:scale-95" style={{ background: "none", border: "none", padding: 0 }}>
                 <img src={confirmNo} alt="Отмена" style={{ width: "100%", height: "100%" }} />
               </button>
             </foreignObject>
