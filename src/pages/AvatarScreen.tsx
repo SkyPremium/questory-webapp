@@ -4,13 +4,12 @@ import { useSound } from "../utils/useSound";
 import clickSound from "../assets/sounds/click_ui.mp3";
 
 // 🖼️ Изображения
-import background from "../assets/images/avatar_selection_bg.jpg";
-import logo from "../assets/images/logo.png";
-import avatarFrame from "../assets/images/avatar_frame_ui_512_inside.png";
-import arrowLeft from "../assets/images/arrow_left_final.png";
-import arrowRight from "../assets/images/arrow_right_final.png";
-import buttonSelect from "../assets/images/button_select_final.png";
-import buttonDetails from "../assets/images/button_details_final.png";
+import background from "../assets/images/avatar.jpg";
+import avatarFrame from "../assets/images/avatar_2.png";
+import arrowLeft from "../assets/images/button_avatar_3.png";
+import arrowRight from "../assets/images/button_avatar_4.png";
+import buttonSelect from "../assets/images/button_avatar_2.png";
+import buttonDetails from "../assets/images/button_avatar_1.png";
 
 // 🎴 Аватары
 import avatar1 from "../assets/avatars/avatar1.png";
@@ -42,7 +41,7 @@ const avatars = [
   },
 ];
 
-export default function AvatarSelection() {
+export default function AvatarScreen() {
   const navigate = useNavigate();
   const playClick = useSound(clickSound, 0.8);
   const [index, setIndex] = useState(0);
@@ -77,9 +76,6 @@ export default function AvatarSelection() {
         </defs>
 
         <rect x="0" y="0" width="1080" height="1920" fill="url(#bg)" />
-
-        {/* 🔥 Логотип */}
-        <image href={logo} x="0" y="0" width="1080" height="300" />
 
         {/* 🎴 Основной аватар */}
         <image href={avatarFrame} x="280" y="500" width="520" height="520" />
