@@ -19,26 +19,11 @@ import avatar4 from "../assets/avatars/avatar4.png";
 import avatar5 from "../assets/avatars/avatar5.png";
 
 const avatars = [
-  {
-    name: "Эрик, юный герой",
-    image: avatar1,
-  },
-  {
-    name: "Кай, странник",
-    image: avatar2,
-  },
-  {
-    name: "Тельма, травница",
-    image: avatar3,
-  },
-  {
-    name: "Авиэль, эльфийка",
-    image: avatar4,
-  },
-  {
-    name: "Лео, ученик мага",
-    image: avatar5,
-  },
+  { name: "Эрик, юный герой", image: avatar1 },
+  { name: "Кай, странник", image: avatar2 },
+  { name: "Тельма, травница", image: avatar3 },
+  { name: "Авиэль, эльфийка", image: avatar4 },
+  { name: "Лео, ученик мага", image: avatar5 },
 ];
 
 export default function AvatarScreen() {
@@ -70,12 +55,7 @@ export default function AvatarScreen() {
         xmlns="http://www.w3.org/2000/svg"
       >
         <defs>
-          <pattern
-            id="bg"
-            patternUnits="userSpaceOnUse"
-            width="1080"
-            height="1920"
-          >
+          <pattern id="bg" patternUnits="userSpaceOnUse" width="1080" height="1920">
             <image href={background} x="0" y="0" width="1080" height="1920" />
           </pattern>
         </defs>
@@ -85,23 +65,23 @@ export default function AvatarScreen() {
         {/* 🎴 Карусель из 3 аватаров */}
         {[-1, 0, 1].map((offset) => {
           const avatarIndex = (index + offset + avatars.length) % avatars.length;
-          const xOffset = 190 + offset * 300;
-          const scale = offset === 0 ? 1.2 : 1;
-          const opacity = offset === 0 ? 1 : 0.6;
+          const xOffset = 190 + offset * 350;
+          const scale = offset === 0 ? 1.25 : 1;
+          const opacity = offset === 0 ? 1 : 0.5;
 
           return (
             <g
               key={avatarIndex}
-              transform={`translate(${xOffset}, 620) scale(${scale})`}
+              transform={`translate(${xOffset}, 600) scale(${scale})`}
               style={{ transition: "all 0.5s ease" }}
             >
               <image href={avatarFrame} width="260" height="280" />
               <image
                 href={avatars[avatarIndex].image}
-                x="8"
-                y="8"
-                width="244"
-                height="244"
+                x="6"
+                y="6"
+                width="248"
+                height="248"
                 opacity={opacity}
               />
             </g>
@@ -109,8 +89,8 @@ export default function AvatarScreen() {
         })}
 
         {/* 🏷️ Имя аватара */}
-        <foreignObject x="290" y="940" width="500" height="60">
-          <div className="text-center text-white text-xl font-semibold">
+        <foreignObject x="290" y="920" width="500" height="80">
+          <div className="text-center text-white text-2xl font-semibold">
             {avatars[index].name}
           </div>
         </foreignObject>
@@ -119,7 +99,7 @@ export default function AvatarScreen() {
         <image
           href={arrowLeft}
           x="200"
-          y="1020"
+          y="1060"
           width="80"
           height="80"
           className="cursor-pointer"
@@ -130,7 +110,7 @@ export default function AvatarScreen() {
         <image
           href={arrowRight}
           x="800"
-          y="1020"
+          y="1060"
           width="80"
           height="80"
           className="cursor-pointer"
@@ -140,20 +120,20 @@ export default function AvatarScreen() {
         {/* 🔘 Кнопка "Подробнее" */}
         <image
           href={buttonDetails}
-          x="300"
-          y="1120"
-          width="480"
-          height="110"
+          x="280"
+          y="1160"
+          width="520"
+          height="120"
           className="cursor-pointer"
         />
 
         {/* 🟪 Кнопка "Выбрать" */}
         <image
           href={buttonSelect}
-          x="300"
-          y="1250"
-          width="480"
-          height="110"
+          x="280"
+          y="1300"
+          width="520"
+          height="120"
           className="cursor-pointer"
           onClick={handleSelect}
         />
