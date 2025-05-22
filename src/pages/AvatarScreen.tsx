@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useSound } from "../utils/useSound";
 import clickSound from "../assets/sounds/click_ui.mp3";
 
-// 🖼️ Изображения
+// 🗾️ Изображения
 import background from "../assets/images/avatar.jpg";
 import avatarFrame from "../assets/images/avatar_2.png";
 import arrowLeft from "../assets/images/button_avatar_3.png";
@@ -19,26 +19,11 @@ import avatar4 from "../assets/avatars/avatar4.png";
 import avatar5 from "../assets/avatars/avatar5.png";
 
 const avatars = [
-  {
-    name: "Эрик, юный герой",
-    image: avatar1,
-  },
-  {
-    name: "Кай, странник",
-    image: avatar2,
-  },
-  {
-    name: "Тельма, травница",
-    image: avatar3,
-  },
-  {
-    name: "Авиэль, эльфийка",
-    image: avatar4,
-  },
-  {
-    name: "Лео, ученик мага",
-    image: avatar5,
-  },
+  { name: "Эрик, юный герой", image: avatar1 },
+  { name: "Кай, странник", image: avatar2 },
+  { name: "Тельма, травница", image: avatar3 },
+  { name: "Авиэль, эльфийка", image: avatar4 },
+  { name: "Лео, ученик мага", image: avatar5 },
 ];
 
 export default function AvatarScreen() {
@@ -80,30 +65,30 @@ export default function AvatarScreen() {
         {/* 🎴 Карусель из 3 аватаров */}
         {[-1, 0, 1].map((offset) => {
           const avatarIndex = (index + offset + avatars.length) % avatars.length;
-          const xOffset = 180 + offset * 300; // увеличено расстояние и положение
-          const scale = offset === 0 ? 1.6 : 1.2; // значительно увеличено
+          const xOffset = 180 + offset * 300;
+          const scale = offset === 0 ? 2.0 : 1.4;
           const opacity = offset === 0 ? 1 : 0.6;
 
           return (
             <g
               key={avatarIndex}
-              transform={`translate(${xOffset}, 620) scale(${scale})`}
+              transform={`translate(${xOffset}, 580) scale(${scale})`}
               style={{ transition: "all 0.5s ease" }}
             >
               <image href={avatarFrame} width="200" height="220" />
               <image
                 href={avatars[avatarIndex].image}
-                x="4"
-                y="4"
-                width="192"
-                height="192"
+                x="0"
+                y="0"
+                width="200"
+                height="220"
                 opacity={opacity}
               />
             </g>
           );
         })}
 
-        {/* 🏷️ Имя аватара */}
+        {/* 🏧 Имя аватара */}
         <foreignObject x="290" y="980" width="500" height="60">
           <div className="text-center text-white text-xl font-semibold">
             {avatars[index].name}
@@ -113,10 +98,10 @@ export default function AvatarScreen() {
         {/* ⬅️ Стрелка влево */}
         <image
           href={arrowLeft}
-          x="180"
+          x="160"
           y="1080"
-          width="190"
-          height="190"
+          width="100"
+          height="100"
           className="cursor-pointer"
           onClick={prevAvatar}
         />
@@ -124,10 +109,10 @@ export default function AvatarScreen() {
         {/* ➡️ Стрелка вправо */}
         <image
           href={arrowRight}
-          x="810"
+          x="820"
           y="1080"
-          width="190"
-          height="190"
+          width="100"
+          height="100"
           className="cursor-pointer"
           onClick={nextAvatar}
         />
@@ -135,20 +120,20 @@ export default function AvatarScreen() {
         {/* 🔘 Кнопка "Подробнее" */}
         <image
           href={buttonDetails}
-          x="270"
+          x="330"
           y="1200"
-          width="840"
-          height="220"
+          width="420"
+          height="120"
           className="cursor-pointer"
         />
 
         {/* 🟪 Кнопка "Выбрать" */}
         <image
           href={buttonSelect}
-          x="270"
+          x="330"
           y="1350"
-          width="840"
-          height="220"
+          width="420"
+          height="120"
           className="cursor-pointer"
           onClick={handleSelect}
         />
