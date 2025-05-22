@@ -65,7 +65,7 @@ export default function AvatarScreen() {
         {/* 🎴 Карусель из 3 аватаров */}
         {[-1, 0, 1].map((offset) => {
           const avatarIndex = (index + offset + avatars.length) % avatars.length;
-          const xOffset = 100 + offset * 440; // большее расстояние и левее
+          const xOffset = 200 + offset * 440; // большее расстояние и левее
           const scale = offset === 0 ? 2.0 : 1.4;
           const opacity = offset === 0 ? 1 : 0.6;
 
@@ -99,7 +99,7 @@ export default function AvatarScreen() {
         <image
           href={arrowLeft}
           x="160"
-          y="1200"
+          y="1600"
           width="120"
           height="120"
           className="cursor-pointer"
@@ -110,7 +110,7 @@ export default function AvatarScreen() {
         <image
           href={arrowRight}
           x="800"
-          y="1200"
+          y="1600"
           width="120"
           height="120"
           className="cursor-pointer"
@@ -121,9 +121,9 @@ export default function AvatarScreen() {
         <image
           href={buttonDetails}
           x="330"
-          y="1350"
-          width="420"
-          height="150"
+          y="1550"
+          width="600"
+          height="250"
           className="cursor-pointer"
         />
 
@@ -131,9 +131,9 @@ export default function AvatarScreen() {
         <image
           href={buttonSelect}
           x="330"
-          y="1500"
-          width="420"
-          height="150"
+          y="1600"
+          width="600"
+          height="250"
           className="cursor-pointer"
           onClick={handleSelect}
         />
