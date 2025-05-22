@@ -65,13 +65,12 @@ export default function AvatarScreen() {
         {/* 🎴 Карусель из 3 аватаров */}
         {[-1, 0, 1].map((offset) => {
           const avatarIndex = (index + offset + avatars.length) % avatars.length;
+          const spacing = 420;
+          const baseX = 540; // центр экрана
+          const frameWidth = 280;
           const scale = offset === 0 ? 2.0 : 1.4;
           const opacity = offset === 0 ? 1 : 0.6;
-
-          // Центр в середине экрана (x=540), + смещение между центрами
-          const centerX = 250;
-          const spacing = 370; // расстояние между центрами карточек
-          const xOffset = centerX + offset * spacing - (offset !== 0 ? (scale - 1) * 130 : 0);
+          const xOffset = baseX - (frameWidth * scale) / 2 + offset * spacing;
 
           return (
             <g
@@ -113,7 +112,7 @@ export default function AvatarScreen() {
         {/* ➡️ Стрелка вправо */}
         <image
           href={arrowRight}
-          x="750"
+          x="830"
           y="1650"
           width="200"
           height="200"
@@ -124,20 +123,20 @@ export default function AvatarScreen() {
         {/* 🔘 Кнопка "Подробнее" */}
         <image
           href={buttonDetails}
-          x="240"
+          x="300"
           y="1350"
           width="600"
-          height="220"
+          height="250"
           className="cursor-pointer"
         />
 
         {/* 🟪 Кнопка "Выбрать" */}
         <image
           href={buttonSelect}
-          x="240"
+          x="300"
           y="1600"
           width="600"
-          height="220"
+          height="250"
           className="cursor-pointer"
           onClick={handleSelect}
         />
