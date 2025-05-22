@@ -85,8 +85,8 @@ export default function AvatarScreen() {
         {/* 🎴 Карусель из 3 аватаров */}
         {[-1, 0, 1].map((offset) => {
           const avatarIndex = (index + offset + avatars.length) % avatars.length;
-          const xOffset = 300 + offset * 250;
-          const scale = offset === 0 ? 1.1 : 0.85;
+          const xOffset = 220 + offset * 320;
+          const scale = offset === 0 ? 1.2 : 0.9;
           const opacity = offset === 0 ? 1 : 0.6;
 
           return (
@@ -95,13 +95,13 @@ export default function AvatarScreen() {
               transform={`translate(${xOffset}, 700) scale(${scale})`}
               style={{ transition: "all 0.5s ease" }}
             >
-              <image href={avatarFrame} width="220" height="240" />
+              <image href={avatarFrame} width="240" height="260" />
               <image
                 href={avatars[avatarIndex].image}
-                x="4"
-                y="4"
-                width="212"
-                height="212"
+                x="6"
+                y="6"
+                width="228"
+                height="228"
                 opacity={opacity}
               />
             </g>
@@ -109,7 +109,7 @@ export default function AvatarScreen() {
         })}
 
         {/* 🏷️ Имя аватара */}
-        <foreignObject x="290" y="960" width="500" height="60">
+        <foreignObject x="290" y="1050" width="500" height="60">
           <div className="text-center text-white text-xl font-semibold">
             {avatars[index].name}
           </div>
@@ -118,8 +118,8 @@ export default function AvatarScreen() {
         {/* ⬅️ Стрелка влево */}
         <image
           href={arrowLeft}
-          x="200"
-          y="1060"
+          x="240"
+          y="1130"
           width="80"
           height="80"
           className="cursor-pointer"
@@ -129,8 +129,8 @@ export default function AvatarScreen() {
         {/* ➡️ Стрелка вправо */}
         <image
           href={arrowRight}
-          x="800"
-          y="1060"
+          x="760"
+          y="1130"
           width="80"
           height="80"
           className="cursor-pointer"
@@ -140,9 +140,9 @@ export default function AvatarScreen() {
         {/* 🔘 Кнопка "Подробнее" */}
         <image
           href={buttonDetails}
-          x="300"
-          y="1170"
-          width="480"
+          x="280"
+          y="1230"
+          width="520"
           height="110"
           className="cursor-pointer"
         />
@@ -150,9 +150,9 @@ export default function AvatarScreen() {
         {/* 🟪 Кнопка "Выбрать" */}
         <image
           href={buttonSelect}
-          x="300"
-          y="1300"
-          width="480"
+          x="280"
+          y="1360"
+          width="520"
           height="110"
           className="cursor-pointer"
           onClick={handleSelect}
