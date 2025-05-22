@@ -115,8 +115,8 @@ export default function AvatarScreen() {
           href={arrowLeft}
           x="180"
           y="1080"
-          width="90"
-          height="90"
+          width="190"
+          height="190"
           className="cursor-pointer"
           onClick={prevAvatar}
         />
@@ -126,8 +126,8 @@ export default function AvatarScreen() {
           href={arrowRight}
           x="810"
           y="1080"
-          width="90"
-          height="90"
+          width="190"
+          height="190"
           className="cursor-pointer"
           onClick={nextAvatar}
         />
@@ -137,8 +137,8 @@ export default function AvatarScreen() {
           href={buttonDetails}
           x="270"
           y="1200"
-          width="540"
-          height="120"
+          width="840"
+          height="220"
           className="cursor-pointer"
         />
 
@@ -147,8 +147,8 @@ export default function AvatarScreen() {
           href={buttonSelect}
           x="270"
           y="1350"
-          width="540"
-          height="120"
+          width="840"
+          height="220"
           className="cursor-pointer"
           onClick={handleSelect}
         />
