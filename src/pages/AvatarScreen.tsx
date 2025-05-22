@@ -85,23 +85,23 @@ export default function AvatarScreen() {
         {/* 🎴 Карусель из 3 аватаров */}
         {[-1, 0, 1].map((offset) => {
           const avatarIndex = (index + offset + avatars.length) % avatars.length;
-          const xOffset = 300 + offset * 250;
-          const scale = offset === 0 ? 1 : 0.75;
-          const opacity = offset === 0 ? 1 : 0.6;
+          const xOffset = 270 + offset * 270;
+          const scale = offset === 0 ? 1.2 : 0.85;
+          const opacity = offset === 0 ? 1 : 0.5;
 
           return (
             <g
               key={avatarIndex}
-              transform={`translate(${xOffset}, 600) scale(${scale})`}
+              transform={`translate(${xOffset}, 720) scale(${scale})`}
               style={{ transition: "all 0.5s ease" }}
             >
-              <image href={avatarFrame} width="200" height="220" />
+              <image href={avatarFrame} width="220" height="240" />
               <image
                 href={avatars[avatarIndex].image}
                 x="4"
                 y="4"
-                width="192"
-                height="192"
+                width="212"
+                height="212"
                 opacity={opacity}
               />
             </g>
@@ -109,7 +109,7 @@ export default function AvatarScreen() {
         })}
 
         {/* 🏷️ Имя аватара */}
-        <foreignObject x="290" y="950" width="500" height="60">
+        <foreignObject x="290" y="970" width="500" height="60">
           <div className="text-center text-white text-xl font-semibold">
             {avatars[index].name}
           </div>
@@ -119,9 +119,9 @@ export default function AvatarScreen() {
         <image
           href={arrowLeft}
           x="240"
-          y="1030"
-          width="60"
-          height="60"
+          y="1050"
+          width="80"
+          height="80"
           className="cursor-pointer"
           onClick={prevAvatar}
         />
@@ -129,10 +129,10 @@ export default function AvatarScreen() {
         {/* ➡️ Стрелка вправо */}
         <image
           href={arrowRight}
-          x="780"
-          y="1030"
-          width="60"
-          height="60"
+          x="760"
+          y="1050"
+          width="80"
+          height="80"
           className="cursor-pointer"
           onClick={nextAvatar}
         />
@@ -141,9 +141,9 @@ export default function AvatarScreen() {
         <image
           href={buttonDetails}
           x="300"
-          y="1120"
+          y="1150"
           width="480"
-          height="100"
+          height="110"
           className="cursor-pointer"
         />
 
@@ -151,9 +151,9 @@ export default function AvatarScreen() {
         <image
           href={buttonSelect}
           x="300"
-          y="1250"
+          y="1290"
           width="480"
-          height="100"
+          height="110"
           className="cursor-pointer"
           onClick={handleSelect}
         />
