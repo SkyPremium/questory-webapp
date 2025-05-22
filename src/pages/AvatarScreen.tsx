@@ -80,8 +80,8 @@ export default function AvatarScreen() {
                 href={avatars[avatarIndex].image}
                 x="0"
                 y="0"
-                width="200"
-                height="220"
+                width="300"
+                height="320"
                 opacity={opacity}
               />
             </g>
@@ -100,8 +100,8 @@ export default function AvatarScreen() {
           href={arrowLeft}
           x="160"
           y="1080"
-          width="100"
-          height="100"
+          width="200"
+          height="200"
           className="cursor-pointer"
           onClick={prevAvatar}
         />
@@ -111,8 +111,8 @@ export default function AvatarScreen() {
           href={arrowRight}
           x="820"
           y="1080"
-          width="100"
-          height="100"
+          width="200"
+          height="200"
           className="cursor-pointer"
           onClick={nextAvatar}
         />
@@ -122,8 +122,8 @@ export default function AvatarScreen() {
           href={buttonDetails}
           x="330"
           y="1200"
-          width="420"
-          height="120"
+          width="620"
+          height="220"
           className="cursor-pointer"
         />
 
@@ -132,8 +132,8 @@ export default function AvatarScreen() {
           href={buttonSelect}
           x="330"
           y="1350"
-          width="420"
-          height="120"
+          width="620"
+          height="220"
           className="cursor-pointer"
           onClick={handleSelect}
         />
