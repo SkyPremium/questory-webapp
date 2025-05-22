@@ -19,14 +19,29 @@ import avatar4 from "../assets/avatars/avatar4.png";
 import avatar5 from "../assets/avatars/avatar5.png";
 
 const avatars = [
-  { name: "Эрик, юный герой", image: avatar1 },
-  { name: "Кай, странник", image: avatar2 },
-  { name: "Тельма, травница", image: avatar3 },
-  { name: "Авиэль, эльфийка", image: avatar4 },
-  { name: "Лео, ученик мага", image: avatar5 },
+  {
+    name: "Эрик, юный герой",
+    image: avatar1,
+  },
+  {
+    name: "Кай, странник",
+    image: avatar2,
+  },
+  {
+    name: "Тельма, травница",
+    image: avatar3,
+  },
+  {
+    name: "Авиэль, эльфийка",
+    image: avatar4,
+  },
+  {
+    name: "Лео, ученик мага",
+    image: avatar5,
+  },
 ];
 
-export default function AvatarSelection() {
+export default function AvatarScreen() {
   const navigate = useNavigate();
   const playClick = useSound(clickSound, 0.8);
   const [index, setIndex] = useState(0);
@@ -46,11 +61,6 @@ export default function AvatarSelection() {
     navigate("/training");
   };
 
-  const getAvatarAt = (offset: number) => {
-    const newIndex = (index + offset + avatars.length) % avatars.length;
-    return avatars[newIndex];
-  };
-
   return (
     <div className="w-screen h-screen flex items-center justify-center bg-black overflow-hidden">
       <svg
@@ -60,27 +70,46 @@ export default function AvatarSelection() {
         xmlns="http://www.w3.org/2000/svg"
       >
         <defs>
-          <pattern id="bg" patternUnits="userSpaceOnUse" width="1080" height="1920">
+          <pattern
+            id="bg"
+            patternUnits="userSpaceOnUse"
+            width="1080"
+            height="1920"
+          >
             <image href={background} x="0" y="0" width="1080" height="1920" />
           </pattern>
         </defs>
 
         <rect x="0" y="0" width="1080" height="1920" fill="url(#bg)" />
 
-        {/* 🎴 Центр аватар */}
-        <image href={avatarFrame} x="284" y="560" width="512" height="512" />
-        <image href={avatars[index].image} x="288" y="564" width="504" height="504" />
+        {/* 🎴 Карусель из 3 аватаров */}
+        {[-1, 0, 1].map((offset) => {
+          const avatarIndex = (index + offset + avatars.length) % avatars.length;
+          const xOffset = 300 + offset * 250;
+          const scale = offset === 0 ? 1 : 0.75;
+          const opacity = offset === 0 ? 1 : 0.6;
 
-        {/* 🎴 Левый аватар */}
-        <image href={avatarFrame} x="80" y="610" width="256" height="256" opacity="0.5" />
-        <image href={getAvatarAt(-1).image} x="84" y="614" width="248" height="248" opacity="0.5" />
+          return (
+            <g
+              key={avatarIndex}
+              transform={`translate(${xOffset}, 600) scale(${scale})`}
+              style={{ transition: "all 0.5s ease" }}
+            >
+              <image href={avatarFrame} width="200" height="220" />
+              <image
+                href={avatars[avatarIndex].image}
+                x="4"
+                y="4"
+                width="192"
+                height="192"
+                opacity={opacity}
+              />
+            </g>
+          );
+        })}
 
-        {/* 🎴 Правый аватар */}
-        <image href={avatarFrame} x="744" y="610" width="256" height="256" opacity="0.5" />
-        <image href={getAvatarAt(1).image} x="748" y="614" width="248" height="248" opacity="0.5" />
-
-        {/* 🏷️ Имя */}
-        <foreignObject x="280" y="1090" width="520" height="60">
+        {/* 🏷️ Имя аватара */}
+        <foreignObject x="290" y="950" width="500" height="60">
           <div className="text-center text-white text-xl font-semibold">
             {avatars[index].name}
           </div>
@@ -89,10 +118,10 @@ export default function AvatarSelection() {
         {/* ⬅️ Стрелка влево */}
         <image
           href={arrowLeft}
-          x="260"
-          y="1200"
-          width="80"
-          height="80"
+          x="240"
+          y="1030"
+          width="60"
+          height="60"
           className="cursor-pointer"
           onClick={prevAvatar}
         />
@@ -100,10 +129,10 @@ export default function AvatarSelection() {
         {/* ➡️ Стрелка вправо */}
         <image
           href={arrowRight}
-          x="740"
-          y="1200"
-          width="80"
-          height="80"
+          x="780"
+          y="1030"
+          width="60"
+          height="60"
           className="cursor-pointer"
           onClick={nextAvatar}
         />
@@ -112,7 +141,7 @@ export default function AvatarSelection() {
         <image
           href={buttonDetails}
           x="300"
-          y="1320"
+          y="1120"
           width="480"
           height="100"
           className="cursor-pointer"
@@ -122,7 +151,7 @@ export default function AvatarSelection() {
         <image
           href={buttonSelect}
           x="300"
-          y="1440"
+          y="1250"
           width="480"
           height="100"
           className="cursor-pointer"
