@@ -75,7 +75,7 @@ export default function AvatarScreen() {
               transform={`translate(${xOffset}, 600) scale(${scale})`}
               style={{ transition: "all 0.5s ease" }}
             >
-              <image href={avatarFrame} width="300" height="350" />
+              <image href={avatarFrame} width="280" height="330" />
               <image
                 href={avatars[avatarIndex].image}
                 x="0"
@@ -98,7 +98,7 @@ export default function AvatarScreen() {
         {/* ⬅️ Стрелка влево */}
         <image
           href={arrowLeft}
-          x="160"
+          x="100"
           y="1600"
           width="200"
           height="200"
@@ -120,8 +120,8 @@ export default function AvatarScreen() {
         {/* 🔘 Кнопка "Подробнее" */}
         <image
           href={buttonDetails}
-          x="330"
-          y="1450"
+          x="300"
+          y="1350"
           width="600"
           height="250"
           className="cursor-pointer"
@@ -130,7 +130,7 @@ export default function AvatarScreen() {
         {/* 🟪 Кнопка "Выбрать" */}
         <image
           href={buttonSelect}
-          x="330"
+          x="300"
           y="1600"
           width="600"
           height="250"
