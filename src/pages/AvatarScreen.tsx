@@ -80,8 +80,8 @@ export default function AvatarScreen() {
                 href={avatars[avatarIndex].image}
                 x="0"
                 y="0"
-                width="200"
-                height="200"
+                width="230"
+                height="230"
                 opacity={opacity}
               />
             </g>
