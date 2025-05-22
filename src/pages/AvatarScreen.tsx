@@ -19,26 +19,11 @@ import avatar4 from "../assets/avatars/avatar4.png";
 import avatar5 from "../assets/avatars/avatar5.png";
 
 const avatars = [
-  {
-    name: "Эрик, юный герой",
-    image: avatar1,
-  },
-  {
-    name: "Кай, странник",
-    image: avatar2,
-  },
-  {
-    name: "Тельма, травница",
-    image: avatar3,
-  },
-  {
-    name: "Авиэль, эльфийка",
-    image: avatar4,
-  },
-  {
-    name: "Лео, ученик мага",
-    image: avatar5,
-  },
+  { name: "Эрик, юный герой", image: avatar1 },
+  { name: "Кай, странник", image: avatar2 },
+  { name: "Тельма, травница", image: avatar3 },
+  { name: "Авиэль, эльфийка", image: avatar4 },
+  { name: "Лео, ученик мага", image: avatar5 },
 ];
 
 export default function AvatarSelection() {
@@ -61,6 +46,12 @@ export default function AvatarSelection() {
     navigate("/training");
   };
 
+  const visibleIndexes = [
+    (index - 1 + avatars.length) % avatars.length,
+    index,
+    (index + 1) % avatars.length,
+  ];
+
   return (
     <div className="w-screen h-screen flex items-center justify-center bg-black overflow-hidden">
       <svg
@@ -77,31 +68,26 @@ export default function AvatarSelection() {
 
         <rect x="0" y="0" width="1080" height="1920" fill="url(#bg)" />
 
-        {/* 🎴 Аватары-карусель */}
-        {avatars.map((avatar, i) => {
-          const offset = i - index;
-          let x = 540 + offset * 300;
-          if (offset === -avatars.length + 1) x = 540 + 300;
-          if (offset === avatars.length - 1) x = 540 - 300;
-          const scale = i === index ? 1 : 0.7;
-          const opacity = i === index ? 1 : 0.6;
+        {/* 🎴 Аватар-карусель */}
+        {visibleIndexes.map((i, position) => {
+          const offset = (position - 1) * 300;
+          const scale = position === 1 ? 1 : 0.75;
+          const opacity = position === 1 ? 1 : 0.5;
           return (
             <g
               key={i}
-              style={{
-                transition: "transform 0.5s, opacity 0.5s",
-                transform: `translate(${x - 260}px, 500px) scale(${scale})`,
-                opacity,
-              }}
+              transform={`translate(${540 + offset - 256}, 700) scale(${scale})`}
+              style={{ transition: "transform 0.3s ease, opacity 0.3s ease" }}
+              opacity={opacity}
             >
-              <image href={avatarFrame} x="0" y="0" width="520" height="520" />
-              <image href={avatar.image} x="4" y="4" width="512" height="512" />
+              <image href={avatarFrame} x="0" y="0" width="512" height="512" />
+              <image href={avatars[i].image} x="0" y="0" width="512" height="512" />
             </g>
           );
         })}
 
         {/* 🏷️ Имя */}
-        <foreignObject x="280" y="1060" width="520" height="60">
+        <foreignObject x="280" y="1250" width="520" height="60">
           <div className="text-center text-white text-xl font-semibold">
             {avatars[index].name}
           </div>
@@ -110,10 +96,10 @@ export default function AvatarSelection() {
         {/* ⬅️ Стрелка влево */}
         <image
           href={arrowLeft}
-          x="250"
-          y="1160"
-          width="80"
-          height="80"
+          x="240"
+          y="1350"
+          width="60"
+          height="60"
           className="cursor-pointer"
           onClick={prevAvatar}
         />
@@ -121,10 +107,10 @@ export default function AvatarSelection() {
         {/* ➡️ Стрелка вправо */}
         <image
           href={arrowRight}
-          x="750"
-          y="1160"
-          width="80"
-          height="80"
+          x="780"
+          y="1350"
+          width="60"
+          height="60"
           className="cursor-pointer"
           onClick={nextAvatar}
         />
@@ -133,7 +119,7 @@ export default function AvatarSelection() {
         <image
           href={buttonDetails}
           x="300"
-          y="1260"
+          y="1440"
           width="480"
           height="100"
           className="cursor-pointer"
@@ -143,7 +129,7 @@ export default function AvatarSelection() {
         <image
           href={buttonSelect}
           x="300"
-          y="1380"
+          y="1570"
           width="480"
           height="100"
           className="cursor-pointer"
