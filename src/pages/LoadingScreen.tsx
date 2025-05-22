@@ -38,6 +38,12 @@ export default function LoadingScreen() {
   ];
 
   useEffect(() => {
+    // ВАЖНО: убираем стандартный прелоадер Telegram
+    if (window.Telegram?.WebApp) {
+      window.Telegram.WebApp.ready();
+      window.Telegram.WebApp.expand();
+    }
+
     preloadImages([
       welcome,
       rules,
