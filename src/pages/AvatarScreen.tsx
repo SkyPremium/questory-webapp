@@ -85,14 +85,14 @@ export default function AvatarScreen() {
         {/* 🎴 Карусель из 3 аватаров */}
         {[-1, 0, 1].map((offset) => {
           const avatarIndex = (index + offset + avatars.length) % avatars.length;
-          const xOffset = 270 + offset * 270;
-          const scale = offset === 0 ? 1.2 : 0.85;
-          const opacity = offset === 0 ? 1 : 0.5;
+          const xOffset = 300 + offset * 250;
+          const scale = offset === 0 ? 1.1 : 0.85;
+          const opacity = offset === 0 ? 1 : 0.6;
 
           return (
             <g
               key={avatarIndex}
-              transform={`translate(${xOffset}, 720) scale(${scale})`}
+              transform={`translate(${xOffset}, 700) scale(${scale})`}
               style={{ transition: "all 0.5s ease" }}
             >
               <image href={avatarFrame} width="220" height="240" />
@@ -109,7 +109,7 @@ export default function AvatarScreen() {
         })}
 
         {/* 🏷️ Имя аватара */}
-        <foreignObject x="290" y="970" width="500" height="60">
+        <foreignObject x="290" y="960" width="500" height="60">
           <div className="text-center text-white text-xl font-semibold">
             {avatars[index].name}
           </div>
@@ -118,8 +118,8 @@ export default function AvatarScreen() {
         {/* ⬅️ Стрелка влево */}
         <image
           href={arrowLeft}
-          x="240"
-          y="1050"
+          x="200"
+          y="1060"
           width="80"
           height="80"
           className="cursor-pointer"
@@ -129,8 +129,8 @@ export default function AvatarScreen() {
         {/* ➡️ Стрелка вправо */}
         <image
           href={arrowRight}
-          x="760"
-          y="1050"
+          x="800"
+          y="1060"
           width="80"
           height="80"
           className="cursor-pointer"
@@ -141,7 +141,7 @@ export default function AvatarScreen() {
         <image
           href={buttonDetails}
           x="300"
-          y="1150"
+          y="1170"
           width="480"
           height="110"
           className="cursor-pointer"
@@ -151,7 +151,7 @@ export default function AvatarScreen() {
         <image
           href={buttonSelect}
           x="300"
-          y="1290"
+          y="1300"
           width="480"
           height="110"
           className="cursor-pointer"
