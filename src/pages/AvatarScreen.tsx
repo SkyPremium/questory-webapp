@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useSound } from "../utils/useSound";
 import clickSound from "../assets/sounds/click_ui.mp3";
 
+// 🖼️ Изображения
 import background from "../assets/images/avatar.jpg";
 import avatarFrame from "../assets/images/avatar_2.png";
 import arrowLeft from "../assets/images/button_avatar_3.png";
@@ -10,6 +11,7 @@ import arrowRight from "../assets/images/button_avatar_4.png";
 import buttonSelect from "../assets/images/button_avatar_2.png";
 import buttonDetails from "../assets/images/button_avatar_1.png";
 
+// 🎴 Аватары
 import avatar1 from "../assets/avatars/avatar1.png";
 import avatar2 from "../assets/avatars/avatar2.png";
 import avatar3 from "../assets/avatars/avatar3.png";
@@ -17,52 +19,26 @@ import avatar4 from "../assets/avatars/avatar4.png";
 import avatar5 from "../assets/avatars/avatar5.png";
 
 const avatars = [
-  {
-    name: "Эрик, юный герой",
-    image: avatar1,
-  },
-  {
-    name: "Кай, странник",
-    image: avatar2,
-  },
-  {
-    name: "Тельма, травница",
-    image: avatar3,
-  },
-  {
-    name: "Авиэль, эльфийка",
-    image: avatar4,
-  },
-  {
-    name: "Лео, ученик мага",
-    image: avatar5,
-  },
+  { name: "Эрик, юный герой", image: avatar1 },
+  { name: "Кай, странник", image: avatar2 },
+  { name: "Тельма, травница", image: avatar3 },
+  { name: "Авиэль, эльфийка", image: avatar4 },
+  { name: "Лео, ученик мага", image: avatar5 },
 ];
 
-export default function AvatarScreen() {
-  const [index, setIndex] = useState(0);
-  const [animating, setAnimating] = useState(false);
+export default function AvatarSelection() {
   const navigate = useNavigate();
   const playClick = useSound(clickSound, 0.8);
+  const [index, setIndex] = useState(0);
 
   const nextAvatar = () => {
-    if (animating) return;
     playClick();
-    setAnimating(true);
-    setTimeout(() => {
-      setIndex((prev) => (prev + 1) % avatars.length);
-      setAnimating(false);
-    }, 300);
+    setIndex((prev) => (prev + 1) % avatars.length);
   };
 
   const prevAvatar = () => {
-    if (animating) return;
     playClick();
-    setAnimating(true);
-    setTimeout(() => {
-      setIndex((prev) => (prev - 1 + avatars.length) % avatars.length);
-      setAnimating(false);
-    }, 300);
+    setIndex((prev) => (prev - 1 + avatars.length) % avatars.length);
   };
 
   const handleSelect = () => {
@@ -70,81 +46,101 @@ export default function AvatarScreen() {
     navigate("/training");
   };
 
+  const getAvatarAt = (offset: number) => {
+    const i = (index + offset + avatars.length) % avatars.length;
+    return avatars[i];
+  };
+
   return (
-    <div className="w-screen h-screen flex items-center justify-center bg-black overflow-hidden relative">
-      <img
-        src={background}
-        alt="bg"
-        className="absolute w-full h-full object-fill"
-      />
+    <div className="w-screen h-screen flex items-center justify-center bg-black overflow-hidden">
+      <svg
+        viewBox="0 0 1080 1920"
+        className="w-full h-full"
+        preserveAspectRatio="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <defs>
+          <pattern id="bg" patternUnits="userSpaceOnUse" width="1080" height="1920">
+            <image href={background} x="0" y="0" width="1080" height="1920" />
+          </pattern>
+        </defs>
 
-      <div className="absolute top-[300px] w-full flex items-center justify-center gap-8 transition-all duration-300 ease-in-out">
-        {avatars.map((avatar, i) => {
-          const offset = i - index;
-          let scale = 1;
-          let opacity = 1;
-          if (offset === 0) scale = 1;
-          else scale = 0.7;
-          opacity = offset === 0 ? 1 : 0.6;
+        <rect x="0" y="0" width="1080" height="1920" fill="url(#bg)" />
 
-          return (
-            <div
-              key={i}
-              className="transition-transform duration-300 ease-in-out"
-              style={{
-                transform: `translateX(${offset * 260}px) scale(${scale})`,
-                opacity,
-                zIndex: offset === 0 ? 2 : 1,
-                position: "absolute",
-              }}
-            >
-              <div className="relative w-[220px] h-[270px]">
-                <img
-                  src={avatar.image}
-                  alt="avatar"
-                  className="absolute w-[220px] h-[220px] object-cover top-0 left-0 rounded-md"
-                />
-                <img
-                  src={avatarFrame}
-                  alt="frame"
-                  className="absolute w-[220px] h-[270px] top-0 left-0"
-                />
-              </div>
-            </div>
-          );
-        })}
-      </div>
+        {/* 🎴 Левый аватар */}
+        <image
+          href={getAvatarAt(-1).image}
+          x="150"
+          y="520"
+          width="250"
+          height="250"
+          opacity="0.5"
+        />
 
-      <div className="absolute top-[620px] w-full text-center text-white text-xl font-semibold">
-        {avatars[index].name}
-      </div>
+        {/* 🎴 Основной аватар */}
+        <image href={avatarFrame} x="290" y="450" width="500" height="500" />
+        <image href={avatars[index].image} x="294" y="454" width="492" height="492" />
 
-      <div className="absolute top-[700px] flex justify-center w-full gap-4">
-        <img
-          src={arrowLeft}
-          className="cursor-pointer w-[60px] h-[60px]"
+        {/* 🎴 Правый аватар */}
+        <image
+          href={getAvatarAt(1).image}
+          x="680"
+          y="520"
+          width="250"
+          height="250"
+          opacity="0.5"
+        />
+
+        {/* 🏷️ Имя */}
+        <foreignObject x="300" y="970" width="480" height="60">
+          <div className="text-center text-white text-xl font-semibold">
+            {avatars[index].name}
+          </div>
+        </foreignObject>
+
+        {/* ⬅️ Стрелка влево */}
+        <image
+          href={arrowLeft}
+          x="220"
+          y="1200"
+          width="60"
+          height="60"
+          className="cursor-pointer"
           onClick={prevAvatar}
         />
-        <img
-          src={arrowRight}
-          className="cursor-pointer w-[60px] h-[60px]"
+
+        {/* ➡️ Стрелка вправо */}
+        <image
+          href={arrowRight}
+          x="800"
+          y="1200"
+          width="60"
+          height="60"
+          className="cursor-pointer"
           onClick={nextAvatar}
         />
-      </div>
 
-      <div className="absolute top-[800px] w-full flex flex-col items-center gap-4">
-        <img
-          src={buttonDetails}
-          className="cursor-pointer w-[320px]"
-          alt="Подробнее"
+        {/* 🔘 Кнопка "Подробнее" */}
+        <image
+          href={buttonDetails}
+          x="300"
+          y="1300"
+          width="480"
+          height="100"
+          className="cursor-pointer"
         />
-        <img
-          src={buttonSelect}
-          className="cursor-pointer w-[320px]"
+
+        {/* 🟪 Кнопка "Выбрать" */}
+        <image
+          href={buttonSelect}
+          x="300"
+          y="1420"
+          width="480"
+          height="100"
+          className="cursor-pointer"
           onClick={handleSelect}
-          alt="Выбрать"
         />
-      </div>
+      </svg>
     </div>
   );
 }
