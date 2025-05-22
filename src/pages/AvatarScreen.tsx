@@ -65,16 +65,17 @@ export default function AvatarScreen() {
         {/* 🎴 Карусель из 3 аватаров */}
         {[-1, 0, 1].map((offset) => {
           const avatarIndex = (index + offset + avatars.length) % avatars.length;
-          const baseX = 220;
-          const spacing = 470;
-          const xOffset = baseX + offset * spacing;
-          const scale = offset === 0 ? 2.0 : 1.4;
+
+          const centerX = 1080 / 2 - 140; // центр экрана минус половина ширины рамки
+          const distance = 330; // расстояние между аватарами
+          const xOffset = centerX + offset * distance;
+          const scale = offset === 0 ? 1.6 : 1.2;
           const opacity = offset === 0 ? 1 : 0.6;
 
           return (
             <g
               key={avatarIndex}
-              transform={`translate(${xOffset}, 600) scale(${scale})`}
+              transform={`translate(${xOffset}, 580) scale(${scale})`}
               style={{ transition: "all 0.5s ease" }}
             >
               <image href={avatarFrame} width="280" height="330" />
@@ -125,7 +126,7 @@ export default function AvatarScreen() {
           x="240"
           y="1350"
           width="600"
-          height="250"
+          height="200"
           className="cursor-pointer"
         />
 
@@ -135,7 +136,7 @@ export default function AvatarScreen() {
           x="240"
           y="1600"
           width="600"
-          height="250"
+          height="200"
           className="cursor-pointer"
           onClick={handleSelect}
         />
