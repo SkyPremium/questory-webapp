@@ -69,7 +69,7 @@ export default function AvatarScreen() {
           const opacity = offset === 0 ? 1 : 0.6;
 
           // Центр в середине экрана (x=540), + смещение между центрами
-          const centerX = 540;
+          const centerX = 250;
           const spacing = 370; // расстояние между центрами карточек
           const xOffset = centerX + offset * spacing - (offset !== 0 ? (scale - 1) * 130 : 0);
 
@@ -102,7 +102,7 @@ export default function AvatarScreen() {
         {/* ⬅️ Стрелка влево */}
         <image
           href={arrowLeft}
-          x="100"
+          x="50"
           y="1650"
           width="200"
           height="200"
@@ -113,7 +113,7 @@ export default function AvatarScreen() {
         {/* ➡️ Стрелка вправо */}
         <image
           href={arrowRight}
-          x="780"
+          x="750"
           y="1650"
           width="200"
           height="200"
