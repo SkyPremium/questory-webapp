@@ -75,7 +75,7 @@ export default function AvatarScreen() {
               transform={`translate(${xOffset}, 580) scale(${scale})`}
               style={{ transition: "all 0.5s ease" }}
             >
-              <image href={avatarFrame} width="200" height="220" />
+              <image href={avatarFrame} width="250" height="300" />
               <image
                 href={avatars[avatarIndex].image}
                 x="0"
