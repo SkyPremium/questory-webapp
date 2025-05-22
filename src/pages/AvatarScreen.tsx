@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useSound } from "../utils/useSound";
 import clickSound from "../assets/sounds/click_ui.mp3";
 
-// 🖼️ Изображения
+// 🗾️ Изображения
 import background from "../assets/images/avatar.jpg";
 import avatarFrame from "../assets/images/avatar_2.png";
 import arrowLeft from "../assets/images/button_avatar_3.png";
@@ -65,17 +65,17 @@ export default function AvatarScreen() {
         {/* 🎴 Карусель из 3 аватаров */}
         {[-1, 0, 1].map((offset) => {
           const avatarIndex = (index + offset + avatars.length) % avatars.length;
-
-          const centerX = 1080 / 2 - 140; // центр экрана минус половина ширины рамки
-          const distance = 330; // расстояние между аватарами
-          const xOffset = centerX + offset * distance;
-          const scale = offset === 0 ? 1.6 : 1.2;
+          const spacing = 460;
+          const baseX = 540;
+          const frameWidth = 280;
+          const scale = offset === 0 ? 2.0 : 1.4;
           const opacity = offset === 0 ? 1 : 0.6;
+          const xOffset = baseX - (frameWidth * scale) / 2 + offset * spacing;
 
           return (
             <g
               key={avatarIndex}
-              transform={`translate(${xOffset}, 580) scale(${scale})`}
+              transform={`translate(${xOffset}, 600) scale(${scale})`}
               style={{ transition: "all 0.5s ease" }}
             >
               <image href={avatarFrame} width="280" height="330" />
@@ -91,7 +91,7 @@ export default function AvatarScreen() {
           );
         })}
 
-        {/* 🏷️ Имя аватара */}
+        {/* 🏧 Имя аватара */}
         <foreignObject x="290" y="980" width="500" height="60">
           <div className="text-center text-white text-xl font-semibold">
             {avatars[index].name}
@@ -126,7 +126,7 @@ export default function AvatarScreen() {
           x="240"
           y="1350"
           width="600"
-          height="200"
+          height="250"
           className="cursor-pointer"
         />
 
@@ -136,7 +136,7 @@ export default function AvatarScreen() {
           x="240"
           y="1600"
           width="600"
-          height="200"
+          height="250"
           className="cursor-pointer"
           onClick={handleSelect}
         />
