@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useSound } from "../utils/useSound";
 import clickSound from "../assets/sounds/click_ui.mp3";
 
-// 🗾️ Изображения
+// 🖼️ Изображения
 import background from "../assets/images/avatar.jpg";
 import avatarFrame from "../assets/images/avatar_2.png";
 import arrowLeft from "../assets/images/button_avatar_3.png";
@@ -19,11 +19,26 @@ import avatar4 from "../assets/avatars/avatar4.png";
 import avatar5 from "../assets/avatars/avatar5.png";
 
 const avatars = [
-  { name: "Эрик, юный герой", image: avatar1 },
-  { name: "Кай, странник", image: avatar2 },
-  { name: "Тельма, травница", image: avatar3 },
-  { name: "Авиэль, эльфийка", image: avatar4 },
-  { name: "Лео, ученик мага", image: avatar5 },
+  {
+    name: "Эрик, юный герой",
+    image: avatar1,
+  },
+  {
+    name: "Кай, странник",
+    image: avatar2,
+  },
+  {
+    name: "Тельма, травница",
+    image: avatar3,
+  },
+  {
+    name: "Авиэль, эльфийка",
+    image: avatar4,
+  },
+  {
+    name: "Лео, ученик мага",
+    image: avatar5,
+  },
 ];
 
 export default function AvatarScreen() {
@@ -55,7 +70,12 @@ export default function AvatarScreen() {
         xmlns="http://www.w3.org/2000/svg"
       >
         <defs>
-          <pattern id="bg" patternUnits="userSpaceOnUse" width="1080" height="1920">
+          <pattern
+            id="bg"
+            patternUnits="userSpaceOnUse"
+            width="1080"
+            height="1920"
+          >
             <image href={background} x="0" y="0" width="1080" height="1920" />
           </pattern>
         </defs>
@@ -65,14 +85,14 @@ export default function AvatarScreen() {
         {/* 🎴 Карусель из 3 аватаров */}
         {[-1, 0, 1].map((offset) => {
           const avatarIndex = (index + offset + avatars.length) % avatars.length;
-          const xOffset = 270 + offset * 270;
-          const scale = offset === 0 ? 1.15 : 0.85;
-          const opacity = offset === 0 ? 1 : 0.7;
+          const xOffset = 190 + offset * 300;
+          const scale = offset === 0 ? 1.2 : 1;
+          const opacity = offset === 0 ? 1 : 0.6;
 
           return (
             <g
               key={avatarIndex}
-              transform={`translate(${xOffset}, 640) scale(${scale})`}
+              transform={`translate(${xOffset}, 620) scale(${scale})`}
               style={{ transition: "all 0.5s ease" }}
             >
               <image href={avatarFrame} width="260" height="280" />
@@ -89,7 +109,7 @@ export default function AvatarScreen() {
         })}
 
         {/* 🏷️ Имя аватара */}
-        <foreignObject x="240" y="970" width="600" height="60">
+        <foreignObject x="290" y="940" width="500" height="60">
           <div className="text-center text-white text-xl font-semibold">
             {avatars[index].name}
           </div>
@@ -98,8 +118,8 @@ export default function AvatarScreen() {
         {/* ⬅️ Стрелка влево */}
         <image
           href={arrowLeft}
-          x="220"
-          y="1060"
+          x="200"
+          y="1020"
           width="80"
           height="80"
           className="cursor-pointer"
@@ -109,8 +129,8 @@ export default function AvatarScreen() {
         {/* ➡️ Стрелка вправо */}
         <image
           href={arrowRight}
-          x="780"
-          y="1060"
+          x="800"
+          y="1020"
           width="80"
           height="80"
           className="cursor-pointer"
@@ -121,7 +141,7 @@ export default function AvatarScreen() {
         <image
           href={buttonDetails}
           x="300"
-          y="1170"
+          y="1120"
           width="480"
           height="110"
           className="cursor-pointer"
@@ -131,7 +151,7 @@ export default function AvatarScreen() {
         <image
           href={buttonSelect}
           x="300"
-          y="1310"
+          y="1250"
           width="480"
           height="110"
           className="cursor-pointer"
