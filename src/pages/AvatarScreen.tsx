@@ -68,10 +68,14 @@ export default function AvatarScreen() {
           const spacing = 470;
           const baseX = 540;
           const frameWidth = 280;
-          const scale = 1.65;
-          const avatarScale = 0.7;
-          const avatarYOffset = 35;
-          const opacity = offset === 0 ? 1 : 0.6;
+
+          // Настройки масштабов
+          const isCenter = offset === 0;
+          const scale = isCenter ? 1.65 : 1.3;
+          const avatarScale = isCenter ? 0.7 : 0.6;
+          const yOffset = isCenter ? 35 : 42;
+          const opacity = isCenter ? 1 : 0.6;
+
           const xOffset = baseX - (frameWidth * scale) / 2 + offset * spacing;
 
           return (
@@ -84,7 +88,7 @@ export default function AvatarScreen() {
               <image
                 href={avatars[avatarIndex].image}
                 x={(280 - 512 * avatarScale) / 2}
-                y={avatarYOffset}
+                y={yOffset}
                 width={512 * avatarScale}
                 height={512 * avatarScale}
                 opacity={opacity}
