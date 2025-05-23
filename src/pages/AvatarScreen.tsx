@@ -69,10 +69,9 @@ export default function AvatarScreen() {
           const baseX = 540;
           const frameWidth = 280;
 
-          // Отдельные настройки для центрального и боковых
           const isCenter = offset === 0;
           const scale = isCenter ? 1.8 : 1.4;
-          const avatarScale = isCenter ? 0.65 : 0.55;
+          const avatarScale = isCenter ? 0.5525 : 0.4675; // уменьшено на 15%
           const yOffset = isCenter ? 42 : 48;
           const opacity = isCenter ? 1 : 0.6;
 
