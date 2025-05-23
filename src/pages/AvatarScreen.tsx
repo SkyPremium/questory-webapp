@@ -65,11 +65,11 @@ export default function AvatarScreen() {
         {/* 🎴 Карусель из 3 аватаров */}
         {[-1, 0, 1].map((offset) => {
           const avatarIndex = (index + offset + avatars.length) % avatars.length;
-          const scale = offset === 0 ? 1.0 : 0.7;
+          const scale = offset === 0 ? 0.85 : 0.6;
           const opacity = offset === 0 ? 1 : 0.6;
 
           const centerX = 540;
-          const spacing = 500;
+          const spacing = 460;
           const frameWidth = 673;
 
           const xOffset = centerX + offset * spacing - (frameWidth * scale) / 2;
@@ -104,7 +104,7 @@ export default function AvatarScreen() {
         <image
           href={arrowLeft}
           x="80"
-          y="1650"
+          y="1500"
           width="160"
           height="160"
           className="cursor-pointer"
@@ -115,7 +115,7 @@ export default function AvatarScreen() {
         <image
           href={arrowRight}
           x="840"
-          y="1650"
+          y="1500"
           width="160"
           height="160"
           className="cursor-pointer"
@@ -125,20 +125,20 @@ export default function AvatarScreen() {
         {/* 🔘 Кнопка "Подробнее" */}
         <image
           href={buttonDetails}
-          x="290"
-          y="1350"
-          width="500"
-          height="200"
+          x="240"
+          y="1220"
+          width="600"
+          height="230"
           className="cursor-pointer"
         />
 
         {/* 🟪 Кнопка "Выбрать" */}
         <image
           href={buttonSelect}
-          x="290"
-          y="1580"
-          width="500"
-          height="200"
+          x="240"
+          y="1460"
+          width="600"
+          height="230"
           className="cursor-pointer"
           onClick={handleSelect}
         />
