@@ -11,7 +11,7 @@ import arrowRight from "../assets/images/button_avatar_4.png";
 import buttonSelect from "../assets/images/button_avatar_2.png";
 import buttonDetails from "../assets/images/button_avatar_1.png";
 
-// 🏋️ Аватары
+// 🎴 Аватары
 import avatar1 from "../assets/avatars/avatar1.png";
 import avatar2 from "../assets/avatars/avatar2.png";
 import avatar3 from "../assets/avatars/avatar3.png";
@@ -62,16 +62,15 @@ export default function AvatarScreen() {
 
         <rect x="0" y="0" width="1080" height="1920" fill="url(#bg)" />
 
-        {/* 🎮 Карусель из 3 аватаров */}
+        {/* 🎴 Карусель из 3 аватаров */}
         {[-1, 0, 1].map((offset) => {
           const avatarIndex = (index + offset + avatars.length) % avatars.length;
-          const spacing = 460;
-          const centerX = 540; // центр экрана
-          const frameWidth = 707;
-          const frameHeight = 673;
-          const scale = offset === 0 ? 0.9 : 0.675; // slightly reduced
+          const spacing = 500; // расстояние между аватарками (увеличено)
+          const baseX = 540; // центр экрана
+          const frameWidth = 512;
+          const scale = offset === 0 ? 1.0 : 0.7;
           const opacity = offset === 0 ? 1 : 0.6;
-          const xOffset = centerX - (frameWidth * scale) / 2 + offset * spacing;
+          const xOffset = baseX - (frameWidth * scale) / 2 + offset * spacing;
 
           return (
             <g
@@ -79,11 +78,11 @@ export default function AvatarScreen() {
               transform={`translate(${xOffset}, 600) scale(${scale})`}
               style={{ transition: "all 0.5s ease" }}
             >
-              <image href={avatarFrame} width="707" height="673" />
+              <image href={avatarFrame} width="673" height="707" />
               <image
                 href={avatars[avatarIndex].image}
-                x="97.5"
-                y="35"
+                x="81" // по макету рамки
+                y="78"
                 width="512"
                 height="512"
                 opacity={opacity}
@@ -92,7 +91,7 @@ export default function AvatarScreen() {
           );
         })}
 
-        {/* 🏧 Имя аватара */}
+        {/* 🏷️ Имя аватара */}
         <foreignObject x="290" y="980" width="500" height="60">
           <div className="text-center text-white text-xl font-semibold">
             {avatars[index].name}
@@ -102,10 +101,10 @@ export default function AvatarScreen() {
         {/* ⬅️ Стрелка влево */}
         <image
           href={arrowLeft}
-          x="50"
-          y="1650"
-          width="200"
-          height="200"
+          x="80"
+          y="1600"
+          width="160"
+          height="160"
           className="cursor-pointer"
           onClick={prevAvatar}
         />
@@ -113,10 +112,10 @@ export default function AvatarScreen() {
         {/* ➡️ Стрелка вправо */}
         <image
           href={arrowRight}
-          x="830"
-          y="1650"
-          width="200"
-          height="200"
+          x="840"
+          y="1600"
+          width="160"
+          height="160"
           className="cursor-pointer"
           onClick={nextAvatar}
         />
@@ -124,20 +123,20 @@ export default function AvatarScreen() {
         {/* 🔘 Кнопка "Подробнее" */}
         <image
           href={buttonDetails}
-          x="300"
+          x="240"
           y="1350"
           width="600"
-          height="250"
+          height="200"
           className="cursor-pointer"
         />
 
         {/* 🟪 Кнопка "Выбрать" */}
         <image
           href={buttonSelect}
-          x="300"
-          y="1600"
+          x="240"
+          y="1570"
           width="600"
-          height="250"
+          height="200"
           className="cursor-pointer"
           onClick={handleSelect}
         />
