@@ -19,11 +19,11 @@ import avatar4 from "../assets/avatars/avatar4.png";
 import avatar5 from "../assets/avatars/avatar5.png";
 
 const avatars = [
-  { name: "Эрик, юный герой", image: avatar1 },
-  { name: "Кай, странник", image: avatar2 },
-  { name: "Тельма, травница", image: avatar3 },
-  { name: "Авиэль, эльфийка", image: avatar4 },
-  { name: "Лео, ученик мага", image: avatar5 },
+  { name: "Эрик", image: avatar1 },
+  { name: "Кай", image: avatar2 },
+  { name: "Тельма", image: avatar3 },
+  { name: "Авиэль", image: avatar4 },
+  { name: "Лео", image: avatar5 },
 ];
 
 export default function AvatarScreen() {
@@ -65,11 +65,12 @@ export default function AvatarScreen() {
         {/* 🎴 Карусель из 3 аватаров */}
         {[-1, 0, 1].map((offset) => {
           const avatarIndex = (index + offset + avatars.length) % avatars.length;
-          const scale = offset === 0 ? 1.7745 : 1.24183; // увеличение ещё на 5%
-          const spacing = 480; // увеличено расстояние между аватарами
+          const spacing = 550;
           const baseX = 540;
-          const frameWidth = 280;
-          const xOffset = baseX - (frameWidth * scale) / 2 + offset * spacing;
+          const frameSize = 280 * 1.837; // Увеличено на ~5%
+          const scale = 1.837;
+          const opacity = offset === 0 ? 1 : 0.6;
+          const xOffset = baseX - (frameSize * scale) / 2 + offset * spacing;
 
           return (
             <g
@@ -80,14 +81,22 @@ export default function AvatarScreen() {
               <image href={avatarFrame} width="280" height="330" />
               <image
                 href={avatars[avatarIndex].image}
-                x="25"
-                y="30"
-                width="230"
-                height="230"
-                opacity={offset === 0 ? 1 : 0.6}
+                x="36"
+                y="44"
+                width="208"
+                height="208"
+                opacity={opacity}
               />
-              <foreignObject x="0" y="270" width="280" height="40">
-                <div className="text-xs text-white text-center font-semibold" xmlns="http://www.w3.org/1999/xhtml">
+              <foreignObject x="0" y="280" width="280" height="50">
+                <div
+                  className="w-full text-center"
+                  style={{
+                    fontSize: "24px",
+                    fontWeight: "bold",
+                    color: "#fff699",
+                    textShadow: "0 0 6px #000",
+                  }}
+                >
                   {avatars[avatarIndex].name}
                 </div>
               </foreignObject>
@@ -95,34 +104,13 @@ export default function AvatarScreen() {
           );
         })}
 
-        {/* 🔘 Кнопка "Подробнее" */}
-        <image
-          href={buttonDetails}
-          x="240"
-          y="1200"
-          width="600"
-          height="220"
-          className="cursor-pointer"
-        />
-
-        {/* 🟪 Кнопка "Выбрать" */}
-        <image
-          href={buttonSelect}
-          x="240"
-          y="1450"
-          width="600"
-          height="220"
-          className="cursor-pointer"
-          onClick={handleSelect}
-        />
-
         {/* ⬅️ Стрелка влево */}
         <image
           href={arrowLeft}
-          x="90"
-          y="1320"
-          width="140"
-          height="140"
+          x="110"
+          y="1300"
+          width="180"
+          height="180"
           className="cursor-pointer"
           onClick={prevAvatar}
         />
@@ -130,12 +118,33 @@ export default function AvatarScreen() {
         {/* ➡️ Стрелка вправо */}
         <image
           href={arrowRight}
-          x="850"
-          y="1320"
-          width="140"
-          height="140"
+          x="790"
+          y="1300"
+          width="180"
+          height="180"
           className="cursor-pointer"
           onClick={nextAvatar}
+        />
+
+        {/* 🔘 Кнопка "Подробнее" */}
+        <image
+          href={buttonDetails}
+          x="290"
+          y="1350"
+          width="500"
+          height="200"
+          className="cursor-pointer"
+        />
+
+        {/* 🟪 Кнопка "Выбрать" */}
+        <image
+          href={buttonSelect}
+          x="290"
+          y="1580"
+          width="500"
+          height="200"
+          className="cursor-pointer"
+          onClick={handleSelect}
         />
       </svg>
     </div>
