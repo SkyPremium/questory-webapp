@@ -65,59 +65,57 @@ export default function AvatarScreen() {
         {/* 🎴 Карусель из 3 аватаров */}
         {[-1, 0, 1].map((offset) => {
           const avatarIndex = (index + offset + avatars.length) % avatars.length;
-          const scale = offset === 0 ? 0.85 : 0.6;
+          const spacing = 440;
+          const baseX = 540; // центр экрана
+          const frameWidth = 260;
+          const scale = offset === 0 ? 1.7 : 1.2;
           const opacity = offset === 0 ? 1 : 0.6;
-
-          const centerX = 540;
-          const spacing = 460;
-          const frameWidth = 673;
-
-          const xOffset = centerX + offset * spacing - (frameWidth * scale) / 2;
+          const xOffset = baseX - (frameWidth * scale) / 2 + offset * spacing;
 
           return (
             <g
               key={avatarIndex}
-              transform={`translate(${xOffset}, 600) scale(${scale})`}
+              transform={`translate(${xOffset}, 570) scale(${scale})`}
               style={{ transition: "all 0.5s ease" }}
             >
-              <image href={avatarFrame} width="673" height="707" />
+              <image href={avatarFrame} width="260" height="310" />
               <image
                 href={avatars[avatarIndex].image}
-                x="81"
-                y="78"
-                width="512"
-                height="512"
+                x="12"
+                y="10"
+                width="236"
+                height="236"
                 opacity={opacity}
               />
+              {offset === 0 && (
+                <foreignObject x="0" y="260" width="260" height="50">
+                  <div className="text-center text-white text-sm font-semibold">
+                    {avatars[avatarIndex].name}
+                  </div>
+                </foreignObject>
+              )}
             </g>
           );
         })}
 
-        {/* 🏧 Имя аватара */}
-        <foreignObject x="290" y="980" width="500" height="60">
-          <div className="text-center text-white text-xl font-semibold">
-            {avatars[index].name}
-          </div>
-        </foreignObject>
-
-        {/* ⬅️ Стрелка влево */}
+        {/* ◀️ Стрелка влево */}
         <image
           href={arrowLeft}
           x="80"
-          y="1500"
-          width="160"
-          height="160"
+          y="1520"
+          width="200"
+          height="200"
           className="cursor-pointer"
           onClick={prevAvatar}
         />
 
-        {/* ➡️ Стрелка вправо */}
+        {/* ▶️ Стрелка вправо */}
         <image
           href={arrowRight}
-          x="840"
-          y="1500"
-          width="160"
-          height="160"
+          x="800"
+          y="1520"
+          width="200"
+          height="200"
           className="cursor-pointer"
           onClick={nextAvatar}
         />
@@ -125,20 +123,20 @@ export default function AvatarScreen() {
         {/* 🔘 Кнопка "Подробнее" */}
         <image
           href={buttonDetails}
-          x="240"
-          y="1220"
-          width="600"
-          height="230"
+          x="250"
+          y="1250"
+          width="620"
+          height="250"
           className="cursor-pointer"
         />
 
         {/* 🟪 Кнопка "Выбрать" */}
         <image
           href={buttonSelect}
-          x="240"
-          y="1460"
-          width="600"
-          height="230"
+          x="250"
+          y="1520"
+          width="620"
+          height="250"
           className="cursor-pointer"
           onClick={handleSelect}
         />
