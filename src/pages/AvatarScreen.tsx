@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useSound } from "../utils/useSound";
 import clickSound from "../assets/sounds/click_ui.mp3";
 
-// 🖼️ Изображения
+// 🗾️ Изображения
 import background from "../assets/images/avatar.jpg";
 import avatarFrame from "../assets/images/avatar_2.png";
 import arrowLeft from "../assets/images/button_avatar_3.png";
@@ -11,7 +11,7 @@ import arrowRight from "../assets/images/button_avatar_4.png";
 import buttonSelect from "../assets/images/button_avatar_2.png";
 import buttonDetails from "../assets/images/button_avatar_1.png";
 
-// 🏋️ Аватары
+// 🎴 Аватары
 import avatar1 from "../assets/avatars/avatar1.png";
 import avatar2 from "../assets/avatars/avatar2.png";
 import avatar3 from "../assets/avatars/avatar3.png";
@@ -62,79 +62,85 @@ export default function AvatarScreen() {
 
         <rect x="0" y="0" width="1080" height="1920" fill="url(#bg)" />
 
-        {/* 🏋️ Карусель из 3 аватаров */}
+        {/* 🎴 Карусель из 3 аватаров */}
         {[-1, 0, 1].map((offset) => {
           const avatarIndex = (index + offset + avatars.length) % avatars.length;
-          const scale = offset === 0 ? 2.0 : 1.4;
-          const spacing = 480;
+          const spacing = 520;
           const baseX = 540;
-          const frameWidth = 280 * scale;
-          const xOffset = baseX - frameWidth / 2 + offset * spacing;
+          const frameWidth = 280 * 1.65;
+          const frameHeight = 330 * 1.65;
+          const imageSize = 512 * 1.03;
+          const scale = 1;
+          const xOffset = baseX - (frameWidth / 2) + offset * spacing;
+          const opacity = offset === 0 ? 1 : 0.6;
 
           return (
             <g
               key={avatarIndex}
-              transform={`translate(${xOffset}, 600) scale(${scale})`}
+              transform={`translate(${xOffset}, 560) scale(${scale})`}
               style={{ transition: "all 0.5s ease" }}
             >
-              <image href={avatarFrame} width="280" height="330" />
+              <image href={avatarFrame} width={frameWidth} height={frameHeight} />
               <image
                 href={avatars[avatarIndex].image}
-                x="20"
-                y="20"
-                width="240"
-                height="240"
+                x={(frameWidth - imageSize) / 2}
+                y={25}
+                width={imageSize}
+                height={imageSize}
+                opacity={opacity}
               />
-              <foreignObject x="0" y="270" width="280" height="40">
-                <div className="w-full text-center text-yellow-300 font-bold text-lg" style={{ fontFamily: 'sans-serif' }}>
-                  {avatars[avatarIndex].name}
+              <foreignObject x="0" y={frameHeight - 60} width={frameWidth} height="60">
+                <div className="w-full h-full flex items-center justify-center">
+                  <span className="text-white text-[32px] font-bold drop-shadow-md">
+                    {avatars[avatarIndex].name}
+                  </span>
                 </div>
               </foreignObject>
             </g>
           );
         })}
 
-        {/* ◀️ Стрелка влево */}
+        {/* 🔘 Кнопка "Подробнее" */}
+        <image
+          href={buttonDetails}
+          x="300"
+          y="1150"
+          width="600"
+          height="250"
+          className="cursor-pointer"
+        />
+
+        {/* 🟪 Кнопка "Выбрать" */}
+        <image
+          href={buttonSelect}
+          x="300"
+          y="1420"
+          width="600"
+          height="250"
+          className="cursor-pointer"
+          onClick={handleSelect}
+        />
+
+        {/* ⬅️ Стрелка влево */}
         <image
           href={arrowLeft}
-          x="120"
-          y="1150"
-          width="150"
-          height="150"
+          x="80"
+          y="1330"
+          width="200"
+          height="200"
           className="cursor-pointer"
           onClick={prevAvatar}
         />
 
-        {/* ▶️ Стрелка вправо */}
+        {/* ➡️ Стрелка вправо */}
         <image
           href={arrowRight}
-          x="810"
-          y="1150"
-          width="150"
-          height="150"
+          x="800"
+          y="1330"
+          width="200"
+          height="200"
           className="cursor-pointer"
           onClick={nextAvatar}
-        />
-
-        {/* 🔘 Кнопка "Подробнее" */}
-        <image
-          href={buttonDetails}
-          x="240"
-          y="1350"
-          width="600"
-          height="200"
-          className="cursor-pointer"
-        />
-
-        {/* 🔹 Кнопка "Выбрать" */}
-        <image
-          href={buttonSelect}
-          x="240"
-          y="1550"
-          width="600"
-          height="200"
-          className="cursor-pointer"
-          onClick={handleSelect}
         />
       </svg>
     </div>
