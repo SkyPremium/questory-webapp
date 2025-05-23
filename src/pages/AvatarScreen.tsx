@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useSound } from "../utils/useSound";
 import clickSound from "../assets/sounds/click_ui.mp3";
 
-import { allAvatars } from "../data/avatars";
+import { allAvatars } from "../data/avatars/avatars";
 
 const avatars = allAvatars.slice(0, 5); // Используем первые 5 стартовых аватаров
 
