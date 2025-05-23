@@ -96,11 +96,11 @@ export default function AvatarScreen() {
                 height={512 * avatarScale}
                 opacity={opacity}
               />
-              <foreignObject x="0" y="255" width="280" height="60">
+              <foreignObject x="0" y="250" width="280" height="60">
                 <div
                   className="text-center"
                   style={{
-                    fontSize: "28px",
+                    fontSize: "32px",
                     fontWeight: "700",
                     color: "#FFD700",
                     fontFamily: "'Georgia', serif",
@@ -118,9 +118,9 @@ export default function AvatarScreen() {
         <image
           href={arrowLeft}
           x="30"
-          y="1380"
-          width="150"
-          height="150"
+          y="1420"
+          width="180"
+          height="180"
           className="cursor-pointer"
           onClick={prevAvatar}
         />
@@ -128,10 +128,10 @@ export default function AvatarScreen() {
         {/* ➡️ Стрелка вправо */}
         <image
           href={arrowRight}
-          x="900"
-          y="1380"
-          width="150"
-          height="150"
+          x="870"
+          y="1420"
+          width="180"
+          height="180"
           className="cursor-pointer"
           onClick={nextAvatar}
         />
