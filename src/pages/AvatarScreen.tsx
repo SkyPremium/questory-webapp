@@ -66,29 +66,30 @@ export default function AvatarScreen() {
         {[-1, 0, 1].map((offset) => {
           const avatarIndex = (index + offset + avatars.length) % avatars.length;
           const spacing = 420;
-          const baseX = 540;
-          const frameWidth = 280;
-          const frameHeight = 330;
-          const scale = offset === 0 ? 1 : 0.8;
-          const opacity = offset === 0 ? 1 : 0.6;
-          const xOffset = baseX - (frameWidth * scale) / 2 + offset * spacing;
+          const baseX = 540; // центр экрана
+          const frameWidth = 300;
+          const frameHeight = 350;
+          const avatarSize = 512 * 0.55;
+          const avatarOffsetX = (frameWidth - avatarSize) / 2;
+          const avatarOffsetY = (frameHeight - avatarSize) / 2 - 20;
+
+          const xOffset = baseX - frameWidth / 2 + offset * spacing;
 
           return (
             <g
               key={avatarIndex}
-              transform={`translate(${xOffset}, 600) scale(${scale})`}
+              transform={`translate(${xOffset}, 580)`}
               style={{ transition: "all 0.5s ease" }}
             >
-              <image href={avatarFrame} width="280" height="330" />
+              <image href={avatarFrame} width={frameWidth} height={frameHeight} />
               <image
                 href={avatars[avatarIndex].image}
-                x="40"
-                y="35"
-                width="200"
-                height="200"
-                opacity={opacity}
+                x={avatarOffsetX}
+                y={avatarOffsetY}
+                width={avatarSize}
+                height={avatarSize}
               />
-              <foreignObject x="0" y="260" width="280" height="40">
+              <foreignObject x="0" y="270" width={frameWidth} height="40">
                 <div className="text-center text-white text-xs font-semibold">
                   {avatars[avatarIndex].name}
                 </div>
@@ -97,34 +98,13 @@ export default function AvatarScreen() {
           );
         })}
 
-        {/* 🔘 Кнопка "Подробнее" */}
-        <image
-          href={buttonDetails}
-          x="240"
-          y="1200"
-          width="600"
-          height="250"
-          className="cursor-pointer"
-        />
-
-        {/* 🟪 Кнопка "Выбрать" */}
-        <image
-          href={buttonSelect}
-          x="240"
-          y="1480"
-          width="600"
-          height="250"
-          className="cursor-pointer"
-          onClick={handleSelect}
-        />
-
         {/* ⬅️ Стрелка влево */}
         <image
           href={arrowLeft}
-          x="80"
-          y="1400"
-          width="160"
-          height="160"
+          x="100"
+          y="1300"
+          width="150"
+          height="150"
           className="cursor-pointer"
           onClick={prevAvatar}
         />
@@ -132,12 +112,33 @@ export default function AvatarScreen() {
         {/* ➡️ Стрелка вправо */}
         <image
           href={arrowRight}
-          x="840"
-          y="1400"
-          width="160"
-          height="160"
+          x="830"
+          y="1300"
+          width="150"
+          height="150"
           className="cursor-pointer"
           onClick={nextAvatar}
+        />
+
+        {/* 🔘 Кнопка "Подробнее" */}
+        <image
+          href={buttonDetails}
+          x="240"
+          y="1450"
+          width="600"
+          height="180"
+          className="cursor-pointer"
+        />
+
+        {/* 🟪 Кнопка "Выбрать" */}
+        <image
+          href={buttonSelect}
+          x="240"
+          y="1650"
+          width="600"
+          height="180"
+          className="cursor-pointer"
+          onClick={handleSelect}
         />
       </svg>
     </div>
