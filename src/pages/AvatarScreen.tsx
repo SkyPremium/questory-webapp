@@ -69,19 +69,23 @@ export default function AvatarScreen() {
           const baseX = 540;
           const frameWidth = 280;
 
-          // Отдельные настройки
           const isCenter = offset === 0;
-          const scale = isCenter ? 1.8 : 1.4;
-          const avatarScale = isCenter ? 0.49725 : 0.42075; // уменьшено ещё на 10%
+
+          // 📏 Масштаб аватарок
+          const avatarScale = isCenter ? 0.49725 : 0.42075;
+
+          // 📏 Масштаб рамок — центральная на +18.2% больше
+          const frameScale = isCenter ? 1.6548 : 1.4;
+
           const yOffset = isCenter ? 42 : 48;
           const opacity = isCenter ? 1 : 0.6;
 
-          const xOffset = baseX - (frameWidth * scale) / 2 + offset * spacing;
+          const xOffset = baseX - (frameWidth * frameScale) / 2 + offset * spacing;
 
           return (
             <g
               key={avatarIndex}
-              transform={`translate(${xOffset}, 600) scale(${scale})`}
+              transform={`translate(${xOffset}, 600) scale(${frameScale})`}
               style={{ transition: "all 0.5s ease" }}
             >
               <image href={avatarFrame} width="280" height="330" />
