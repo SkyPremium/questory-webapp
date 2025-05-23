@@ -65,69 +65,45 @@ export default function AvatarScreen() {
         {/* 🎴 Карусель из 3 аватаров */}
         {[-1, 0, 1].map((offset) => {
           const avatarIndex = (index + offset + avatars.length) % avatars.length;
-          const spacing = 520;
-          const baseX = 540;
-          const frameWidth = 280 * 1.65;
-          const frameHeight = 330 * 1.65;
-          const imageSize = 512 * 1.03;
-          const scale = 1;
-          const xOffset = baseX - (frameWidth / 2) + offset * spacing;
+          const spacing = 470;
+          const baseX = 540; // центр экрана
+          const frameWidth = 280;
+          const scale = 1.65; // текущий размер рамки
+          const avatarScale = 0.88; // уменьшенный размер аватарки
           const opacity = offset === 0 ? 1 : 0.6;
+          const xOffset = baseX - (frameWidth * scale) / 2 + offset * spacing;
 
           return (
             <g
               key={avatarIndex}
-              transform={`translate(${xOffset}, 560) scale(${scale})`}
+              transform={`translate(${xOffset}, 600) scale(${scale})`}
               style={{ transition: "all 0.5s ease" }}
             >
-              <image href={avatarFrame} width={frameWidth} height={frameHeight} />
+              <image href={avatarFrame} width="280" height="330" />
               <image
                 href={avatars[avatarIndex].image}
-                x={(frameWidth - imageSize) / 2}
-                y={25}
-                width={imageSize}
-                height={imageSize}
+                x={(280 - 512 * avatarScale) / 2}
+                y="10"
+                width={512 * avatarScale}
+                height={512 * avatarScale}
                 opacity={opacity}
               />
-              <foreignObject x="0" y={frameHeight - 60} width={frameWidth} height="60">
-                <div className="w-full h-full flex items-center justify-center">
-                  <span className="text-white text-[32px] font-bold drop-shadow-md">
-                    {avatars[avatarIndex].name}
-                  </span>
+              <foreignObject x="0" y="285" width="280" height="45">
+                <div className="text-center text-yellow-300 text-lg font-bold" style={{ lineHeight: "1.2em" }}>
+                  {avatars[avatarIndex].name}
                 </div>
               </foreignObject>
             </g>
           );
         })}
 
-        {/* 🔘 Кнопка "Подробнее" */}
-        <image
-          href={buttonDetails}
-          x="300"
-          y="1150"
-          width="600"
-          height="250"
-          className="cursor-pointer"
-        />
-
-        {/* 🟪 Кнопка "Выбрать" */}
-        <image
-          href={buttonSelect}
-          x="300"
-          y="1420"
-          width="600"
-          height="250"
-          className="cursor-pointer"
-          onClick={handleSelect}
-        />
-
         {/* ⬅️ Стрелка влево */}
         <image
           href={arrowLeft}
-          x="80"
-          y="1330"
-          width="200"
-          height="200"
+          x="100"
+          y="1380"
+          width="150"
+          height="150"
           className="cursor-pointer"
           onClick={prevAvatar}
         />
@@ -135,12 +111,33 @@ export default function AvatarScreen() {
         {/* ➡️ Стрелка вправо */}
         <image
           href={arrowRight}
-          x="800"
-          y="1330"
-          width="200"
-          height="200"
+          x="830"
+          y="1380"
+          width="150"
+          height="150"
           className="cursor-pointer"
           onClick={nextAvatar}
+        />
+
+        {/* 🔘 Кнопка "Подробнее" */}
+        <image
+          href={buttonDetails}
+          x="290"
+          y="1200"
+          width="500"
+          height="200"
+          className="cursor-pointer"
+        />
+
+        {/* 🟪 Кнопка "Выбрать" */}
+        <image
+          href={buttonSelect}
+          x="290"
+          y="1450"
+          width="500"
+          height="200"
+          className="cursor-pointer"
+          onClick={handleSelect}
         />
       </svg>
     </div>
