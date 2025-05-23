@@ -5,7 +5,14 @@ import clickSound from "@/assets/sounds/click_ui.mp3";
 
 import { allAvatars } from "@/data/avatars/avatars";
 
-const avatars = allAvatars.slice(0, 5); // Используем первые 5 стартовых аватаров
+import background from "@/assets/images/avatar.jpg";
+import avatarFrame from "@/assets/images/avatar_2.png";
+import arrowLeft from "@/assets/images/button_avatar_3.png";
+import arrowRight from "@/assets/images/button_avatar_4.png";
+import buttonSelect from "@/assets/images/button_avatar_2.png";
+import buttonDetails from "@/assets/images/button_avatar_1.png";
+
+const avatars = allAvatars.slice(0, 5);
 
 export default function AvatarScreen() {
   const navigate = useNavigate();
@@ -37,7 +44,7 @@ export default function AvatarScreen() {
       >
         <defs>
           <pattern id="bg" patternUnits="userSpaceOnUse" width="1080" height="1920">
-            <image href={require("@/assets/images/avatar.jpg")} x="0" y="0" width="1080" height="1920" />
+            <image href={background} x="0" y="0" width="1080" height="1920" />
           </pattern>
         </defs>
 
@@ -67,7 +74,7 @@ export default function AvatarScreen() {
               transform={`translate(${xOffset}, 600) scale(${frameScale})`}
               style={{ transition: "all 0.5s ease" }}
             >
-              <image href={require("@/assets/images/avatar_2.png")} width="280" height="330" />
+              <image href={avatarFrame} width="280" height="330" />
               <image
                 href={avatars[avatarIndex].image}
                 x={(280 - 512 * avatarScale) / 2}
@@ -95,7 +102,7 @@ export default function AvatarScreen() {
         })}
 
         <image
-          href={require("@/assets/images/button_avatar_3.png")}
+          href={arrowLeft}
           x="30"
           y="1440"
           width="180"
@@ -105,7 +112,7 @@ export default function AvatarScreen() {
         />
 
         <image
-          href={require("@/assets/images/button_avatar_4.png")}
+          href={arrowRight}
           x="870"
           y="1440"
           width="180"
@@ -115,7 +122,7 @@ export default function AvatarScreen() {
         />
 
         <image
-          href={require("@/assets/images/button_avatar_1.png")}
+          href={buttonDetails}
           x="210"
           y="1270"
           width="660"
@@ -124,7 +131,7 @@ export default function AvatarScreen() {
         />
 
         <image
-          href={require("@/assets/images/button_avatar_2.png")}
+          href={buttonSelect}
           x="210"
           y="1530"
           width="660"
