@@ -96,11 +96,11 @@ export default function AvatarScreen() {
                 height={512 * avatarScale}
                 opacity={opacity}
               />
-              <foreignObject x="0" y="250" width="280" height="60">
+              <foreignObject x="0" y="265" width="280" height="60">
                 <div
                   className="text-center"
                   style={{
-                    fontSize: "32px",
+                    fontSize: "36px",
                     fontWeight: "700",
                     color: "#FFD700",
                     fontFamily: "'Georgia', serif",
@@ -118,7 +118,7 @@ export default function AvatarScreen() {
         <image
           href={arrowLeft}
           x="30"
-          y="1420"
+          y="1440"
           width="180"
           height="180"
           className="cursor-pointer"
@@ -129,7 +129,7 @@ export default function AvatarScreen() {
         <image
           href={arrowRight}
           x="870"
-          y="1420"
+          y="1440"
           width="180"
           height="180"
           className="cursor-pointer"
