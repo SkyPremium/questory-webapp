@@ -96,11 +96,11 @@ export default function AvatarScreen() {
                 height={512 * avatarScale}
                 opacity={opacity}
               />
-              <foreignObject x="0" y="260" width="280" height="60">
+              <foreignObject x="0" y="255" width="280" height="60">
                 <div
                   className="text-center"
                   style={{
-                    fontSize: "24px",
+                    fontSize: "28px",
                     fontWeight: "700",
                     color: "#FFD700",
                     fontFamily: "'Georgia', serif",
@@ -117,7 +117,7 @@ export default function AvatarScreen() {
         {/* ⬅️ Стрелка влево */}
         <image
           href={arrowLeft}
-          x="100"
+          x="30"
           y="1380"
           width="150"
           height="150"
@@ -128,7 +128,7 @@ export default function AvatarScreen() {
         {/* ➡️ Стрелка вправо */}
         <image
           href={arrowRight}
-          x="830"
+          x="900"
           y="1380"
           width="150"
           height="150"
@@ -139,20 +139,20 @@ export default function AvatarScreen() {
         {/* 🔘 Кнопка "Подробнее" */}
         <image
           href={buttonDetails}
-          x="240"
+          x="210"
           y="1270"
-          width="600"
-          height="240"
+          width="660"
+          height="260"
           className="cursor-pointer"
         />
 
         {/* 🟪 Кнопка "Выбрать" */}
         <image
           href={buttonSelect}
-          x="240"
+          x="210"
           y="1530"
-          width="600"
-          height="240"
+          width="660"
+          height="260"
           className="cursor-pointer"
           onClick={handleSelect}
         />
