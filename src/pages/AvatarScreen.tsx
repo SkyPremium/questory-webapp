@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useSound } from "../utils/useSound";
 import clickSound from "../assets/sounds/click_ui.mp3";
 
-// 🗾️ Изображения
+// 🖼️ Изображения
 import background from "../assets/images/avatar.jpg";
 import avatarFrame from "../assets/images/avatar_2.png";
 import arrowLeft from "../assets/images/button_avatar_3.png";
@@ -65,11 +65,12 @@ export default function AvatarScreen() {
         {/* 🎴 Карусель из 3 аватаров */}
         {[-1, 0, 1].map((offset) => {
           const avatarIndex = (index + offset + avatars.length) % avatars.length;
-          const spacing = 550; // расстояние между центрами
-          const baseX = 540; // центр экрана
-          const scale = offset === 0 ? 1.0 : 0.7;
+          const spacing = 450;
+          const centerX = 540; // центр экрана
+          const frameWidth = 707;
+          const scale = offset === 0 ? 1.0 : 0.75;
           const opacity = offset === 0 ? 1 : 0.6;
-          const xOffset = baseX - (707 * scale) / 2 + offset * spacing;
+          const xOffset = centerX - (frameWidth * scale) / 2 + offset * spacing;
 
           return (
             <g
@@ -80,8 +81,8 @@ export default function AvatarScreen() {
               <image href={avatarFrame} width="707" height="673" />
               <image
                 href={avatars[avatarIndex].image}
-                x="0"
-                y="0"
+                x="97.5"
+                y="35"
                 width="512"
                 height="512"
                 opacity={opacity}
@@ -90,7 +91,7 @@ export default function AvatarScreen() {
           );
         })}
 
-        {/* 🏧 Имя аватара */}
+        {/* 🏷️ Имя аватара */}
         <foreignObject x="290" y="980" width="500" height="60">
           <div className="text-center text-white text-xl font-semibold">
             {avatars[index].name}
