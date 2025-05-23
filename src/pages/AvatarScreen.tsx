@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useSound } from "../utils/useSound";
 import clickSound from "../assets/sounds/click_ui.mp3";
 
-// 🗾️ Изображения
+// 🏞️️ Изображения
 import background from "../assets/images/avatar.jpg";
 import avatarFrame from "../assets/images/avatar_2.png";
 import arrowLeft from "../assets/images/button_avatar_3.png";
@@ -71,15 +71,15 @@ export default function AvatarScreen() {
 
           const isCenter = offset === 0;
 
-          // 📏 Масштаб рамок
+          // 🌟 Масштаб рамок
           const frameScale = isCenter ? 1.98576 : 1.68;
 
-          // 📏 Масштаб аватара с +10% коррекцией для боковых
+          // 🔄 Масштаб аватаров (+10% коррекция и еще +3%)
           const avatarScale = isCenter
             ? 0.41043
-            : 0.41043 * (1.68 / 1.98576) * 1.1; // доп. увеличение для плотного вхождения в рамку
+            : 0.41043 * (1.68 / 1.98576) * 1.1 * 1.03;
 
-          // 📏 Подъём вверх
+          // 📉 Подъем вверх
           const yOffset = isCenter ? 32 : 38;
 
           const opacity = isCenter ? 1 : 0.6;
@@ -100,8 +100,17 @@ export default function AvatarScreen() {
                 height={512 * avatarScale}
                 opacity={opacity}
               />
-              <foreignObject x="0" y="285" width="280" height="45">
-                <div className="text-center text-yellow-300 text-lg font-bold" style={{ lineHeight: "1.2em" }}>
+              <foreignObject x="0" y="276" width="280" height="50">
+                <div
+                  className="text-center"
+                  style={{
+                    fontSize: "20px",
+                    fontWeight: "600",
+                    color: "#FFD700",
+                    fontFamily: "'Georgia', serif",
+                    lineHeight: "1.2em",
+                  }}
+                >
                   {avatars[avatarIndex].name}
                 </div>
               </foreignObject>
