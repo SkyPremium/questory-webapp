@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useSound } from "../utils/useSound";
 import clickSound from "../assets/sounds/click_ui.mp3";
 
-// 🗾️ Изображения
+// 🖼️ Изображения
 import background from "../assets/images/avatar.jpg";
 import avatarFrame from "../assets/images/avatar_2.png";
 import arrowLeft from "../assets/images/button_avatar_3.png";
@@ -66,56 +66,58 @@ export default function AvatarScreen() {
         {[-1, 0, 1].map((offset) => {
           const avatarIndex = (index + offset + avatars.length) % avatars.length;
           const spacing = 440;
-          const baseX = 540; // центр экрана
-          const frameWidth = 260;
-          const scale = offset === 0 ? 1.7 : 1.2;
+          const baseX = 540;
+          const scale = offset === 0 ? 1.6 : 1.2;
+          const frameWidth = 280;
+          const frameHeight = 330;
+          const avatarSize = 512;
+          const scaledFrameWidth = frameWidth * scale;
+          const scaledFrameHeight = frameHeight * scale;
+          const xOffset = baseX - scaledFrameWidth / 2 + offset * spacing;
           const opacity = offset === 0 ? 1 : 0.6;
-          const xOffset = baseX - (frameWidth * scale) / 2 + offset * spacing;
 
           return (
             <g
               key={avatarIndex}
-              transform={`translate(${xOffset}, 570) scale(${scale})`}
+              transform={`translate(${xOffset}, 600) scale(${scale})`}
               style={{ transition: "all 0.5s ease" }}
             >
-              <image href={avatarFrame} width="260" height="310" />
+              <image href={avatarFrame} width="280" height="330" />
               <image
                 href={avatars[avatarIndex].image}
-                x="12"
-                y="10"
-                width="236"
-                height="236"
+                x="4"
+                y="4"
+                width="272"
+                height="272"
                 opacity={opacity}
               />
-              {offset === 0 && (
-                <foreignObject x="0" y="260" width="260" height="50">
-                  <div className="text-center text-white text-sm font-semibold">
-                    {avatars[avatarIndex].name}
-                  </div>
-                </foreignObject>
-              )}
+              <foreignObject x="0" y="270" width="280" height="60">
+                <div className="text-center text-white text-sm font-semibold leading-tight">
+                  {avatars[avatarIndex].name}
+                </div>
+              </foreignObject>
             </g>
           );
         })}
 
-        {/* ◀️ Стрелка влево */}
+        {/* ⬅️ Стрелка влево */}
         <image
           href={arrowLeft}
           x="80"
-          y="1520"
-          width="200"
-          height="200"
+          y="1550"
+          width="160"
+          height="160"
           className="cursor-pointer"
           onClick={prevAvatar}
         />
 
-        {/* ▶️ Стрелка вправо */}
+        {/* ➡️ Стрелка вправо */}
         <image
           href={arrowRight}
-          x="800"
-          y="1520"
-          width="200"
-          height="200"
+          x="840"
+          y="1550"
+          width="160"
+          height="160"
           className="cursor-pointer"
           onClick={nextAvatar}
         />
@@ -123,20 +125,20 @@ export default function AvatarScreen() {
         {/* 🔘 Кнопка "Подробнее" */}
         <image
           href={buttonDetails}
-          x="250"
-          y="1250"
-          width="620"
-          height="250"
+          x="240"
+          y="1350"
+          width="600"
+          height="220"
           className="cursor-pointer"
         />
 
         {/* 🟪 Кнопка "Выбрать" */}
         <image
           href={buttonSelect}
-          x="250"
-          y="1520"
-          width="620"
-          height="250"
+          x="240"
+          y="1600"
+          width="600"
+          height="220"
           className="cursor-pointer"
           onClick={handleSelect}
         />
