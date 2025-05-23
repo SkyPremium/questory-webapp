@@ -66,10 +66,10 @@ export default function AvatarScreen() {
         {[-1, 0, 1].map((offset) => {
           const avatarIndex = (index + offset + avatars.length) % avatars.length;
           const spacing = 470;
-          const baseX = 540;
+          const baseX = 540; // центр экрана
           const frameWidth = 280;
-          const scale = 1.65;
-          const avatarScale = 0.8432; // уменьшено на 2% от предыдущих 0.86
+          const scale = 1.65; // текущий размер рамки
+          const avatarScale = 0.88; // уменьшенный размер аватарки
           const opacity = offset === 0 ? 1 : 0.6;
           const xOffset = baseX - (frameWidth * scale) / 2 + offset * spacing;
 
@@ -89,7 +89,7 @@ export default function AvatarScreen() {
                 opacity={opacity}
               />
               <foreignObject x="0" y="285" width="280" height="45">
-                <div className="text-center text-yellow-300 text-xl font-bold" style={{ lineHeight: "1.2em" }}>
+                <div className="text-center text-yellow-300 text-lg font-bold" style={{ lineHeight: "1.2em" }}>
                   {avatars[avatarIndex].name}
                 </div>
               </foreignObject>
@@ -129,7 +129,7 @@ export default function AvatarScreen() {
           className="cursor-pointer"
         />
 
-        {/* 🔪 Кнопка "Выбрать" */}
+        {/* 🟪 Кнопка "Выбрать" */}
         <image
           href={buttonSelect}
           x="290"
