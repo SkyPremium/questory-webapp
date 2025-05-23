@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useSound } from "../utils/useSound";
 import clickSound from "../assets/sounds/click_ui.mp3";
 
-// 🗞️ Изображения
+// 🗾️ Изображения
 import background from "../assets/images/avatar.jpg";
 import avatarFrame from "../assets/images/avatar_2.png";
 import arrowLeft from "../assets/images/button_avatar_3.png";
@@ -11,7 +11,7 @@ import arrowRight from "../assets/images/button_avatar_4.png";
 import buttonSelect from "../assets/images/button_avatar_2.png";
 import buttonDetails from "../assets/images/button_avatar_1.png";
 
-// 🏋️ Аватары
+// 🎴 Аватары
 import avatar1 from "../assets/avatars/avatar1.png";
 import avatar2 from "../assets/avatars/avatar2.png";
 import avatar3 from "../assets/avatars/avatar3.png";
@@ -62,15 +62,14 @@ export default function AvatarScreen() {
 
         <rect x="0" y="0" width="1080" height="1920" fill="url(#bg)" />
 
-        {/* 🏋️ Карусель из 3 аватаров */}
+        {/* 🎴 Карусель из 3 аватаров */}
         {[-1, 0, 1].map((offset) => {
           const avatarIndex = (index + offset + avatars.length) % avatars.length;
-          const spacing = 480; // Увеличено для отдаления
-          const baseX = 540; // Центр
-          const frameWidth = 512;
+          const spacing = 550; // расстояние между центрами
+          const baseX = 540; // центр экрана
           const scale = offset === 0 ? 1.0 : 0.7;
           const opacity = offset === 0 ? 1 : 0.6;
-          const xOffset = baseX - (frameWidth * scale) / 2 + offset * spacing;
+          const xOffset = baseX - (707 * scale) / 2 + offset * spacing;
 
           return (
             <g
@@ -78,7 +77,7 @@ export default function AvatarScreen() {
               transform={`translate(${xOffset}, 600) scale(${scale})`}
               style={{ transition: "all 0.5s ease" }}
             >
-              <image href={avatarFrame} width="512" height="512" />
+              <image href={avatarFrame} width="707" height="673" />
               <image
                 href={avatars[avatarIndex].image}
                 x="0"
@@ -91,7 +90,7 @@ export default function AvatarScreen() {
           );
         })}
 
-        {/* 🏪 Имя аватара */}
+        {/* 🏧 Имя аватара */}
         <foreignObject x="290" y="980" width="500" height="60">
           <div className="text-center text-white text-xl font-semibold">
             {avatars[index].name}
