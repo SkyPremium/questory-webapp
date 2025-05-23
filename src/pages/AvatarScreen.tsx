@@ -65,16 +65,16 @@ export default function AvatarScreen() {
         {/* 🎴 Карусель из 3 аватаров */}
         {[-1, 0, 1].map((offset) => {
           const avatarIndex = (index + offset + avatars.length) % avatars.length;
-          const spacing = 550; // ⬅️ отодвинули боковые аватары от центра
+          const spacing = 550;
           const baseX = 540;
           const frameWidth = 280;
 
           const isCenter = offset === 0;
 
-          // 📏 Масштаб аватарок (с увеличением на 20%)
-          const avatarScale = isCenter ? 0.48498 : 0.41036;
+          // 📏 Масштаб аватарок (уменьшено на 10%)
+          const avatarScale = isCenter ? 0.43648 : 0.36932;
 
-          // 📏 Масштаб рамок (центр больше на 18.2%)
+          // 📏 Масштаб рамок остаётся прежним
           const frameScale = isCenter ? 1.98576 : 1.68;
 
           const yOffset = isCenter ? 42 : 48;
