@@ -82,10 +82,10 @@ export default function AvatarScreen() {
               <image href={avatarFrame} width="280" height="330" />
               <image
                 href={avatars[avatarIndex].image}
-                x="30"
-                y="20"
-                width="220"
-                height="220"
+                x="40"
+                y="35"
+                width="200"
+                height="200"
                 opacity={opacity}
               />
               <foreignObject x="0" y="260" width="280" height="40">
