@@ -68,8 +68,8 @@ export default function AvatarScreen() {
           const spacing = 470;
           const baseX = 540; // центр экрана
           const frameWidth = 280;
-          const scale = 1.65; // текущий размер рамки
-          const avatarScale = 0.88; // уменьшенный размер аватарки
+          const scale = 1.65; // масштаб рамки
+          const avatarScale = 0.86; // ⬅️ уменьшен на 2%
           const opacity = offset === 0 ? 1 : 0.6;
           const xOffset = baseX - (frameWidth * scale) / 2 + offset * spacing;
 
