@@ -65,37 +65,29 @@ export default function AvatarScreen() {
         {/* 🎴 Карусель из 3 аватаров */}
         {[-1, 0, 1].map((offset) => {
           const avatarIndex = (index + offset + avatars.length) % avatars.length;
-          const spacing = 460;
+          const scale = offset === 0 ? 1.1 : 0.77; // центральный 110%, боковые 70% * 1.1
+          const spacing = 380; // расстояние между
           const baseX = 540;
-          const frameWidth = 280 * 1.2; // увеличено на 20%
-          const frameHeight = 330 * 1.2;
-          const avatarSize = 512 * 1.2;
-          const scale = 1;
-          const opacity = offset === 0 ? 1 : 0.6;
-          const xOffset = baseX - frameWidth / 2 + offset * spacing;
+          const frameWidth = 280;
+          const xOffset = baseX - (frameWidth * scale) / 2 + offset * spacing;
 
           return (
             <g
               key={avatarIndex}
-              transform={`translate(${xOffset}, 600) scale(${scale})`}
+              transform={`translate(${xOffset}, 620) scale(${scale})`}
               style={{ transition: "all 0.5s ease" }}
             >
-              <image href={avatarFrame} width={frameWidth} height={frameHeight} />
+              <image href={avatarFrame} width="280" height="330" />
               <image
                 href={avatars[avatarIndex].image}
-                x={(frameWidth - avatarSize) / 2}
-                y={20}
-                width={avatarSize}
-                height={avatarSize}
-                opacity={opacity}
+                x="25"
+                y="30"
+                width="230"
+                height="230"
+                opacity={offset === 0 ? 1 : 0.6}
               />
-              <foreignObject
-                x={(frameWidth - 300) / 2}
-                y={frameHeight - 40}
-                width={300}
-                height={40}
-              >
-                <div className="text-center text-white text-xs" style={{ fontSize: 20 }}>
+              <foreignObject x="0" y="270" width="280" height="40">
+                <div className="text-xs text-white text-center font-semibold" xmlns="http://www.w3.org/1999/xhtml">
                   {avatars[avatarIndex].name}
                 </div>
               </foreignObject>
@@ -103,35 +95,13 @@ export default function AvatarScreen() {
           );
         })}
 
-        {/* ⬅️ Стрелка влево */}
-        <image
-          href={arrowLeft}
-          x="130"
-          y="1260"
-          width="160"
-          height="160"
-          className="cursor-pointer"
-          onClick={prevAvatar}
-        />
-
-        {/* ➡️ Стрелка вправо */}
-        <image
-          href={arrowRight}
-          x="790"
-          y="1260"
-          width="160"
-          height="160"
-          className="cursor-pointer"
-          onClick={nextAvatar}
-        />
-
         {/* 🔘 Кнопка "Подробнее" */}
         <image
           href={buttonDetails}
           x="240"
-          y="1380"
+          y="1200"
           width="600"
-          height="180"
+          height="220"
           className="cursor-pointer"
         />
 
@@ -139,11 +109,33 @@ export default function AvatarScreen() {
         <image
           href={buttonSelect}
           x="240"
-          y="1560"
+          y="1450"
           width="600"
-          height="180"
+          height="220"
           className="cursor-pointer"
           onClick={handleSelect}
+        />
+
+        {/* ⬅️ Стрелка влево */}
+        <image
+          href={arrowLeft}
+          x="90"
+          y="1320"
+          width="140"
+          height="140"
+          className="cursor-pointer"
+          onClick={prevAvatar}
+        />
+
+        {/* ➡️ Стрелка вправо */}
+        <image
+          href={arrowRight}
+          x="850"
+          y="1320"
+          width="140"
+          height="140"
+          className="cursor-pointer"
+          onClick={nextAvatar}
         />
       </svg>
     </div>
