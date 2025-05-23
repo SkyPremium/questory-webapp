@@ -11,7 +11,7 @@ import arrowRight from "../assets/images/button_avatar_4.png";
 import buttonSelect from "../assets/images/button_avatar_2.png";
 import buttonDetails from "../assets/images/button_avatar_1.png";
 
-// 🎴 Аватары
+// 🏋️ Аватары
 import avatar1 from "../assets/avatars/avatar1.png";
 import avatar2 from "../assets/avatars/avatar2.png";
 import avatar3 from "../assets/avatars/avatar3.png";
@@ -62,13 +62,14 @@ export default function AvatarScreen() {
 
         <rect x="0" y="0" width="1080" height="1920" fill="url(#bg)" />
 
-        {/* 🎴 Карусель из 3 аватаров */}
+        {/* 🎮 Карусель из 3 аватаров */}
         {[-1, 0, 1].map((offset) => {
           const avatarIndex = (index + offset + avatars.length) % avatars.length;
-          const spacing = 450;
+          const spacing = 460;
           const centerX = 540; // центр экрана
           const frameWidth = 707;
-          const scale = offset === 0 ? 1.0 : 0.75;
+          const frameHeight = 673;
+          const scale = offset === 0 ? 0.9 : 0.675; // slightly reduced
           const opacity = offset === 0 ? 1 : 0.6;
           const xOffset = centerX - (frameWidth * scale) / 2 + offset * spacing;
 
@@ -91,7 +92,7 @@ export default function AvatarScreen() {
           );
         })}
 
-        {/* 🏷️ Имя аватара */}
+        {/* 🏧 Имя аватара */}
         <foreignObject x="290" y="980" width="500" height="60">
           <div className="text-center text-white text-xl font-semibold">
             {avatars[index].name}
