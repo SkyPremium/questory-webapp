@@ -65,8 +65,8 @@ export default function AvatarScreen() {
         {/* 🎴 Карусель из 3 аватаров */}
         {[-1, 0, 1].map((offset) => {
           const avatarIndex = (index + offset + avatars.length) % avatars.length;
-          const scale = offset === 0 ? 1.690 : 1.1827; // увеличение ещё на 5%
-          const spacing = 460; // увеличено расстояние между аватарами
+          const scale = offset === 0 ? 1.7745 : 1.24183; // увеличение ещё на 5%
+          const spacing = 480; // увеличено расстояние между аватарами
           const baseX = 540;
           const frameWidth = 280;
           const xOffset = baseX - (frameWidth * scale) / 2 + offset * spacing;
