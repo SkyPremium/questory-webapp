@@ -71,11 +71,9 @@ export default function AvatarScreen() {
 
           const isCenter = offset === 0;
 
-          // 📏 Масштаб аватарок — уменьшено ещё на 2%
-          const avatarScale = isCenter ? 0.40415 : 0.34197;
-
-          // 📏 Масштаб рамок — центр больше на 18.2%
-          const frameScale = isCenter ? 1.6548 : 1.4;
+          // 📏 Масштаб после увеличения на 20%
+          const avatarScale = isCenter ? 0.48498 : 0.41036;
+          const frameScale = isCenter ? 1.98576 : 1.68;
 
           const yOffset = isCenter ? 42 : 48;
           const opacity = isCenter ? 1 : 0.6;
