@@ -74,9 +74,9 @@ export default function AvatarScreen() {
           const frameScale = isCenter ? 1.98576 : 1.68;
           const avatarScale = isCenter
             ? 0.41043
-            : 0.41043 * (1.68 / 1.98576) * 1.1 * 1.03 * 1.02; // увеличение еще на 2%
+            : 0.41043 * (1.68 / 1.98576) * 1.1 * 1.03 * 1.02;
 
-          const yOffset = isCenter ? 32 : 38;
+          const yOffset = isCenter ? 32 : 34;
 
           const opacity = isCenter ? 1 : 0.6;
           const xOffset = baseX - (frameWidth * frameScale) / 2 + offset * spacing;
@@ -96,11 +96,11 @@ export default function AvatarScreen() {
                 height={512 * avatarScale}
                 opacity={opacity}
               />
-              <foreignObject x="0" y="266" width="280" height="60">
+              <foreignObject x="0" y="260" width="280" height="60">
                 <div
                   className="text-center"
                   style={{
-                    fontSize: "22px",
+                    fontSize: "24px",
                     fontWeight: "700",
                     color: "#FFD700",
                     fontFamily: "'Georgia', serif",
@@ -139,20 +139,20 @@ export default function AvatarScreen() {
         {/* 🔘 Кнопка "Подробнее" */}
         <image
           href={buttonDetails}
-          x="265"
-          y="1240"
-          width="550"
-          height="220"
+          x="240"
+          y="1270"
+          width="600"
+          height="240"
           className="cursor-pointer"
         />
 
         {/* 🟪 Кнопка "Выбрать" */}
         <image
           href={buttonSelect}
-          x="265"
-          y="1500"
-          width="550"
-          height="220"
+          x="240"
+          y="1530"
+          width="600"
+          height="240"
           className="cursor-pointer"
           onClick={handleSelect}
         />
