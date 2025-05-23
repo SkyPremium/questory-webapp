@@ -96,7 +96,7 @@ export default function AvatarScreen() {
                 height={512 * avatarScale}
                 opacity={opacity}
               />
-              <foreignObject x="0" y="265" width="280" height="60">
+              <foreignObject x="0" y="260" width="280" height="60">
                 <div
                   className="text-center"
                   style={{
