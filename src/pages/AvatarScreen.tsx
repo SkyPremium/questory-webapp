@@ -194,9 +194,14 @@ export default function AvatarScreen() {
                 {currentAvatar.name}
               </div>
             </foreignObject>
-            <foreignObject x="100" y="1260" width="880" height="260">
+            <foreignObject x="100" y="1260" width="880" height="200">
               <div className="text-white text-center text-2xl px-6 leading-snug">
                 {currentAvatar.description}
+              </div>
+            </foreignObject>
+            <foreignObject x="100" y="1470" width="880" height="80">
+              <div className="text-center text-xl text-[#ffda9b]" style={{ fontFamily: "Georgia, serif", fontStyle: "italic" }}>
+                {currentAvatar.source}
               </div>
             </foreignObject>
             <foreignObject x="250" y="1640" width="580" height="200">
