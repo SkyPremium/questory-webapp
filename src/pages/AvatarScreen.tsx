@@ -168,12 +168,12 @@ export default function AvatarScreen() {
             />
             <image
               href={currentAvatar.image}
-              x="272"
-              y="590"
+              x="274"
+              y="592"
               width="520"
               height="520"
             />
-            <foreignObject x="100" y="1140" width="880" height="140">
+            <foreignObject x="100" y="1150" width="880" height="140">
               <div
                 className="text-center"
                 style={{
