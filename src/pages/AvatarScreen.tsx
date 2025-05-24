@@ -116,7 +116,7 @@ export default function AvatarScreen() {
           );
         })}
 
-        <foreignObject x="210" y="1270" width="660" height="180">
+        <foreignObject x="210" y="1320" width="660" height="200">
           <button
             onClick={() => { playClick(); handleDetails(); }}
             style={{ width: "100%", height: "100%", background: "none", border: "none", padding: 0, transition: "transform 0.15s ease" }}
@@ -128,7 +128,7 @@ export default function AvatarScreen() {
           </button>
         </foreignObject>
 
-        <foreignObject x="210" y="1480" width="660" height="180">
+        <foreignObject x="210" y="1560" width="660" height="200">
           <button
             onClick={() => { playClick(); handleSelect(); }}
             style={{ width: "100%", height: "100%", background: "none", border: "none", padding: 0, transition: "transform 0.15s ease" }}
@@ -140,7 +140,7 @@ export default function AvatarScreen() {
           </button>
         </foreignObject>
 
-        <foreignObject x="30" y="1440" width="180" height="180">
+        <foreignObject x="50" y="1440" width="120" height="180">
           <button
             onClick={prevAvatar}
             style={{ width: "100%", height: "100%", background: "none", border: "none", padding: 0, transition: "transform 0.15s ease" }}
@@ -152,7 +152,7 @@ export default function AvatarScreen() {
           </button>
         </foreignObject>
 
-        <foreignObject x="870" y="1440" width="180" height="180">
+        <foreignObject x="910" y="1440" width="120" height="180">
           <button
             onClick={nextAvatar}
             style={{ width: "100%", height: "100%", background: "none", border: "none", padding: 0, transition: "transform 0.15s ease" }}
