@@ -67,6 +67,7 @@ export default function AvatarScreen() {
           const frameWidth = 280;
 
           const isCenter = offset === 0;
+
           const frameScale = isCenter ? 1.98576 : 1.68;
           const avatarScale = isCenter
             ? 0.41043
@@ -113,13 +114,16 @@ export default function AvatarScreen() {
           <button
             onClick={handleDetails}
             style={{
-              width: "100%", height: "100%",
-              background: "none", border: "none", padding: 0,
-              transition: "transform 0.15s ease"
+              width: "100%",
+              height: "100%",
+              background: "none",
+              border: "none",
+              padding: 0,
+              transition: "transform 0.15s ease",
             }}
-            onPointerDown={e => (e.currentTarget.style.transform = "scale(0.95)")}
-            onPointerUp={e => (e.currentTarget.style.transform = "scale(1)")}
-            onPointerLeave={e => (e.currentTarget.style.transform = "scale(1)")}
+            onPointerDown={(e) => (e.currentTarget.style.transform = "scale(0.95)")}
+            onPointerUp={(e) => (e.currentTarget.style.transform = "scale(1)")}
+            onPointerLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
           >
             <img src={buttonDetails} alt="Подробнее" style={{ width: "100%", height: "100%" }} />
           </button>
@@ -129,13 +133,16 @@ export default function AvatarScreen() {
           <button
             onClick={handleSelect}
             style={{
-              width: "100%", height: "100%",
-              background: "none", border: "none", padding: 0,
-              transition: "transform 0.15s ease"
+              width: "100%",
+              height: "100%",
+              background: "none",
+              border: "none",
+              padding: 0,
+              transition: "transform 0.15s ease",
             }}
-            onPointerDown={e => (e.currentTarget.style.transform = "scale(0.95)")}
-            onPointerUp={e => (e.currentTarget.style.transform = "scale(1)")}
-            onPointerLeave={e => (e.currentTarget.style.transform = "scale(1)")}
+            onPointerDown={(e) => (e.currentTarget.style.transform = "scale(0.95)")}
+            onPointerUp={(e) => (e.currentTarget.style.transform = "scale(1)")}
+            onPointerLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
           >
             <img src={buttonSelect} alt="Выбрать" style={{ width: "100%", height: "100%" }} />
           </button>
@@ -145,13 +152,16 @@ export default function AvatarScreen() {
           <button
             onClick={prevAvatar}
             style={{
-              width: "100%", height: "100%",
-              background: "none", border: "none", padding: 0,
-              transition: "transform 0.15s ease"
+              width: "100%",
+              height: "100%",
+              background: "none",
+              border: "none",
+              padding: 0,
+              transition: "transform 0.15s ease",
             }}
-            onPointerDown={e => (e.currentTarget.style.transform = "scale(0.95)")}
-            onPointerUp={e => (e.currentTarget.style.transform = "scale(1)")}
-            onPointerLeave={e => (e.currentTarget.style.transform = "scale(1)")}
+            onPointerDown={(e) => (e.currentTarget.style.transform = "scale(0.95)")}
+            onPointerUp={(e) => (e.currentTarget.style.transform = "scale(1)")}
+            onPointerLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
           >
             <img src={arrowLeft} alt="Prev" style={{ width: "100%", height: "100%" }} />
           </button>
@@ -161,13 +171,16 @@ export default function AvatarScreen() {
           <button
             onClick={nextAvatar}
             style={{
-              width: "100%", height: "100%",
-              background: "none", border: "none", padding: 0,
-              transition: "transform 0.15s ease"
+              width: "100%",
+              height: "100%",
+              background: "none",
+              border: "none",
+              padding: 0,
+              transition: "transform 0.15s ease",
             }}
-            onPointerDown={e => (e.currentTarget.style.transform = "scale(0.95)")}
-            onPointerUp={e => (e.currentTarget.style.transform = "scale(1)")}
-            onPointerLeave={e => (e.currentTarget.style.transform = "scale(1)")}
+            onPointerDown={(e) => (e.currentTarget.style.transform = "scale(0.95)")}
+            onPointerUp={(e) => (e.currentTarget.style.transform = "scale(1)")}
+            onPointerLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
           >
             <img src={arrowRight} alt="Next" style={{ width: "100%", height: "100%" }} />
           </button>
@@ -194,13 +207,13 @@ export default function AvatarScreen() {
               </div>
             </foreignObject>
 
-            <foreignObject x="100" y="1339" width="880" height="240">
+            <foreignObject x="120" y="1320" width="840" height="240">
               <div
                 style={{
                   fontFamily: "'Georgia', serif",
-                  fontSize: "38px",
-                  color: "#f2d9b1",
-                  lineHeight: "1.6",
+                  fontSize: "32px",
+                  color: "#ffffff",
+                  lineHeight: "1.5",
                   textAlign: "center",
                   textShadow: "0 0 4px #000",
                 }}
@@ -209,14 +222,14 @@ export default function AvatarScreen() {
               </div>
             </foreignObject>
 
-            <foreignObject x="100" y="1530" width="880" height="100">
+            <foreignObject x="100" y="1570" width="880" height="100">
               <div
                 style={{
                   fontFamily: "'Georgia', serif",
                   fontSize: "30px",
-                  color: "#ff4747",
-                  fontWeight: "bold",
+                  color: "#ff5959",
                   fontStyle: "italic",
+                  fontWeight: "bold",
                   textAlign: "center",
                   textShadow: "0 0 5px #000, 0 0 8px #000",
                 }}
@@ -229,13 +242,16 @@ export default function AvatarScreen() {
               <button
                 onClick={handleCloseDetails}
                 style={{
-                  width: "100%", height: "100%",
-                  background: "none", border: "none", padding: 0,
-                  transition: "transform 0.15s ease"
+                  width: "100%",
+                  height: "100%",
+                  background: "none",
+                  border: "none",
+                  padding: 0,
+                  transition: "transform 0.15s ease",
                 }}
-                onPointerDown={e => (e.currentTarget.style.transform = "scale(0.95)")}
-                onPointerUp={e => (e.currentTarget.style.transform = "scale(1)")}
-                onPointerLeave={e => (e.currentTarget.style.transform = "scale(1)")}
+                onPointerDown={(e) => (e.currentTarget.style.transform = "scale(0.95)")}
+                onPointerUp={(e) => (e.currentTarget.style.transform = "scale(1)")}
+                onPointerLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
               >
                 <img src={buttonBack} alt="Назад" style={{ width: "100%", height: "100%" }} />
               </button>
