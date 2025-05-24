@@ -168,16 +168,16 @@ export default function AvatarScreen() {
             />
             <image
               href={currentAvatar.image}
-              x="268"
-              y="585"
+              x="270"
+              y="587"
               width="520"
               height="520"
             />
-            <foreignObject x="100" y="1150" width="880" height="120">
+            <foreignObject x="100" y="1130" width="880" height="140">
               <div
                 className="text-center"
                 style={{
-                  fontSize: "56px",
+                  fontSize: "64px",
                   color: "#FFD700",
                   fontWeight: 700,
                   fontFamily: "'Georgia', serif",
@@ -194,10 +194,10 @@ export default function AvatarScreen() {
             <image
               href={buttonBack}
               x="250"
-              y="1620"
+              y="1615"
               width="580"
               height="260"
-              className="cursor-pointer active:scale-95 transition-transform"
+              className="cursor-pointer active:scale-95 transition-transform origin-center"
               onClick={handleCloseDetails}
             />
           </>
