@@ -194,7 +194,7 @@ export default function AvatarScreen() {
               </div>
             </foreignObject>
 
-            <foreignObject x="100" y="1330" width="880" height="240">
+            <foreignObject x="100" y="1334" width="880" height="240">
               <div
                 style={{
                   fontFamily: "'Georgia', serif",
