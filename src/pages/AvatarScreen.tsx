@@ -167,20 +167,9 @@ export default function AvatarScreen() {
         {showDetails && (
           <>
             <image href={detailsPopup} x="0" y="530" width="1080" height="1400" />
-            <image
-              href={avatarFrame}
-              x="190"
-              y="530"
-              width="700"
-              height="800"
-            />
-            <image
-              href={currentAvatar.image}
-              x="278"
-              y="596"
-              width="520"
-              height="520"
-            />
+            <image href={avatarFrame} x="190" y="530" width="700" height="800" />
+            <image href={currentAvatar.image} x="278" y="596" width="520" height="520" />
+
             <foreignObject x="100" y="1150" width="880" height="140">
               <div
                 className="text-center"
@@ -189,21 +178,43 @@ export default function AvatarScreen() {
                   color: "#FFD700",
                   fontWeight: 700,
                   fontFamily: "'Georgia', serif",
+                  textShadow: "0 0 6px #000, 0 0 8px #000",
                 }}
               >
                 {currentAvatar.name}
               </div>
             </foreignObject>
-            <foreignObject x="100" y="1260" width="880" height="200">
-              <div className="text-white text-center text-2xl px-6 leading-snug">
+
+            <foreignObject x="100" y="1260" width="880" height="240">
+              <div
+                style={{
+                  fontFamily: "'Georgia', serif",
+                  fontSize: "32px",
+                  color: "#ffffff",
+                  lineHeight: "1.5",
+                  textAlign: "center",
+                  textShadow: "0 0 4px #000",
+                }}
+              >
                 {currentAvatar.description}
               </div>
             </foreignObject>
-            <foreignObject x="100" y="1470" width="880" height="80">
-              <div className="text-center text-xl text-[#ffda9b]" style={{ fontFamily: "Georgia, serif", fontStyle: "italic" }}>
+
+            <foreignObject x="100" y="1510" width="880" height="100">
+              <div
+                style={{
+                  fontFamily: "'Georgia', serif",
+                  fontSize: "30px",
+                  color: "#FFDC87",
+                  fontStyle: "italic",
+                  textAlign: "center",
+                  textShadow: "0 0 5px #000, 0 0 8px #000",
+                }}
+              >
                 {currentAvatar.source}
               </div>
             </foreignObject>
+
             <foreignObject x="250" y="1640" width="580" height="200">
               <button
                 onClick={() => { playClick(); handleCloseDetails(); }}
