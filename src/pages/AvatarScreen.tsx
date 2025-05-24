@@ -119,14 +119,7 @@ export default function AvatarScreen() {
         <foreignObject x="210" y="1320" width="660" height="200">
           <button
             onClick={() => { playClick(); handleDetails(); }}
-            style={{
-              width: "100%",
-              height: "100%",
-              background: "none",
-              border: "none",
-              padding: 0,
-              transition: "transform 0.15s ease",
-            }}
+            style={{ width: "100%", height: "100%", background: "none", border: "none", padding: 0, transition: "transform 0.15s ease" }}
             onPointerDown={e => (e.currentTarget.style.transform = "scale(0.95)")}
             onPointerUp={e => (e.currentTarget.style.transform = "scale(1)")}
             onPointerLeave={e => (e.currentTarget.style.transform = "scale(1)")}
@@ -138,14 +131,7 @@ export default function AvatarScreen() {
         <foreignObject x="210" y="1560" width="660" height="200">
           <button
             onClick={() => { playClick(); handleSelect(); }}
-            style={{
-              width: "100%",
-              height: "100%",
-              background: "none",
-              border: "none",
-              padding: 0,
-              transition: "transform 0.15s ease",
-            }}
+            style={{ width: "100%", height: "100%", background: "none", border: "none", padding: 0, transition: "transform 0.15s ease" }}
             onPointerDown={e => (e.currentTarget.style.transform = "scale(0.95)")}
             onPointerUp={e => (e.currentTarget.style.transform = "scale(1)")}
             onPointerLeave={e => (e.currentTarget.style.transform = "scale(1)")}
@@ -157,14 +143,7 @@ export default function AvatarScreen() {
         <foreignObject x="50" y="1440" width="120" height="180">
           <button
             onClick={prevAvatar}
-            style={{
-              width: "100%",
-              height: "100%",
-              background: "none",
-              border: "none",
-              padding: 0,
-              transition: "transform 0.15s ease",
-            }}
+            style={{ width: "100%", height: "100%", background: "none", border: "none", padding: 0, transition: "transform 0.15s ease" }}
             onPointerDown={e => (e.currentTarget.style.transform = "scale(0.95)")}
             onPointerUp={e => (e.currentTarget.style.transform = "scale(1)")}
             onPointerLeave={e => (e.currentTarget.style.transform = "scale(1)")}
@@ -176,14 +155,7 @@ export default function AvatarScreen() {
         <foreignObject x="910" y="1440" width="120" height="180">
           <button
             onClick={nextAvatar}
-            style={{
-              width: "100%",
-              height: "100%",
-              background: "none",
-              border: "none",
-              padding: 0,
-              transition: "transform 0.15s ease",
-            }}
+            style={{ width: "100%", height: "100%", background: "none", border: "none", padding: 0, transition: "transform 0.15s ease" }}
             onPointerDown={e => (e.currentTarget.style.transform = "scale(0.95)")}
             onPointerUp={e => (e.currentTarget.style.transform = "scale(1)")}
             onPointerLeave={e => (e.currentTarget.style.transform = "scale(1)")}
@@ -213,11 +185,12 @@ export default function AvatarScreen() {
               </div>
             </foreignObject>
 
-            <foreignObject x="120" y="1270" width="840" height="240">
+            {/* 🔽 Описание опущено на 15 пикселей */}
+            <foreignObject x="120" y="1290" width="840" height="240">
               <div
                 style={{
                   fontFamily: "'Georgia', serif",
-                  fontSize: "36px",
+                  fontSize: "32px",
                   color: "#ffffff",
                   lineHeight: "1.5",
                   textAlign: "center",
@@ -228,15 +201,15 @@ export default function AvatarScreen() {
               </div>
             </foreignObject>
 
-            <foreignObject x="120" y="1510" width="840" height="100">
+            <foreignObject x="100" y="1510" width="880" height="100">
               <div
                 style={{
                   fontFamily: "'Georgia', serif",
                   fontSize: "30px",
-                  color: "#FF4C4C",
+                  color: "#FF4B4B",
                   fontStyle: "italic",
                   textAlign: "center",
-                  fontWeight: 600,
+                  fontWeight: "bold",
                   textShadow: "0 0 5px #000, 0 0 8px #000",
                 }}
               >
@@ -247,14 +220,7 @@ export default function AvatarScreen() {
             <foreignObject x="250" y="1640" width="580" height="200">
               <button
                 onClick={() => { playClick(); handleCloseDetails(); }}
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  background: "none",
-                  border: "none",
-                  padding: 0,
-                  transition: "transform 0.15s ease",
-                }}
+                style={{ width: "100%", height: "100%", background: "none", border: "none", padding: 0, transition: "transform 0.15s ease" }}
                 onPointerDown={e => (e.currentTarget.style.transform = "scale(0.95)")}
                 onPointerUp={e => (e.currentTarget.style.transform = "scale(1)")}
                 onPointerLeave={e => (e.currentTarget.style.transform = "scale(1)")}
