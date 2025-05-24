@@ -116,6 +116,30 @@ export default function AvatarScreen() {
           );
         })}
 
+        <foreignObject x="210" y="1270" width="660" height="260">
+          <button
+            onClick={() => { playClick(); handleDetails(); }}
+            style={{ width: "100%", height: "100%", background: "none", border: "none", padding: 0, transition: "transform 0.15s ease" }}
+            onPointerDown={e => (e.currentTarget.style.transform = "scale(0.95)")}
+            onPointerUp={e => (e.currentTarget.style.transform = "scale(1)")}
+            onPointerLeave={e => (e.currentTarget.style.transform = "scale(1)")}
+          >
+            <img src={buttonDetails} alt="Подробнее" style={{ width: "100%", height: "100%" }} />
+          </button>
+        </foreignObject>
+
+        <foreignObject x="210" y="1530" width="660" height="260">
+          <button
+            onClick={() => { playClick(); handleSelect(); }}
+            style={{ width: "100%", height: "100%", background: "none", border: "none", padding: 0, transition: "transform 0.15s ease" }}
+            onPointerDown={e => (e.currentTarget.style.transform = "scale(0.95)")}
+            onPointerUp={e => (e.currentTarget.style.transform = "scale(1)")}
+            onPointerLeave={e => (e.currentTarget.style.transform = "scale(1)")}
+          >
+            <img src={buttonSelect} alt="Выбрать" style={{ width: "100%", height: "100%" }} />
+          </button>
+        </foreignObject>
+
         <image
           href={arrowLeft}
           x="30"
@@ -136,26 +160,6 @@ export default function AvatarScreen() {
           onClick={nextAvatar}
         />
 
-        <image
-          href={buttonDetails}
-          x="210"
-          y="1270"
-          width="660"
-          height="260"
-          className="cursor-pointer"
-          onClick={handleDetails}
-        />
-
-        <image
-          href={buttonSelect}
-          x="210"
-          y="1530"
-          width="660"
-          height="260"
-          className="cursor-pointer"
-          onClick={handleSelect}
-        />
-
         {showDetails && (
           <>
             <image href={detailsPopup} x="0" y="530" width="1080" height="1400" />
@@ -168,16 +172,16 @@ export default function AvatarScreen() {
             />
             <image
               href={currentAvatar.image}
-              x="274"
-              y="592"
+              x="276"
+              y="594"
               width="520"
               height="520"
             />
-            <foreignObject x="100" y="1150" width="880" height="140">
+            <foreignObject x="100" y="1160" width="880" height="140">
               <div
                 className="text-center"
                 style={{
-                  fontSize: "64px",
+                  fontSize: "72px",
                   color: "#FFD700",
                   fontWeight: 700,
                   fontFamily: "'Georgia', serif",
@@ -191,18 +195,17 @@ export default function AvatarScreen() {
                 {currentAvatar.description}
               </div>
             </foreignObject>
-            <g
-              className="cursor-pointer active:scale-95 transition-transform origin-center"
-              onClick={handleCloseDetails}
-            >
-              <image
-                href={buttonBack}
-                x="250"
-                y="1615"
-                width="580"
-                height="260"
-              />
-            </g>
+            <foreignObject x="250" y="1615" width="580" height="260">
+              <button
+                onClick={() => { playClick(); handleCloseDetails(); }}
+                style={{ width: "100%", height: "100%", background: "none", border: "none", padding: 0, transition: "transform 0.15s ease" }}
+                onPointerDown={e => (e.currentTarget.style.transform = "scale(0.95)")}
+                onPointerUp={e => (e.currentTarget.style.transform = "scale(1)")}
+                onPointerLeave={e => (e.currentTarget.style.transform = "scale(1)")}
+              >
+                <img src={buttonBack} alt="Назад" style={{ width: "100%", height: "100%" }} />
+              </button>
+            </foreignObject>
           </>
         )}
       </svg>
