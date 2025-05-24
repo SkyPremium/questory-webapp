@@ -162,7 +162,7 @@ export default function AvatarScreen() {
             <image
               href={avatarFrame}
               x="190"
-              y="510"
+              y="530"
               width="700"
               height="800"
             />
@@ -173,7 +173,7 @@ export default function AvatarScreen() {
               width="520"
               height="520"
             />
-            <foreignObject x="100" y="1165" width="880" height="120">
+            <foreignObject x="100" y="1150" width="880" height="120">
               <div
                 className="text-center"
                 style={{
@@ -194,7 +194,7 @@ export default function AvatarScreen() {
             <image
               href={buttonBack}
               x="250"
-              y="1630"
+              y="1620"
               width="580"
               height="260"
               className="cursor-pointer active:scale-95 transition-transform"
