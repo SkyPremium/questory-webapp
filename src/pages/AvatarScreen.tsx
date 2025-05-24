@@ -158,26 +158,26 @@ export default function AvatarScreen() {
 
         {showDetails && (
           <>
-            <image href={detailsPopup} x="140" y="500" width="800" height="1050" />
+            <image href={detailsPopup} x="60" y="460" width="960" height="1260" />
             <image
               href={avatarFrame}
-              x="290"
-              y="540"
-              width="500"
-              height="540"
+              x="270"
+              y="500"
+              width="580"
+              height="580"
             />
             <image
               href={currentAvatar.image}
-              x="315"
-              y="560"
-              width="450"
-              height="450"
+              x="300"
+              y="530"
+              width="520"
+              height="520"
             />
             <foreignObject x="140" y="1120" width="800" height="120">
               <div
                 className="text-center"
                 style={{
-                  fontSize: "34px",
+                  fontSize: "44px",
                   color: "#FFD700",
                   fontWeight: 700,
                   fontFamily: "'Georgia', serif",
@@ -186,17 +186,17 @@ export default function AvatarScreen() {
                 {currentAvatar.name}
               </div>
             </foreignObject>
-            <foreignObject x="190" y="1200" width="700" height="160">
-              <div className="text-white text-center text-lg px-4 leading-tight">
+            <foreignObject x="150" y="1200" width="780" height="220">
+              <div className="text-white text-center text-xl px-4 leading-snug">
                 {currentAvatar.description}
               </div>
             </foreignObject>
             <image
               href={buttonBack}
-              x="370"
-              y="1380"
-              width="340"
-              height="120"
+              x="340"
+              y="1450"
+              width="400"
+              height="140"
               className="cursor-pointer"
               onClick={handleCloseDetails}
             />
