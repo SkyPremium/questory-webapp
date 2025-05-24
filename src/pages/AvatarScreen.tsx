@@ -168,12 +168,12 @@ export default function AvatarScreen() {
             />
             <image
               href={currentAvatar.image}
-              x="270"
-              y="587"
+              x="272"
+              y="590"
               width="520"
               height="520"
             />
-            <foreignObject x="100" y="1130" width="880" height="140">
+            <foreignObject x="100" y="1140" width="880" height="140">
               <div
                 className="text-center"
                 style={{
@@ -191,15 +191,18 @@ export default function AvatarScreen() {
                 {currentAvatar.description}
               </div>
             </foreignObject>
-            <image
-              href={buttonBack}
-              x="250"
-              y="1615"
-              width="580"
-              height="260"
+            <g
               className="cursor-pointer active:scale-95 transition-transform origin-center"
               onClick={handleCloseDetails}
-            />
+            >
+              <image
+                href={buttonBack}
+                x="250"
+                y="1615"
+                width="580"
+                height="260"
+              />
+            </g>
           </>
         )}
       </svg>
