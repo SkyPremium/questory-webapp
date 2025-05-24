@@ -177,7 +177,7 @@ export default function AvatarScreen() {
               width="520"
               height="520"
             />
-            <foreignObject x="100" y="1170" width="880" height="140">
+            <foreignObject x="100" y="1160" width="880" height="140">
               <div
                 className="text-center"
                 style={{
@@ -195,7 +195,7 @@ export default function AvatarScreen() {
                 {currentAvatar.description}
               </div>
             </foreignObject>
-            <foreignObject x="250" y="1615" width="580" height="200">
+            <foreignObject x="250" y="1630" width="580" height="200">
               <button
                 onClick={() => { playClick(); handleCloseDetails(); }}
                 style={{ width: "100%", height: "100%", background: "none", border: "none", padding: 0, transition: "transform 0.15s ease" }}
