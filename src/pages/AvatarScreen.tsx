@@ -158,26 +158,26 @@ export default function AvatarScreen() {
 
         {showDetails && (
           <>
-            <image href={detailsPopup} x="60" y="460" width="960" height="1260" />
+            <image href={detailsPopup} x="30" y="420" width="1020" height="1360" />
             <image
               href={avatarFrame}
-              x="270"
-              y="500"
-              width="580"
-              height="580"
+              x="250"
+              y="470"
+              width="620"
+              height="620"
             />
             <image
               href={currentAvatar.image}
-              x="300"
-              y="530"
-              width="520"
-              height="520"
+              x="280"
+              y="500"
+              width="560"
+              height="560"
             />
-            <foreignObject x="140" y="1120" width="800" height="120">
+            <foreignObject x="140" y="1150" width="800" height="140">
               <div
                 className="text-center"
                 style={{
-                  fontSize: "44px",
+                  fontSize: "52px",
                   color: "#FFD700",
                   fontWeight: 700,
                   fontFamily: "'Georgia', serif",
@@ -186,17 +186,17 @@ export default function AvatarScreen() {
                 {currentAvatar.name}
               </div>
             </foreignObject>
-            <foreignObject x="150" y="1200" width="780" height="220">
-              <div className="text-white text-center text-xl px-4 leading-snug">
+            <foreignObject x="120" y="1240" width="840" height="260">
+              <div className="text-white text-center text-2xl px-6 leading-snug">
                 {currentAvatar.description}
               </div>
             </foreignObject>
             <image
               href={buttonBack}
-              x="340"
-              y="1450"
-              width="400"
-              height="140"
+              x="320"
+              y="1550"
+              width="440"
+              height="160"
               className="cursor-pointer"
               onClick={handleCloseDetails}
             />
