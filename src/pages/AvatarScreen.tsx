@@ -161,10 +161,10 @@ export default function AvatarScreen() {
             <image href={detailsPopup} x="0" y="530" width="1080" height="1400" />
             <image
               href={avatarFrame}
-              x="250"
-              y="570"
-              width="556"
-              height="656"
+              x="240"
+              y="560"
+              width="600"
+              height="700"
             />
             <image
               href={currentAvatar.image}
@@ -193,10 +193,10 @@ export default function AvatarScreen() {
             </foreignObject>
             <image
               href={buttonBack}
-              x="285"
-              y="1620"
-              width="520"
-              height="220"
+              x="275"
+              y="1640"
+              width="540"
+              height="240"
               className="cursor-pointer"
               onClick={handleCloseDetails}
             />
