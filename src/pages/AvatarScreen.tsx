@@ -158,22 +158,22 @@ export default function AvatarScreen() {
 
         {showDetails && (
           <>
-            <image href={detailsPopup} x="0" y="580" width="1080" height="1400" />
+            <image href={detailsPopup} x="0" y="500" width="1080" height="1400" />
             <image
               href={avatarFrame}
               x="250"
-              y="620"
+              y="540"
               width="580"
               height="660"
             />
             <image
               href={currentAvatar.image}
               x="270"
-              y="640"
+              y="560"
               width="540"
               height="540"
             />
-            <foreignObject x="100" y="1260" width="880" height="120">
+            <foreignObject x="100" y="1180" width="880" height="120">
               <div
                 className="text-center"
                 style={{
@@ -186,7 +186,7 @@ export default function AvatarScreen() {
                 {currentAvatar.name}
               </div>
             </foreignObject>
-            <foreignObject x="100" y="1340" width="880" height="260">
+            <foreignObject x="100" y="1260" width="880" height="260">
               <div className="text-white text-center text-2xl px-6 leading-snug">
                 {currentAvatar.description}
               </div>
@@ -194,7 +194,7 @@ export default function AvatarScreen() {
             <image
               href={buttonBack}
               x="300"
-              y="1650"
+              y="1580"
               width="480"
               height="180"
               className="cursor-pointer"
