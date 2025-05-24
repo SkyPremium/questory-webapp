@@ -11,6 +11,8 @@ import arrowLeft from "@/assets/images/button_avatar_3.png";
 import arrowRight from "@/assets/images/button_avatar_4.png";
 import buttonSelect from "@/assets/images/button_avatar_2.png";
 import buttonDetails from "@/assets/images/button_avatar_1.png";
+import detailsPopup from "@/assets/images/avatar_3.png";
+import buttonBack from "@/assets/images/button_avatar_5.png";
 
 const avatars = allAvatars.slice(0, 5);
 
@@ -18,6 +20,7 @@ export default function AvatarScreen() {
   const navigate = useNavigate();
   const playClick = useSound(clickSound, 0.8);
   const [index, setIndex] = useState(0);
+  const [showDetails, setShowDetails] = useState(false);
 
   const nextAvatar = () => {
     playClick();
@@ -33,6 +36,18 @@ export default function AvatarScreen() {
     playClick();
     navigate("/training");
   };
+
+  const handleDetails = () => {
+    playClick();
+    setShowDetails(true);
+  };
+
+  const handleCloseDetails = () => {
+    playClick();
+    setShowDetails(false);
+  };
+
+  const currentAvatar = avatars[index];
 
   return (
     <div className="w-screen h-screen flex items-center justify-center bg-black overflow-hidden">
@@ -128,6 +143,7 @@ export default function AvatarScreen() {
           width="660"
           height="260"
           className="cursor-pointer"
+          onClick={handleDetails}
         />
 
         <image
@@ -139,6 +155,53 @@ export default function AvatarScreen() {
           className="cursor-pointer"
           onClick={handleSelect}
         />
+
+        {showDetails && (
+          <>
+            <image href={detailsPopup} x="140" y="500" width="800" height="1050" />
+            <image
+              href={avatarFrame}
+              x="290"
+              y="540"
+              width="500"
+              height="540"
+            />
+            <image
+              href={currentAvatar.image}
+              x="315"
+              y="560"
+              width="450"
+              height="450"
+            />
+            <foreignObject x="140" y="1120" width="800" height="120">
+              <div
+                className="text-center"
+                style={{
+                  fontSize: "34px",
+                  color: "#FFD700",
+                  fontWeight: 700,
+                  fontFamily: "'Georgia', serif",
+                }}
+              >
+                {currentAvatar.name}
+              </div>
+            </foreignObject>
+            <foreignObject x="190" y="1200" width="700" height="160">
+              <div className="text-white text-center text-lg px-4 leading-tight">
+                {currentAvatar.description}
+              </div>
+            </foreignObject>
+            <image
+              href={buttonBack}
+              x="370"
+              y="1380"
+              width="340"
+              height="120"
+              className="cursor-pointer"
+              onClick={handleCloseDetails}
+            />
+          </>
+        )}
       </svg>
     </div>
   );
