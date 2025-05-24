@@ -116,7 +116,7 @@ export default function AvatarScreen() {
           );
         })}
 
-        <foreignObject x="210" y="1270" width="660" height="260">
+        <foreignObject x="210" y="1270" width="660" height="180">
           <button
             onClick={() => { playClick(); handleDetails(); }}
             style={{ width: "100%", height: "100%", background: "none", border: "none", padding: 0, transition: "transform 0.15s ease" }}
@@ -128,7 +128,7 @@ export default function AvatarScreen() {
           </button>
         </foreignObject>
 
-        <foreignObject x="210" y="1530" width="660" height="260">
+        <foreignObject x="210" y="1480" width="660" height="180">
           <button
             onClick={() => { playClick(); handleSelect(); }}
             style={{ width: "100%", height: "100%", background: "none", border: "none", padding: 0, transition: "transform 0.15s ease" }}
@@ -140,25 +140,29 @@ export default function AvatarScreen() {
           </button>
         </foreignObject>
 
-        <image
-          href={arrowLeft}
-          x="30"
-          y="1440"
-          width="180"
-          height="180"
-          className="cursor-pointer"
-          onClick={prevAvatar}
-        />
+        <foreignObject x="30" y="1440" width="180" height="180">
+          <button
+            onClick={prevAvatar}
+            style={{ width: "100%", height: "100%", background: "none", border: "none", padding: 0, transition: "transform 0.15s ease" }}
+            onPointerDown={e => (e.currentTarget.style.transform = "scale(0.95)")}
+            onPointerUp={e => (e.currentTarget.style.transform = "scale(1)")}
+            onPointerLeave={e => (e.currentTarget.style.transform = "scale(1)")}
+          >
+            <img src={arrowLeft} alt="Prev" style={{ width: "100%", height: "100%" }} />
+          </button>
+        </foreignObject>
 
-        <image
-          href={arrowRight}
-          x="870"
-          y="1440"
-          width="180"
-          height="180"
-          className="cursor-pointer"
-          onClick={nextAvatar}
-        />
+        <foreignObject x="870" y="1440" width="180" height="180">
+          <button
+            onClick={nextAvatar}
+            style={{ width: "100%", height: "100%", background: "none", border: "none", padding: 0, transition: "transform 0.15s ease" }}
+            onPointerDown={e => (e.currentTarget.style.transform = "scale(0.95)")}
+            onPointerUp={e => (e.currentTarget.style.transform = "scale(1)")}
+            onPointerLeave={e => (e.currentTarget.style.transform = "scale(1)")}
+          >
+            <img src={arrowRight} alt="Next" style={{ width: "100%", height: "100%" }} />
+          </button>
+        </foreignObject>
 
         {showDetails && (
           <>
