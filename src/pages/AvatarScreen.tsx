@@ -79,6 +79,7 @@ export default function AvatarScreen() {
             : 0.41043 * (1.68 / 1.98576) * 1.1 * 1.03 * 1.02;
 
           const yOffset = isCenter ? 32 : 34;
+
           const opacity = isCenter ? 1 : 0.6;
           const xOffset = baseX - (frameWidth * frameScale) / 2 + offset * spacing;
 
@@ -184,12 +185,12 @@ export default function AvatarScreen() {
               </div>
             </foreignObject>
 
-            <foreignObject x="130" y="1330" width="820" height="240">
+            <foreignObject x="140" y="1345" width="800" height="240">
               <div
                 style={{
                   fontFamily: "'Georgia', serif",
-                  fontSize: "34px",
-                  color: "#e5c79c",
+                  fontSize: "32px",
+                  color: "#f3e6cc",
                   lineHeight: "1.5",
                   textAlign: "center",
                   textShadow: "0 0 4px #000",
