@@ -185,12 +185,12 @@ export default function AvatarScreen() {
               </div>
             </foreignObject>
 
-            <foreignObject x="140" y="1345" width="800" height="240">
+            <foreignObject x="130" y="1330" width="820" height="250">
               <div
                 style={{
                   fontFamily: "'Georgia', serif",
                   fontSize: "32px",
-                  color: "#f3e6cc",
+                  color: "#f1dcb0",
                   lineHeight: "1.5",
                   textAlign: "center",
                   textShadow: "0 0 4px #000",
@@ -200,12 +200,12 @@ export default function AvatarScreen() {
               </div>
             </foreignObject>
 
-            <foreignObject x="100" y="1580" width="880" height="100">
+            <foreignObject x="100" y="1555" width="880" height="100">
               <div
                 style={{
                   fontFamily: "'Georgia', serif",
                   fontSize: "30px",
-                  color: "#d94f3f",
+                  color: "#ff4d4d",
                   fontStyle: "italic",
                   fontWeight: "bold",
                   textAlign: "center",
@@ -219,7 +219,14 @@ export default function AvatarScreen() {
             <foreignObject x="250" y="1640" width="580" height="200">
               <button
                 onClick={() => { playClick(); handleCloseDetails(); }}
-                style={{ width: "100%", height: "100%", background: "none", border: "none", padding: 0, transition: "transform 0.15s ease" }}
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  background: "none",
+                  border: "none",
+                  padding: 0,
+                  transition: "transform 0.15s ease"
+                }}
                 onPointerDown={e => (e.currentTarget.style.transform = "scale(0.95)")}
                 onPointerUp={e => (e.currentTarget.style.transform = "scale(1)")}
                 onPointerLeave={e => (e.currentTarget.style.transform = "scale(1)")}
