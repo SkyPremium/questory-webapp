@@ -2,11 +2,11 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSound } from "../utils/useSound";
 import clickSound from "../assets/sounds/click_ui.mp3";
-import rulesBg from "../assets/images/rules.jpg";
+import rulesBg from "@/assets/images/RulesScreen/rules.jpg";
 import logo from "../assets/images/logo.png";
-import buttonRules from "../assets/images/button_rules.png";
-import checkboxChecked from "../assets/images/checkbox_checked.png";
-import checkboxEmpty from "../assets/images/checkbox_empty.png";
+import buttonRules from "@/assets/images/RulesScreen/button_rules.png";
+import checkboxChecked from "@/assets/images/RulesScreen/checkbox_checked.png";
+import checkboxEmpty from "@/assets/images/RulesScreen/checkbox_empty.png";
 
 export default function RulesScreen() {
   const [checked, setChecked] = useState(false);

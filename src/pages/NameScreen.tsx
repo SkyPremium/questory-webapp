@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import background from "@/assets/images/name.jpg";
-import buttonContinue from "@/assets/images/button_name.png";
-import confirmBG from "@/assets/images/name_save.png";
-import confirmYes from "@/assets/images/button_name_save_1.png";
-import confirmNo from "@/assets/images/button_name_save_2.png";
+import background from "@/assets/images/NameScreen/name.jpg";
+import buttonName from "@/assets/images/NameScreen/button_name.png";
+import nameSave from "@/assets/images/NameScreen/name_save.png";
+import nameSave1 from "@/assets/images/NameScreen/button_name_save_1.png";
+import nameSave2 from "@/assets/images/NameScreen/button_name_save_2.png";
 import { useSound } from "../utils/useSound";
 import clickSound from "@/assets/sounds/click_ui.mp3";
 import blackList from "../utils/blacklist";

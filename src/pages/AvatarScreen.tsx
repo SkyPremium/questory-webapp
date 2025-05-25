@@ -5,14 +5,14 @@ import clickSound from "@/assets/sounds/click_ui.mp3";
 
 import { allAvatars } from "@/data/avatars/avatars";
 
-import background from "@/assets/images/avatar.jpg";
-import avatarFrame from "@/assets/images/avatar_2.png";
-import arrowLeft from "@/assets/images/button_avatar_3.png";
-import arrowRight from "@/assets/images/button_avatar_4.png";
-import buttonSelect from "@/assets/images/button_avatar_2.png";
-import buttonDetails from "@/assets/images/button_avatar_1.png";
-import detailsPopup from "@/assets/images/avatar_3.png";
-import buttonBack from "@/assets/images/button_avatar_5.png";
+import background from "@/assets/images/AvatarScreen/avatar.jpg";
+import avatarFrame from "@/assets/images/AvatarScreen/avatar_2.png";
+import detailsPopup from "@/assets/images/AvatarScreen/avatar_3.png";
+import buttonDetails from "@/assets/images/AvatarScreen/button_avatar_1.png";
+import buttonSelect from "@/assets/images/AvatarScreen/button_avatar_2.png";
+import arrowLeft from "@/assets/images/AvatarScreen/button_avatar_3.png";
+import arrowRight from "@/assets/images/AvatarScreen/button_avatar_4.png";
+import buttonBack from "@/assets/images/AvatarScreen/button_avatar_5.png";
 
 const avatars = allAvatars.slice(0, 5);
 

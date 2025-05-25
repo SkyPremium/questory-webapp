@@ -1,19 +1,21 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import loadingBg from "@/assets/images/loading.jpg";
+import loadingBg from "@/assets/images/LoadingScreen/loading.jpg";
 
-import welcome from "@/assets/images/welcome.jpg";
-import rules from "@/assets/images/rules.jpg";
-import name from "@/assets/images/name.jpg";
+import welcome from "@/assets/images/WelcomeScreen/welcome.jpg";
+import rules from "@/assets/images/RulesScreen/rules.jpg";
+import name from "@/assets/images/NameScreen/name.jpg";
 import logo from "@/assets/images/logo.png";
-import buttonWelcome from "@/assets/images/button_welcome.png";
-import buttonRules from "@/assets/images/button_rules.png";
-import checkboxChecked from "@/assets/images/checkbox_checked.png";
-import checkboxEmpty from "@/assets/images/checkbox_empty.png";
-import buttonName from "@/assets/images/button_name.png";
-import nameSave from "@/assets/images/name_save.png";
-import nameSave1 from "@/assets/images/button_name_save_1.png";
-import nameSave2 from "@/assets/images/button_name_save_2.png";
+
+import buttonWelcome from "@/assets/images/WelcomeScreen/button_welcome.png";
+import buttonRules from "@/assets/images/RulesScreen/button_rules.png";
+import checkboxChecked from "@/assets/images/RulesScreen/checkbox_checked.png";
+import checkboxEmpty from "@/assets/images/RulesScreen/checkbox_empty.png";
+
+import buttonName from "@/assets/images/NameScreen/button_name.png";
+import nameSave from "@/assets/images/NameScreen/name_save.png";
+import nameSave1 from "@/assets/images/NameScreen/button_name_save_1.png";
+import nameSave2 from "@/assets/images/NameScreen/button_name_save_2.png";
 
 import avatar1 from "@/assets/avatars/avatar1.png";
 import avatar2 from "@/assets/avatars/avatar2.png";
@@ -21,13 +23,13 @@ import avatar3 from "@/assets/avatars/avatar3.png";
 import avatar4 from "@/assets/avatars/avatar4.png";
 import avatar5 from "@/assets/avatars/avatar5.png";
 
-import avatarFrame from "@/assets/images/avatar_2.png";
-import avatarPopup from "@/assets/images/avatar_3.png";
-import buttonDetails from "@/assets/images/button_avatar_1.png";
-import buttonSelect from "@/assets/images/button_avatar_2.png";
-import arrowLeft from "@/assets/images/button_avatar_3.png";
-import arrowRight from "@/assets/images/button_avatar_4.png";
-import buttonBack from "@/assets/images/button_avatar_5.png";
+import avatarFrame from "@/assets/images/AvatarScreen/avatar_2.png";
+import avatarPopup from "@/assets/images/AvatarScreen/avatar_3.png";
+import buttonDetails from "@/assets/images/AvatarScreen/button_avatar_1.png";
+import buttonSelect from "@/assets/images/AvatarScreen/button_avatar_2.png";
+import arrowLeft from "@/assets/images/AvatarScreen/button_avatar_3.png";
+import arrowRight from "@/assets/images/AvatarScreen/button_avatar_4.png";
+import buttonBack from "@/assets/images/AvatarScreen/button_avatar_5.png";
 
 const preloadImages = (sources: string[]) => {
   sources.forEach((src) => {
