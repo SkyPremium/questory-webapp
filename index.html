@@ -5,44 +5,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Questory Web App</title>
 
-    <!-- 🔧 Инлайн стили для мгновенного фона -->
+    <!-- ✅ Предзагрузочная обложка -->
     <style>
       html, body {
         margin: 0;
         padding: 0;
         height: 100%;
-        background-color: black;
         overflow: hidden;
+        background-color: black;
       }
+
       #preload {
-        width: 100vw;
-        height: 100vh;
-        background: black url("/src/assets/images/LoadingScreen/loading.jpg") no-repeat center center;
-        background-size: cover;
         position: fixed;
         top: 0;
         left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: url("/loading.jpg") no-repeat center center;
+        background-size: cover;
         z-index: 9999;
       }
     </style>
   </head>
   <body>
-    <!-- 🔄 Заглушка, исчезающая после старта React -->
+    <!-- ⏳ Фон до загрузки React -->
     <div id="preload"></div>
 
-    <!-- 🔄 React монтирует сюда -->
+    <!-- ⚛️ React-приложение -->
     <div id="root"></div>
 
-    <!-- 🔄 Удаляем preload сразу после загрузки React -->
+    <!-- ❌ Удаляем заглушку, когда React загружен -->
     <script type="module">
       const removePreload = () => {
-        const preload = document.getElementById('preload');
+        const preload = document.getElementById("preload");
         if (preload) preload.remove();
       };
       window.addEventListener("DOMContentLoaded", removePreload);
     </script>
 
-    <!-- 🔁 React старт -->
+    <!-- 🧠 Основной бандл -->
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
