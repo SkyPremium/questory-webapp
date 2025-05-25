@@ -8,11 +8,12 @@ import {
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
-import LoadingScreen from "./pages/LoadingScreen";
-import WelcomeScreen from "./pages/WelcomeScreen";
-import RulesScreen from "./pages/RulesScreen";
-import NameScreen from "./pages/NameScreen";
-import AvatarScreen from "./pages/AvatarScreen";
+// ✅ Используем абсолютные alias-пути
+import LoadingScreen from "@/pages/LoadingScreen";
+import WelcomeScreen from "@/pages/WelcomeScreen";
+import RulesScreen from "@/pages/RulesScreen";
+import NameScreen from "@/pages/NameScreen";
+import AvatarScreen from "@/pages/AvatarScreen";
 
 function AnimatedRoutes() {
   const location = useLocation();
