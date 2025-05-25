@@ -34,7 +34,7 @@ export default function AvatarScreen() {
 
   const handleSelect = () => {
     playClick();
-    navigate("/training");
+    navigate("/tutorial"); // переход на экран обучения
   };
 
   const handleDetails = () => {
@@ -65,6 +65,7 @@ export default function AvatarScreen() {
 
         <rect x="0" y="0" width="1080" height="1920" fill="url(#bg)" />
 
+        {/* 🎴 Карусель аватаров */}
         {[-1, 0, 1].map((offset) => {
           const avatarIndex = (index + offset + avatars.length) % avatars.length;
           const spacing = 550;
@@ -79,7 +80,6 @@ export default function AvatarScreen() {
             : 0.41043 * (1.68 / 1.98576) * 1.1 * 1.03 * 1.02;
 
           const yOffset = isCenter ? 32 : 34;
-
           const opacity = isCenter ? 1 : 0.6;
           const xOffset = baseX - (frameWidth * frameScale) / 2 + offset * spacing;
 
@@ -116,54 +116,87 @@ export default function AvatarScreen() {
           );
         })}
 
+        {/* 🔘 Кнопка "Подробнее" */}
         <foreignObject x="210" y="1320" width="660" height="200">
           <button
-            onClick={() => { playClick(); handleDetails(); }}
-            style={{ width: "100%", height: "100%", background: "none", border: "none", padding: 0, transition: "transform 0.15s ease" }}
-            onPointerDown={e => (e.currentTarget.style.transform = "scale(0.95)")}
-            onPointerUp={e => (e.currentTarget.style.transform = "scale(1)")}
-            onPointerLeave={e => (e.currentTarget.style.transform = "scale(1)")}
+            onClick={handleDetails}
+            style={{
+              width: "100%",
+              height: "100%",
+              background: "none",
+              border: "none",
+              padding: 0,
+              transition: "transform 0.15s ease",
+            }}
+            onPointerDown={(e) => (e.currentTarget.style.transform = "scale(0.95)")}
+            onPointerUp={(e) => (e.currentTarget.style.transform = "scale(1)")}
+            onPointerLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
           >
             <img src={buttonDetails} alt="Подробнее" style={{ width: "100%", height: "100%" }} />
           </button>
         </foreignObject>
 
+        {/* ✅ Кнопка "Выбрать" */}
         <foreignObject x="210" y="1560" width="660" height="200">
           <button
-            onClick={() => { playClick(); handleSelect(); }}
-            style={{ width: "100%", height: "100%", background: "none", border: "none", padding: 0, transition: "transform 0.15s ease" }}
-            onPointerDown={e => (e.currentTarget.style.transform = "scale(0.95)")}
-            onPointerUp={e => (e.currentTarget.style.transform = "scale(1)")}
-            onPointerLeave={e => (e.currentTarget.style.transform = "scale(1)")}
+            onClick={handleSelect}
+            style={{
+              width: "100%",
+              height: "100%",
+              background: "none",
+              border: "none",
+              padding: 0,
+              transition: "transform 0.15s ease",
+            }}
+            onPointerDown={(e) => (e.currentTarget.style.transform = "scale(0.95)")}
+            onPointerUp={(e) => (e.currentTarget.style.transform = "scale(1)")}
+            onPointerLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
           >
             <img src={buttonSelect} alt="Выбрать" style={{ width: "100%", height: "100%" }} />
           </button>
         </foreignObject>
 
+        {/* ◀ Кнопка назад */}
         <foreignObject x="50" y="1440" width="120" height="180">
           <button
             onClick={prevAvatar}
-            style={{ width: "100%", height: "100%", background: "none", border: "none", padding: 0, transition: "transform 0.15s ease" }}
-            onPointerDown={e => (e.currentTarget.style.transform = "scale(0.95)")}
-            onPointerUp={e => (e.currentTarget.style.transform = "scale(1)")}
-            onPointerLeave={e => (e.currentTarget.style.transform = "scale(1)")}
+            style={{
+              width: "100%",
+              height: "100%",
+              background: "none",
+              border: "none",
+              padding: 0,
+              transition: "transform 0.15s ease",
+            }}
+            onPointerDown={(e) => (e.currentTarget.style.transform = "scale(0.95)")}
+            onPointerUp={(e) => (e.currentTarget.style.transform = "scale(1)")}
+            onPointerLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
           >
             <img src={arrowLeft} alt="Prev" style={{ width: "100%", height: "100%" }} />
           </button>
         </foreignObject>
 
+        {/* ▶ Кнопка вперёд */}
         <foreignObject x="910" y="1440" width="120" height="180">
           <button
             onClick={nextAvatar}
-            style={{ width: "100%", height: "100%", background: "none", border: "none", padding: 0, transition: "transform 0.15s ease" }}
-            onPointerDown={e => (e.currentTarget.style.transform = "scale(0.95)")}
-            onPointerUp={e => (e.currentTarget.style.transform = "scale(1)")}
-            onPointerLeave={e => (e.currentTarget.style.transform = "scale(1)")}
+            style={{
+              width: "100%",
+              height: "100%",
+              background: "none",
+              border: "none",
+              padding: 0,
+              transition: "transform 0.15s ease",
+            }}
+            onPointerDown={(e) => (e.currentTarget.style.transform = "scale(0.95)")}
+            onPointerUp={(e) => (e.currentTarget.style.transform = "scale(1)")}
+            onPointerLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
           >
             <img src={arrowRight} alt="Next" style={{ width: "100%", height: "100%" }} />
           </button>
         </foreignObject>
 
+        {/* 💬 Окно с деталями */}
         {showDetails && (
           <>
             <image href={detailsPopup} x="0" y="530" width="1080" height="1400" />
@@ -218,18 +251,18 @@ export default function AvatarScreen() {
 
             <foreignObject x="250" y="1640" width="580" height="200">
               <button
-                onClick={() => { playClick(); handleCloseDetails(); }}
+                onClick={handleCloseDetails}
                 style={{
                   width: "100%",
                   height: "100%",
                   background: "none",
                   border: "none",
                   padding: 0,
-                  transition: "transform 0.15s ease"
+                  transition: "transform 0.15s ease",
                 }}
-                onPointerDown={e => (e.currentTarget.style.transform = "scale(0.95)")}
-                onPointerUp={e => (e.currentTarget.style.transform = "scale(1)")}
-                onPointerLeave={e => (e.currentTarget.style.transform = "scale(1)")}
+                onPointerDown={(e) => (e.currentTarget.style.transform = "scale(0.95)")}
+                onPointerUp={(e) => (e.currentTarget.style.transform = "scale(1)")}
+                onPointerLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
               >
                 <img src={buttonBack} alt="Назад" style={{ width: "100%", height: "100%" }} />
               </button>

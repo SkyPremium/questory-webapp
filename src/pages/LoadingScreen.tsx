@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+
 import loadingBg from "@/assets/images/LoadingScreen/loading.jpg";
 
 import welcome from "@/assets/images/WelcomeScreen/welcome.jpg";
@@ -23,7 +24,7 @@ import avatar3 from "@/assets/avatars/avatar3.png";
 import avatar4 from "@/assets/avatars/avatar4.png";
 import avatar5 from "@/assets/avatars/avatar5.png";
 
-import avatarBg from "@/assets/images/AvatarScreen/avatar.jpg"; // ✅ добавлено
+import avatarBg from "@/assets/images/AvatarScreen/avatar.jpg";
 import avatarFrame from "@/assets/images/AvatarScreen/avatar_2.png";
 import avatarPopup from "@/assets/images/AvatarScreen/avatar_3.png";
 import buttonDetails from "@/assets/images/AvatarScreen/button_avatar_1.png";
@@ -31,6 +32,9 @@ import buttonSelect from "@/assets/images/AvatarScreen/button_avatar_2.png";
 import arrowLeft from "@/assets/images/AvatarScreen/button_avatar_3.png";
 import arrowRight from "@/assets/images/AvatarScreen/button_avatar_4.png";
 import buttonBack from "@/assets/images/AvatarScreen/button_avatar_5.png";
+
+import tutorialIntro from "@/assets/images/TutorialScreen/tutorial_intro.jpg"; // ✅ новый фон
+import buttonTutorialStart from "@/assets/images/TutorialScreen/button_tutorial_start.png"; // ✅ новая кнопка
 
 const preloadImages = (sources: string[]) => {
   sources.forEach((src) => {
@@ -78,7 +82,7 @@ export default function LoadingScreen() {
       avatar3,
       avatar4,
       avatar5,
-      avatarBg, // ✅ теперь avatar.jpg будет загружен
+      avatarBg,
       avatarFrame,
       avatarPopup,
       buttonDetails,
@@ -87,6 +91,10 @@ export default function LoadingScreen() {
       arrowRight,
       buttonBack,
       loadingBg,
+
+      // ✅ Новое: экран обучения
+      tutorialIntro,
+      buttonTutorialStart,
     ]);
 
     setCurrentTip(tips[Math.floor(Math.random() * tips.length)]);
@@ -129,6 +137,7 @@ export default function LoadingScreen() {
 
         <rect x="0" y="0" width="1080" height="1920" fill="url(#bg)" />
 
+        {/* 🔁 Прогрессбар */}
         <foreignObject x="208" y="1085" width="664" height="65">
           <div
             style={{
@@ -170,6 +179,7 @@ export default function LoadingScreen() {
           </div>
         </foreignObject>
 
+        {/* 🧠 Советы */}
         <foreignObject x="140" y="1200" width="800" height="120">
           <div
             style={{
