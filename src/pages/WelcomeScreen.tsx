@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useSound } from "../utils/useSound";
 import clickSound from "../assets/sounds/click_ui.mp3";
-import background from "@/assets/images/WelcomeScreen/welcome.jpg";
+import welcomeBg from "@/assets/images/WelcomeScreen/welcome.jpg";
 import buttonStart from "@/assets/images/WelcomeScreen/button_welcome.png";
 
 export default function WelcomeScreen() {
