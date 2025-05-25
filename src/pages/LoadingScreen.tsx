@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+// 🖼️ Изображения
 import loadingBg from "@/assets/images/LoadingScreen/loading.jpg";
 
 import welcome from "@/assets/images/WelcomeScreen/welcome.jpg";
@@ -33,15 +34,11 @@ import arrowLeft from "@/assets/images/AvatarScreen/button_avatar_3.png";
 import arrowRight from "@/assets/images/AvatarScreen/button_avatar_4.png";
 import buttonBack from "@/assets/images/AvatarScreen/button_avatar_5.png";
 
-import tutorialIntro from "@/assets/images/TutorialScreen/tutorial_intro.jpg"; // ✅ новый фон
-import buttonTutorialStart from "@/assets/images/TutorialScreen/button_tutorial_start.png"; // ✅ новая кнопка
+import tutorialIntro from "@/assets/images/TutorialScreen/tutorial_intro.jpg";
+import buttonTutorialStart from "@/assets/images/TutorialScreen/button_tutorial_start.png";
 
-const preloadImages = (sources: string[]) => {
-  sources.forEach((src) => {
-    const img = new Image();
-    img.src = src;
-  });
-};
+// 🔊 Звук
+import clickSound from "@/assets/sounds/click_ui.mp3";
 
 export default function LoadingScreen() {
   const navigate = useNavigate();
@@ -58,65 +55,60 @@ export default function LoadingScreen() {
     "Печатаем древние карты...",
   ];
 
+  const imageAssets = [
+    welcome, rules, name, logo,
+    buttonWelcome, buttonRules, checkboxChecked, checkboxEmpty,
+    buttonName, nameSave, nameSave1, nameSave2,
+    avatar1, avatar2, avatar3, avatar4, avatar5,
+    avatarBg, avatarFrame, avatarPopup,
+    buttonDetails, buttonSelect, arrowLeft, arrowRight, buttonBack,
+    tutorialIntro, buttonTutorialStart,
+    loadingBg,
+  ];
+
+  const soundAssets = [clickSound];
+
   useEffect(() => {
     if (window.Telegram?.WebApp) {
       window.Telegram.WebApp.ready();
       window.Telegram.WebApp.expand();
     }
 
-    preloadImages([
-      welcome,
-      rules,
-      name,
-      logo,
-      buttonWelcome,
-      buttonRules,
-      checkboxChecked,
-      checkboxEmpty,
-      buttonName,
-      nameSave,
-      nameSave1,
-      nameSave2,
-      avatar1,
-      avatar2,
-      avatar3,
-      avatar4,
-      avatar5,
-      avatarBg,
-      avatarFrame,
-      avatarPopup,
-      buttonDetails,
-      buttonSelect,
-      arrowLeft,
-      arrowRight,
-      buttonBack,
-      loadingBg,
+    const totalAssets = imageAssets.length + soundAssets.length;
+    let loadedCount = 0;
 
-      // ✅ Новое: экран обучения
-      tutorialIntro,
-      buttonTutorialStart,
-    ]);
+    const updateProgress = () => {
+      loadedCount += 1;
+      const percent = Math.floor((loadedCount / totalAssets) * 100);
+      setProgress(percent);
+      if (loadedCount === totalAssets) {
+        setTimeout(() => navigate("/welcome"), 500);
+      }
+    };
 
+    // 📦 Загрузка изображений
+    imageAssets.forEach((src) => {
+      const img = new Image();
+      img.onload = updateProgress;
+      img.onerror = updateProgress;
+      img.src = src;
+    });
+
+    // 🔉 Загрузка звуков
+    soundAssets.forEach((src) => {
+      const audio = new Audio();
+      audio.oncanplaythrough = updateProgress;
+      audio.onerror = updateProgress;
+      audio.src = src;
+    });
+
+    // 🧠 Подсказки
     setCurrentTip(tips[Math.floor(Math.random() * tips.length)]);
-
     const tipTimer = setInterval(() => {
       setCurrentTip(tips[Math.floor(Math.random() * tips.length)]);
     }, 2000);
 
-    const interval = setInterval(() => {
-      setProgress((prev) => {
-        if (prev >= 100) {
-          clearInterval(interval);
-          clearInterval(tipTimer);
-          setTimeout(() => navigate("/welcome"), 500);
-          return 100;
-        }
-        return prev + 1;
-      });
-    }, 40);
-
     return () => {
-      clearInterval(interval);
       clearInterval(tipTimer);
     };
   }, []);

@@ -6,7 +6,7 @@ import clickSound from "@/assets/sounds/click_ui.mp3";
 import tutorialIntroBg from "@/assets/images/TutorialScreen/tutorial_intro.jpg";
 import buttonStart from "@/assets/images/TutorialScreen/button_tutorial_start.png";
 
-export default function TutorialIntroScreen() {
+export default function TutorialScreen() {
   const navigate = useNavigate();
   const playClick = useSound(clickSound, 0.8);
 
