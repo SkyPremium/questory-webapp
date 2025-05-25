@@ -23,6 +23,7 @@ import avatar3 from "@/assets/avatars/avatar3.png";
 import avatar4 from "@/assets/avatars/avatar4.png";
 import avatar5 from "@/assets/avatars/avatar5.png";
 
+import avatarBg from "@/assets/images/AvatarScreen/avatar.jpg"; // ✅ добавлено
 import avatarFrame from "@/assets/images/AvatarScreen/avatar_2.png";
 import avatarPopup from "@/assets/images/AvatarScreen/avatar_3.png";
 import buttonDetails from "@/assets/images/AvatarScreen/button_avatar_1.png";
@@ -77,6 +78,7 @@ export default function LoadingScreen() {
       avatar3,
       avatar4,
       avatar5,
+      avatarBg, // ✅ теперь avatar.jpg будет загружен
       avatarFrame,
       avatarPopup,
       buttonDetails,
@@ -120,13 +122,8 @@ export default function LoadingScreen() {
         xmlns="http://www.w3.org/2000/svg"
       >
         <defs>
-          <pattern
-            id="bg"
-            patternUnits="userSpaceOnUse"
-            width="1080"
-            height="1920"
-          >
-            <image href={loadingBg.toString()} x="0" y="0" width="1080" height="1920" />
+          <pattern id="bg" patternUnits="userSpaceOnUse" width="1080" height="1920">
+            <image href={loadingBg} x="0" y="0" width="1080" height="1920" />
           </pattern>
         </defs>
 
