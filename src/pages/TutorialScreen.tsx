@@ -36,8 +36,8 @@ export default function TutorialScreen() {
         </defs>
         <rect x="0" y="0" width="1080" height="1920" fill="url(#bg)" />
 
-        {/* 🟠 Кнопка "Начать обучение" */}
-        <foreignObject x="330" y="1740" width="420" height="140">
+        {/* 🟠 Кнопка "Начать обучение" — увеличена и приподнята */}
+        <foreignObject x="300" y="1660" width="480" height="160">
           <button
             onClick={handleStart}
             style={{
