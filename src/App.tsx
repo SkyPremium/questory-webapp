@@ -1,19 +1,18 @@
 import {
   BrowserRouter as Router,
   useLocation,
-  Routes,
-  Route,
   Navigate,
 } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
-// ✅ Используем абсолютные alias-пути
+// ✅ Страницы
 import LoadingScreen from "@/pages/LoadingScreen";
 import WelcomeScreen from "@/pages/WelcomeScreen";
 import RulesScreen from "@/pages/RulesScreen";
 import NameScreen from "@/pages/NameScreen";
 import AvatarScreen from "@/pages/AvatarScreen";
+import TutorialScreen from "@/pages/TutorialScreen"; // ✅ Новый импорт
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -50,6 +49,8 @@ function AnimatedRoutes() {
         return <NameScreen />;
       case "/avatar":
         return <AvatarScreen />;
+      case "/tutorial":
+        return <TutorialScreen />; // ✅ Новый маршрут
       default:
         return <Navigate to="/" replace />;
     }
