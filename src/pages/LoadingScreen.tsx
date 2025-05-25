@@ -126,7 +126,7 @@ export default function LoadingScreen() {
             width="1080"
             height="1920"
           >
-            <image href={loadingBg} x="0" y="0" width="1080" height="1920" />
+            <image href={loadingBg.toString()} x="0" y="0" width="1080" height="1920" />
           </pattern>
         </defs>
 

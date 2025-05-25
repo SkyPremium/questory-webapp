@@ -1,13 +1,15 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+
 import background from "@/assets/images/NameScreen/name.jpg";
-import buttonName from "@/assets/images/NameScreen/button_name.png";
-import nameSave from "@/assets/images/NameScreen/name_save.png";
-import nameSave1 from "@/assets/images/NameScreen/button_name_save_1.png";
-import nameSave2 from "@/assets/images/NameScreen/button_name_save_2.png";
-import { useSound } from "../utils/useSound";
+import buttonContinue from "@/assets/images/NameScreen/button_name.png";
+import confirmBG from "@/assets/images/NameScreen/name_save.png";
+import confirmYes from "@/assets/images/NameScreen/button_name_save_1.png";
+import confirmNo from "@/assets/images/NameScreen/button_name_save_2.png";
+
+import { useSound } from "@/utils/useSound";
 import clickSound from "@/assets/sounds/click_ui.mp3";
-import blackList from "../utils/blacklist";
+import blackList from "@/utils/blacklist";
 
 export default function NameScreen() {
   const [nickname, setNickname] = useState("");
@@ -51,10 +53,12 @@ export default function NameScreen() {
       >
         <defs>
           <pattern id="bg" patternUnits="userSpaceOnUse" width="1080" height="1920">
-            <image href={background} x="0" y="0" width="1080" height="1920" />
+            <image href={background.toString()} x="0" y="0" width="1080" height="1920" />
           </pattern>
         </defs>
         <rect width="1080" height="1920" fill="url(#bg)" />
+
+        {/* 💬 Поле ввода ника */}
         <foreignObject x="190" y="960" width="700" height="120">
           <input
             type="text"
@@ -72,15 +76,24 @@ export default function NameScreen() {
             }}
           />
         </foreignObject>
+
+        {/* ⚠️ Ошибка под полем */}
         {!showConfirm && error && (
           <foreignObject x="190" y="1060" width="700" height="60">
-            <div className="text-red-500 text-center text-3xl font-extrabold">{error}</div>
+            <div className="text-red-500 text-center text-3xl font-extrabold">
+              {error}
+            </div>
           </foreignObject>
         )}
+
+        {/* 🔘 Кнопка "Продолжить" */}
         {!showConfirm && (
           <foreignObject x="330" y="1720" width="420" height="160">
             <button
-              onClick={() => { playClick(); handleSubmit(); }}
+              onClick={() => {
+                playClick();
+                handleSubmit();
+              }}
               disabled={!!error || nickname === ""}
               style={{
                 width: "100%",
@@ -92,22 +105,28 @@ export default function NameScreen() {
                 cursor: error || nickname === "" ? "default" : "pointer",
                 opacity: error || nickname === "" ? 0.4 : 1,
               }}
-              onMouseDown={(e) => (e.currentTarget.style.transform = "scale(0.95)")}
-              onMouseUp={(e) => (e.currentTarget.style.transform = "scale(1)")}
-              onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
-              onTouchStart={(e) => (e.currentTarget.style.transform = "scale(0.95)")}
-              onTouchEnd={(e) => (e.currentTarget.style.transform = "scale(1)")}
+              onMouseDown={e => (e.currentTarget.style.transform = "scale(0.95)")}
+              onMouseUp={e => (e.currentTarget.style.transform = "scale(1)")}
+              onMouseLeave={e => (e.currentTarget.style.transform = "scale(1)")}
+              onTouchStart={e => (e.currentTarget.style.transform = "scale(0.95)")}
+              onTouchEnd={e => (e.currentTarget.style.transform = "scale(1)")}
             >
-              <img src={buttonContinue} alt="Продолжить" style={{ width: "100%", height: "100%" }} />
+              <img
+                src={buttonContinue}
+                alt="Продолжить"
+                style={{ width: "100%", height: "100%" }}
+              />
             </button>
           </foreignObject>
         )}
       </svg>
 
+      {/* ✅ Подтверждение ника */}
       {showConfirm && (
         <div className="absolute top-0 left-0 w-full h-full z-50 pointer-events-auto">
           <svg viewBox="0 0 1080 1920" className="w-full h-full" preserveAspectRatio="none">
-            <image href={confirmBG} x="20" y="540" width="1040" height="820" />
+            <image href={confirmBG.toString()} x="20" y="540" width="1040" height="820" />
+
             <foreignObject x="190" y="915" width="700" height="130">
               <div className="w-full h-full text-center" style={{
                 fontSize: "52px",
@@ -120,13 +139,26 @@ export default function NameScreen() {
                 {nickname}
               </div>
             </foreignObject>
+
             <foreignObject x="100" y="1120" width="380" height="180">
-              <button onClick={confirmSubmit} className="w-full h-full transition-transform duration-150 active:scale-95" style={{ background: "none", border: "none", padding: 0 }}>
+              <button
+                onClick={confirmSubmit}
+                className="w-full h-full transition-transform duration-150 active:scale-95"
+                style={{ background: "none", border: "none", padding: 0 }}
+              >
                 <img src={confirmYes} alt="Подтвердить" style={{ width: "100%", height: "100%" }} />
               </button>
             </foreignObject>
+
             <foreignObject x="600" y="1120" width="380" height="180">
-              <button onClick={() => { playClick(); setShowConfirm(false); }} className="w-full h-full transition-transform duration-150 active:scale-95" style={{ background: "none", border: "none", padding: 0 }}>
+              <button
+                onClick={() => {
+                  playClick();
+                  setShowConfirm(false);
+                }}
+                className="w-full h-full transition-transform duration-150 active:scale-95"
+                style={{ background: "none", border: "none", padding: 0 }}
+              >
                 <img src={confirmNo} alt="Отмена" style={{ width: "100%", height: "100%" }} />
               </button>
             </foreignObject>

@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useSound } from "../utils/useSound";
-import clickSound from "../assets/sounds/click_ui.mp3";
+import { useSound } from "@/utils/useSound";
+import clickSound from "@/assets/sounds/click_ui.mp3";
+
 import rulesBg from "@/assets/images/RulesScreen/rules.jpg";
-import logo from "../assets/images/logo.png";
+import logo from "@/assets/images/logo.png";
 import buttonRules from "@/assets/images/RulesScreen/button_rules.png";
 import checkboxChecked from "@/assets/images/RulesScreen/checkbox_checked.png";
 import checkboxEmpty from "@/assets/images/RulesScreen/checkbox_empty.png";
@@ -25,6 +26,7 @@ export default function RulesScreen() {
         preserveAspectRatio="none"
         xmlns="http://www.w3.org/2000/svg"
       >
+        {/* 🎨 Фон */}
         <defs>
           <pattern
             id="bg"
@@ -32,29 +34,35 @@ export default function RulesScreen() {
             width="1080"
             height="1920"
           >
-            <image href={rulesBg} x="0" y="0" width="1080" height="1920" />
+            <image href={rulesBg.toString()} x="0" y="0" width="1080" height="1920" />
           </pattern>
         </defs>
         <rect x="0" y="0" width="1080" height="1920" fill="url(#bg)" />
 
         {/* 🔥 Логотип */}
-        <image href={logo} x="0" y="0" width="1080" height="300" />
+        <image href={logo.toString()} x="0" y="0" width="1080" height="300" />
 
         {/* ✅ Галочка / Печать */}
         <image
-          href={checked ? checkboxChecked : checkboxEmpty}
+          href={(checked ? checkboxChecked : checkboxEmpty).toString()}
           x="130"
           y="1520"
           width="110"
           height="110"
           className="cursor-pointer"
-          onClick={() => { playClick(); setChecked(!checked); }}
+          onClick={() => {
+            playClick();
+            setChecked(!checked);
+          }}
         />
 
-        {/* 🟠 Кнопка "Согласен" с анимацией нажатия */}
+        {/* 🟠 Кнопка "Согласен" с анимацией */}
         <foreignObject x="280" y="1700" width="520" height="150">
           <button
-            onClick={() => { playClick(); handleAgree(); }}
+            onClick={() => {
+              playClick();
+              handleAgree();
+            }}
             disabled={!checked}
             style={{
               width: "100%",
@@ -67,11 +75,21 @@ export default function RulesScreen() {
               transition: "transform 0.15s ease",
               touchAction: "manipulation",
             }}
-            onPointerDown={e => (e.currentTarget.style.transform = "scale(0.95)")}
-            onPointerUp={e => (e.currentTarget.style.transform = "scale(1)")}
-            onPointerLeave={e => (e.currentTarget.style.transform = "scale(1)")}
+            onPointerDown={(e) =>
+              (e.currentTarget.style.transform = "scale(0.95)")
+            }
+            onPointerUp={(e) =>
+              (e.currentTarget.style.transform = "scale(1)")
+            }
+            onPointerLeave={(e) =>
+              (e.currentTarget.style.transform = "scale(1)")
+            }
           >
-            <img src={buttonRules} alt="Согласен" style={{ width: "100%", height: "100%" }} />
+            <img
+              src={buttonRules}
+              alt="Согласен"
+              style={{ width: "100%", height: "100%" }}
+            />
           </button>
         </foreignObject>
       </svg>
