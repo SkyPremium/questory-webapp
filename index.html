@@ -5,13 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Questory</title>
     <style>
-      body {
+      /* Убираем отступы и белую вспышку */
+      html, body {
         margin: 0;
-        background-image: url("data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxISEhUSEhIVFRUVFRUVFRUVFRUVFRUVFRUXFhUVFRUYHSggGBolHRUVITEhJSkrLi4uFx8zODMtNygtLisBCgoKDg0OFw8QFS0dFR0tLS0rLS0rLS0tLS0tKy0tLS0tLS0tLS0tLS0tKy0tLSstLSstLS0tKy0tLS0tLSsrK//AABEIAQwAugMBIgACEQEDEQH/xAAcAAABBQEBAQAAAAAAAAAAAAAFAAMEBgcCAQj/xABCEAACAQIEAwYEAwYEBQMFAAABAhEAAwQSITEFBkETIlFhcTKBkaGx8BQjUsHR8BUjYnKCkhUzssLS4RU0Q3OCFjRjwv/EABgBAQEBAQEAAAAAAAAAAAAAAAABAgME/8QAHREAAgMBAQEBAQEAAAAAAAAAAAERAhIhMUFRcf/aAAwDAQACEAMQAAAB+oAAAoIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB3V7cTy8nzkK3YqPdNxYReet+acbT41t06pU6MVk0u5PXDqcbVJeWZ2KH4JXfKObYqMb5x2dOvHx1ePrmWddM1bZVNN1Vyzq73E29P2ZNNM3y9HCu0K5k+LZzzvPOT0n6nFv2GQ7MWeO0rlzTn3FtzfZq2tc70O4URdFSy0lJMT9HNTXRu1Yz9OSoyNTGr0+5qMqkaWTlFZGcZVG5ltivJ+Dw4XqOUabZ4hTmnRyVWdp0bjoU3jqlbNOvqmr3F6J6rNj67tGZb5lNjxatSmrzMXhsmtsZ1e1Yydz2alFKTiZVFWTh2zO0zjJUpeD3GjP1mvN7n0nOdbzjFqxnKnDnpXHhzOqpW5XGTUcNqvGu1a0Xpqbd5mXdyZ1dLXPPKSk1OKmjJvVmuMjVpvp+XN3rS+ie0qUVFKlPy3WqKSJzMyjo21rfM7R3F9PPRydR1lyvZzHDqtRW6UnzlhP4zTVnsd2Vtr9dzXu2zZXMTqpiUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALp+xTeEV3cbqU2PTnLJ+L8ZTxHyz8cPX4b6K4aTux+nNf6KmL2cqm46M/8AuTpqLSsnvRYvT1pdy/3VT9XKcMUVyfjfVr1LdcZmQZbtrbmnOdGX6Nm5vbUzS18jLqQor3rHOjvPO5JxyW6WzC5l9mV6pmqUou3kpLL9ztdzzWX5yU4tPhKzl0k7Ebm5y9NV97TXTXn8uk7nmm0nGnJR0aztdKRipWiWUlF8nr5a3am/Ny2R1WVV4vLvU15mrr2dqrxdlOncMxxzPWS9Wys4zUlJUnOTlxmnl1uS8VX3mXvB2ZVj05P1jy1qlrE8auZac5KcOuuXRbydJ2uXox2mK1RldvKzvKPHpS4aV4UnGkry13FtPPxnx1ZKdJTV5OazUtSdWY9abD6E0u1zjPPvdzslzO58qzjTxqP8Ayfxu0OKkZacFSrqqKV8pNPLteOVW0qTivma9TXqvyZXD/wCJXM32TfOn3Zvlq8uN9GtGKf8AE1ek5jZSm5x0uTWlN3lXhJX1WbpWXnTqU9HDUZalby5VlzVz+dm8plzGlpce5WzUpOM5X5JNNNb1Kk3mvzVXJ6PnG3nNOoxnWqdJUpSmrkkYlKTg00stJt+S9XyxU16jyfEZexk5yTjr1xXfRkr8xzVMr1I5j51ySk6lKLVVaUqKzUmnGZtPiZV6abOLft67s7VqzGRtSk1zSnOYylNUnScsqZqNFKirvpvPfLKzdqsXylzmJclNKMnF6SblmMr2c4lfG/M53meH0NWjUpTgpSlKcFJRupSlKTqUpSlKT//Z");
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-color: #000; /* fallback */
+        padding: 0;
+        background-color: #000; /* Без фоновой картинки */
+        overflow: hidden;
+      }
+
+      #root {
+        width: 100vw;
+        height: 100vh;
       }
     </style>
   </head>
