@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { useSound } from "@/src/menu/registration/utils/useSound";
+import { useSound } from "@/menu/registration/utils/useSound";
 import clickSound from "@/assets/sounds/click_ui.mp3";
 import welcomeBg from "@/assets/images/WelcomeScreen/welcome.jpg";
 import buttonStart from "@/assets/images/WelcomeScreen/button_welcome.png";
