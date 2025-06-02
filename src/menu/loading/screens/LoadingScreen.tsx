@@ -7,7 +7,7 @@ import loadingBg from "@/menu/loading/images/LoadingScreen/loading.jpg";
 import welcome from "@/menu/registration/images/WelcomeScreen/welcome.jpg";
 import rules from "@/menu/registration/images/RulesScreen/rules.jpg";
 import name from "@/menu/registration/images/NameScreen/name.jpg";
-import logo from "@/assets/images/logo.png";
+import logo from "@/menu/registration/images/logo.png";
 
 import buttonWelcome from "@/menu/registration/images/WelcomeScreen/button_welcome.png";
 import buttonRules from "@/menu/registration/images/RulesScreen/button_rules.png";
@@ -19,11 +19,11 @@ import nameSave from "@/menu/registration/images/NameScreen/name_save.png";
 import nameSave1 from "@/menu/registration/images/NameScreen/button_name_save_1.png";
 import nameSave2 from "@/menu/registration/images/NameScreen/button_name_save_2.png";
 
-import avatar1 from "@/data/avatars/images/avatar1.png";
-import avatar2 from "@/data/avatars/images/avatar2.png";
-import avatar3 from "@/data/avatars/images/avatar3.png";
-import avatar4 from "@/data/avatars/images/avatar4.png";
-import avatar5 from "@/data/avatars/images/avatar5.png";
+import avatar1 from "@/data/avatars/register_avatars/avatar1.png";
+import avatar2 from "@/data/avatars/register_avatars/avatar2.png";
+import avatar3 from "@/data/avatars/register_avatars/avatar3.png";
+import avatar4 from "@/data/avatars/register_avatars/avatar4.png";
+import avatar5 from "@/data/avatars/register_avatars/avatar5.png";
 
 import avatarBg from "@/menu/registration/images/AvatarScreen/avatar.jpg";
 import avatarFrame from "@/menu/registration/images/AvatarScreen/avatar_2.png";

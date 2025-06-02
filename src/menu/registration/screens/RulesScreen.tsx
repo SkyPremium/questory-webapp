@@ -4,7 +4,7 @@ import { useSound } from "@/utils/useSound";
 import clickSound from "@/menu/registration/sounds/click_ui.mp3";
 
 import rulesBg from "@/menu/registration/images/RulesScreen/rules.jpg";
-import logo from "@/assets/images/logo.png";
+import logo from "@/menu/registration/images/logo.png";
 import buttonRules from "@/menu/registration/images/RulesScreen/button_rules.png";
 import checkboxChecked from "@/menu/registration/images/RulesScreen/checkbox_checked.png";
 import checkboxEmpty from "@/menu/registration/images/RulesScreen/checkbox_empty.png";
