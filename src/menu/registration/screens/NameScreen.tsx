@@ -9,7 +9,7 @@ import confirmNo from "@/menu/registration/images/NameScreen/button_name_save_2.
 
 import { useSound } from "@/menu/registration/sounds/useSound";
 import clickSound from "@/menu/registration/sounds/click_ui.mp3";
-import blackList from "@/utils/blacklist";
+import blackList from "@/data/blacklist";
 
 export default function NameScreen() {
   const [nickname, setNickname] = useState("");
