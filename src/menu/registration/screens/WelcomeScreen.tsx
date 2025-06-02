@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import { useSound } from "@/menu/registration/utils/useSound";
-import clickSound from "@/assets/sounds/click_ui.mp3";
-import welcomeBg from "@/assets/images/WelcomeScreen/welcome.jpg";
-import buttonStart from "@/assets/images/WelcomeScreen/button_welcome.png";
+import clickSound from "@/menu/registration/sounds/click_ui.mp3";
+import welcomeBg from "@/menu/registration/images/WelcomeScreen/welcome.jpg";
+import buttonStart from "@/menu/registration/images/WelcomeScreen/button_welcome.png";
 
 export default function WelcomeScreen() {
   const navigate = useNavigate();

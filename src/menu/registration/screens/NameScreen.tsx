@@ -1,14 +1,14 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import background from "@/assets/images/NameScreen/name.jpg";
-import buttonContinue from "@/assets/images/NameScreen/button_name.png";
-import confirmBG from "@/assets/images/NameScreen/name_save.png";
-import confirmYes from "@/assets/images/NameScreen/button_name_save_1.png";
-import confirmNo from "@/assets/images/NameScreen/button_name_save_2.png";
+import background from "@/menu/registration/images/NameScreen/name.jpg";
+import buttonContinue from "@/menu/registration/images/NameScreen/button_name.png";
+import confirmBG from "@/menu/registration/images/NameScreen/name_save.png";
+import confirmYes from "@/menu/registration/images/NameScreen/button_name_save_1.png";
+import confirmNo from "@/menu/registration/images/NameScreen/button_name_save_2.png";
 
 import { useSound } from "@/utils/useSound";
-import clickSound from "@/assets/sounds/click_ui.mp3";
+import clickSound from "@/menu/registration/sounds/click_ui.mp3";
 import blackList from "@/utils/blacklist";
 
 export default function NameScreen() {

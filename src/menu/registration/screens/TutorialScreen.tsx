@@ -1,10 +1,10 @@
 import { useNavigate } from "react-router-dom";
 import { useSound } from "@/menu/registration/utils/useSound";
-import clickSound from "@/assets/sounds/click_ui.mp3";
+import clickSound from "@/menu/registration/sounds/click_ui.mp3";
 
 // 🖼 Фон и кнопка
-import tutorialIntroBg from "@/assets/images/TutorialScreen/tutorial_intro.jpg";
-import buttonStart from "@/assets/images/TutorialScreen/button_tutorial_start.png";
+import tutorialIntroBg from "@/menu/registration/images/TutorialScreen/tutorial_intro.jpg";
+import buttonStart from "@/menu/registration/images/TutorialScreen/button_tutorial_start.png";
 
 export default function TutorialScreen() {
   const navigate = useNavigate();
