@@ -7,12 +7,12 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
 // ✅ Страницы
-import LoadingScreen from "@/pages/LoadingScreen";
-import WelcomeScreen from "@/pages/WelcomeScreen";
-import RulesScreen from "@/pages/RulesScreen";
-import NameScreen from "@/pages/NameScreen";
-import AvatarScreen from "@/pages/AvatarScreen";
-import TutorialScreen from "@/pages/TutorialScreen"; // ✅ Новый импорт
+import LoadingScreen from "@/menu/loading/screens/LoadingScreen";
+import WelcomeScreen from "@/menu/registration/screens/WelcomeScreen";
+import RulesScreen from "@/menu/registration/screens/RulesScreen";
+import NameScreen from "@/menu/registration/screens/NameScreen";
+import AvatarScreen from "@/menu/registration/screens/AvatarScreen";
+import TutorialScreen from "@/menu/registration/screens/TutorialScreen"; // ✅ Новый импорт
 
 function AnimatedRoutes() {
   const location = useLocation();
