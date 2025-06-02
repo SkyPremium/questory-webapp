@@ -7,7 +7,7 @@ import confirmBG from "@/menu/registration/images/NameScreen/name_save.png";
 import confirmYes from "@/menu/registration/images/NameScreen/button_name_save_1.png";
 import confirmNo from "@/menu/registration/images/NameScreen/button_name_save_2.png";
 
-import { useSound } from "@/utils/useSound";
+import { useSound } from "@/menu/registration/sounds/useSound";
 import clickSound from "@/menu/registration/sounds/click_ui.mp3";
 import blackList from "@/utils/blacklist";
 

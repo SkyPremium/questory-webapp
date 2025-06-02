@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useSound } from "@/utils/useSound";
+import { useSound } from "@/menu/registration/sounds/useSound";
 import clickSound from "@/menu/registration/sounds/click_ui.mp3";
 
 import rulesBg from "@/menu/registration/images/RulesScreen/rules.jpg";
